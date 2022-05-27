@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Ajout d'un utilisateur";
 require "../../struct/head.php";
 ?>

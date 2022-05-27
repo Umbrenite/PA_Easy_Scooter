@@ -9,14 +9,14 @@ $pageTitle = "404 Not found";
 <?php
 require "struct/head.php";
 ?>
-<link href="css/404.css" rel="stylesheet" type="text/css">
+<link href="../../css/404.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="img/abandon.jpg">
+                <img src="/img/abandon.jpg">
             </div>
             <div class="col">
                 <h1>404</h1>

@@ -1,8 +1,83 @@
 <?php
 session_start();
 $pageTitle = "Mon profil";
-require "../../database/database.php";
 require "../../struct/head.php";
+
+if (isset($_POST['formProfil'])) {
+
+    // PARTIE VERIF CHAMPS MDPS
+    if (isset($_POST['oldPwd']) && empty($_POST['newPwd']) && empty($_POST['confirmNewPwd'])) $errorNewPwd = "Tous les champs doivent être renseignés pour modifier le mot de passe";
+    if (isset($_POST['newPwd']) && empty($_POST['oldPwd']) && empty($_POST['confirmNewPwd'])) $errorNewPwd = "Tous les champs doivent être renseignés pour modifier le mot de passe";
+    if (isset($_POST['confirmNewPwd']) && empty($_POST['newPwd']) && empty($_POST['oldPwd'])) $errorNewPwd = "Tous les champs doivent être renseignés pour modifier le mot de passe";
+    if (empty($_POST['newPwd']) && empty($_POST['newPwd']) && empty($_POST['oldPwd'])) $errorNewPwd = "Tous les champs doivent être renseignés pour modifier le mot de passe";
+
+    // PARTIE VERIF CHAMPS NOM ET PRENOM
+    if ($_POST['newName'] == $_SESSION['lastname']) $erreurNewName = "Le nom doit être différent";
+    if ($_POST['newFirstName'] == $_SESSION['firstname']) $erreurNewFirstName = "Le nom doit être différent";
+
+
+    if (!isset($errorNewPwd)) {
+        $newPwd = $_POST['confirmNewPwd'];
+
+        require_once "../../database/database.php";
+        $stmt = $bdd->prepare('SELECT * FROM iw22_user WHERE id = :id');
+        $stmt->bindValue('id', $_SESSION['id'], PDO::PARAM_INT); // Représente le type de données INTEGER SQL.
+        $result = $stmt->execute();
+        $infoUser = $stmt->fetch();
+        $pwdcryptUser = $infoUser['password'];
+
+        if (!password_verify($_POST['oldPwd'], $pwdcryptUser)) $errorOldPwd = "Mot de passe incorrect";
+        if (!preg_match('/^(?=.*\d)(?=.*[&\-é_èçà^ù*:!ù#~@°%§+.])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z&\-é_èçà^ù*:!ù#~@°%§+.]{4,50}$/', $newPwd)) $errorNewPwd = "Le mot de passe doit comporter au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial parmis [à@éè&çù_!.+-:#%§^*~°]";
+        if ($_POST['newPwd'] != $_POST['confirmNewPwd']) $errorNewPwd = "Les nouveaux mots de passe ne correspondent pas";
+
+        if (!isset($errorNewPwd)) {
+            $newPwdCrypt = password_hash($newPwd, PASSWORD_BCRYPT);
+            $insertNewPwd = $bdd->prepare('UPDATE iw22_user SET password = ? WHERE id = ?');
+            $insertNewPwd->execute(array($newPwdCrypt, $_SESSION['id']));
+?>
+            <script>
+                var idu = <?php echo json_encode($_SESSION['id']); ?>;
+                var create = alert("La modification de votre mot de passe à bien été prise en compte.");
+                document.location.href = "admin_profil.php?id=" + idu;
+            </script>
+        <?php
+        }
+    }
+
+
+    // PARTIE MODIF PRENOM
+    if (isset($_POST['newFirstName']) && !empty($_POST['newFirstName']) && !isset($erreurNewFirstName)) {
+        $newFirstname = htmlspecialchars($_POST['newFirstName']);
+        require_once "../../database/database.php";
+        $insertFirstName = $bdd->prepare('UPDATE iw22_user SET firstname = ? WHERE id = ?');
+        $insertFirstName->execute(array($newFirstname, $_SESSION['id']));
+        $_SESSION['firstname'] = $newFirstname;
+        ?>
+        <script>
+            var idu = <?php echo json_encode($_SESSION['id']); ?>;
+            var create = alert("La modification a bien été prise en compte.");
+            document.location.href = "admin_profil.php?id=" + idu;
+        </script>
+    <?php
+    }
+
+
+    // PARTIE MODIF NOM
+    if (isset($_POST['newName']) && !empty($_POST['newName']) && !isset($erreurNewName)) {
+        $newName = htmlspecialchars($_POST['newName']);
+        require_once "../../database/database.php";
+        $insertName = $bdd->prepare('UPDATE iw22_user SET lastname = ? WHERE id = ?');
+        $insertName->execute(array($newName, $_SESSION['id']));
+        $_SESSION['lastname'] = $newName;
+    ?>
+        <script>
+            var idu = <?php echo json_encode($_SESSION['id']); ?>;
+            var create = alert("La modification a bien été prise en compte.");
+            document.location.href = "admin_profil.php?id=" + idu;
+        </script>
+<?php
+    }
+}
 ?>
 
 <link href="../../css/dashboard.css" rel="stylesheet" type="text/css">
@@ -42,14 +117,14 @@ require "admin_leftmenu.php";
                                             <div class="row">
                                                 <div class="col">
                                                     <p class="info">Prénom</p>
-                                                    <input type="text" id="newFirstName" name="newFirstName" class="form-control" placeholder="<?php echo $firstNameUser ?>">
+                                                    <input type="text" id="newFirstName" name="newFirstName" class="form-control" placeholder="<?php echo $_SESSION['firstname']; ?>">
                                                     <p class="errorrr">
                                                         <?php if (isset($erreurNewFirstName)) echo $erreurNewFirstName; ?>
                                                     </p>
                                                 </div>
                                                 <div class="col">
                                                     <p class="info">Nom</p>
-                                                    <input type="text" id="newName" name="newName" class="form-control" placeholder="<?php echo $nameUser ?>">
+                                                    <input type="text" id="newName" name="newName" class="form-control" placeholder="<?php echo $_SESSION['lastname']; ?>">
                                                     <p class="errorrr">
                                                         <?php if (isset($erreurNewName)) echo $erreurNewName; ?>
                                                     </p>
@@ -58,7 +133,7 @@ require "admin_leftmenu.php";
                                         </div>
                                         <div class="form-group">
                                             <p class="info">Mail</p>
-                                            <input type="mail" id="mailU" name="mailU" class="form-control" placeholder="<?php echo $mailUser ?>" disabled="disabled">
+                                            <input type="mail" id="mailU" name="mailU" class="form-control" placeholder="<?php echo $_SESSION['mail']; ?>" disabled="disabled">
                                         </div>
                                         <hr>
                                         <h5>Modifier le mot de passe</h5>
