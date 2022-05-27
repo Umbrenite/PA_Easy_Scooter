@@ -1,0 +1,96 @@
+/*-------------------------------POSITIONS------------------------------------*/
+.right{
+  float:right;
+}
+.left{
+  float:left;
+}
+.largepaddingtop{
+  padding-top:75px;
+}
+/*-------------------------------POSITIONS------------------------------------*/
+
+/*-------------------------------COLORS------------------------------------*/
+  .admin_text{
+    background-color:lightgray;
+  }
+
+  .client_text{
+    background-color:rgb(255, 208, 0);
+  }
+  .border_message{
+    border:1px solid green;
+  } 
+  .table_border{
+    border:1px solid rgb(30, 55, 52);
+  }
+  .table_font_1{
+    background-color: #0E151B;
+  }
+  .table_font_2{
+    background-color: #1E2834;
+  }
+  .bgfontpurple{
+    background-color: rgb(53, 17, 184);
+  }
+  .dashboard_text_color {
+    color: gray;
+}
+/*-------------------------------COLORS------------------------------------*/
+
+
+/*-------------------------------MODIF BALISES------------------------------------*/
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #0E151B;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  border: none;
+  background: none;
+  color : gray;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  padding-left: 8px;
+}
+button:hover, button:focus {
+  outline: none;
+}
+.sub_date{
+  font-size:small;
+}
+.subtitle {
+  font-size: medium;
+  color:rgb(97, 97, 97);}
+/*-------------------------------MODIF BALISES------------------------------------*/
