@@ -1,24 +1,32 @@
 <?php
-$speed = "price_1L3mXPLYkSC4CFkX1NdpeWNX";
-$slow ='price_1L3mWcLYkSC4CFkXZYxtHozv';
-$unique = 'price_1L3mVgLYkSC4CFkXeODCeQi6';
+$monthly_forfait3 = "price_1L3mXPLYkSC4CFkX1NdpeWNX";
+$monthly_forfait2 ='price_1L3mWcLYkSC4CFkXZYxtHozv';
+$monthly_forfait1 = 'price_1L3mVgLYkSC4CFkXeODCeQi6';
+$base_forfait = 'price_1L5dCrLYkSC4CFkX8lDi61gu';
+$daily_forfait = 'price_1L5dDzLYkSC4CFkXFxUNfT32';
 $clignotant = 'price_1L3SH2LYkSC4CFkXdWJvfwio';
 $sac = 'price_1L3S1hLYkSC4CFkX3yLu0ISA';
 $rétroviseur = 'price_1L3S1TLYkSC4CFkXqGpiqd2T';
 $casque = 'price_1L3S14LYkSC4CFkXF3qvd6ML';
 $roue = 'price_1L3n2QLYkSC4CFkXZ8Fy6OEo';
 $items = strtolower($_GET['buy']);
-$selected_item;
+$selected_item = 0;
 
 switch(true) {
-  case stristr($items,'slow'): 
-    $selected_item = $slow;
+  case stristr($items,'Forfait Journalier'): 
+    $selected_item = $daily_forfait;
     break;
-  case stristr($items,'speed'): 
-    $selected_item = $speed;
-    break;
-  case stristr($items,'unique'): 
-    $selected_item = $unique;
+    case stristr($items,'Forfait Mensuel 1'): 
+      $selected_item = $monthly_forfait1;
+      break;
+    case stristr($items,'Forfait Mensuel 2'): 
+      $selected_item = $monthly_forfait2;
+      break;
+    case stristr($items,'Forfait Mensuel 3'): 
+      $selected_item = $monthly_forfait3;
+      break;
+  case stristr($items,'Sans forfait'): 
+    $selected_item = $base_forfait;
     break;
   case stristr($items,'clignotant'): 
     $selected_item = $clignotant;
