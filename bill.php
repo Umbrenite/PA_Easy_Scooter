@@ -1,5 +1,5 @@
 <?php
-require_once '../../../home/pierre/vendor/autoload.php';
+require '../../../home/pierre/vendor/autoload.php';
 ?>
 
 <?php
@@ -17,8 +17,6 @@ echo '
 
 <h1>FACTURE</h1>
 <h5>Votre nom</h5>
-<span>Adresse 1</span>
-<p>Code Postal</p>
 <hr>
 <div>
     <div>
@@ -29,8 +27,14 @@ echo '
     </div>
     <hr>
     <div>
+        <h3>INFORMATIONS SUR LE PRODUIT</h3>
+        <span>Prix : 15 euros</span><br>
+        <span>1xForfait Slow</span><br>
+    </div>
+    <hr>
+    <div>
         <h3>ENVOI A</h3>
-        <span>Arthur BLANDIN</span><br>
+        <span>Pierre EVRARD</span><br>
         <span>14 allee du vent</span><br>
         <span>95012 Paris</span><br>
     </div>

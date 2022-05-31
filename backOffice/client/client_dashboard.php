@@ -1,3 +1,10 @@
+<?php
+session_start();
+$pageTitle = "Votre Dashboard";
+require "../../database/database.php";
+require "../../struct/head.php";
+?>
+
 <?php include "client_leftmenu.php" ?>
 
 <body class="bgfontdark">

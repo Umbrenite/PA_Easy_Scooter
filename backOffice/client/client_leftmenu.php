@@ -4,9 +4,9 @@
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 
 <div id="sidenav" class="sidenav dashboard_text_color">
-    <span class="pl-3">Client</span>
+<span class="pl-3"><?php echo ($_SESSION['role']); ?></span>
     <hr>
-    <b><span class="pl-3">Nom du compte</span></b>
+    <b><span class="pl-3"><?php echo ($_SESSION['firstname'] . " " . $_SESSION['lastname']); ?></span></b>
     <hr>
 
     <a href="client_dashboard.php"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Mon dashboard</span></button></a>
@@ -25,6 +25,7 @@
     </div>
 
     <a href="client_profil.php"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Profil</span></button></a>
+    <a href="client_scooter_gestion.php"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Map</span></button></a>
 
 
     <div class="pt-4"><a href="../../index.php"><button type="button" class="btn btn-dark">Revenir à la page principale</button></a></div>

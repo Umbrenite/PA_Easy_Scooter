@@ -14,19 +14,16 @@
                     </div>
 
                     <div class="col-sm-6 d-flex align-items-center">
-                        <a href="/easyscoot/">
+                        <a href="/index.php">
                             Home
                         </a>
-                        <a href="/easyscoot/index.php#offers"> 
-                            <!-- Chemin à changer -->
+                        <a href="/index.php#offers">
                             Nos Offres
                         </a>
-                        <a href="/easyscoot/index.php#accessories">
-                            <!-- Chemin à changer -->
+                        <a href="/index.php#accessories">
                             Accessoires
                         </a>
-                        <a href="/easyscoot/index.php#about">
-                            <!-- Chemin à changer -->
+                        <a href="/index.php#about">
                             Pourquoi Electrot ?
                         </a>
                     </div>

@@ -26,7 +26,7 @@ include "struct/header.php";
                 <div class="input-group mb-3 rounded">
                     <input type="text" class="bgfontblack textcolor bordercolor form-control py-4" placeholder="Entrez le nom d'un article ici...">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary bordercolor" type="button"><i class="fa-solid fa-arrow-right"></i></button>
+                        <button class="btn btn-outline-dark bordercolor" type="button"><i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
 
@@ -52,8 +52,8 @@ include "struct/header.php";
                             <div class="row pb-1"><span class="textcolor">Type</span></div>
                             <select id="role" name="role" class="form-control">
                                 <option selected>Selectionnez..</option>
-                                <option>Casque</option>
-                                <option>Rétro</option>
+                                <option>Protection</option>
+                                <option>Utilitaire</option>
                             </select>
 
                             <div class="row pt-4 pb-1"><span class="textcolor">Âge limite</span></div>
