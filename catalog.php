@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = "Catalogue";
-require "database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 // PARTIE AFFICHAGE LISTE ACCESSOIRES
 $accessories = $bdd->prepare("SELECT * FROM iw22_accessory");

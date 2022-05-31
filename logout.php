@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['id'] = array();
+$_SESSION = [];
 session_destroy();
 header("Location: index.php");
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $pageTitle = "Liste clients";
-require "../../database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 if (!empty($_GET['id'])) $getId = intval($_GET['id']);
 if ($getId != $_SESSION['id']) header("Location: ../../index.php");

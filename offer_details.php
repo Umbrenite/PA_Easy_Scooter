@@ -1,7 +1,7 @@
 <?php 
 $pageTitle = "Détails du forfait";
 require "struct/head.php";
-require "database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 $offer = $bdd->prepare("SELECT * FROM iw22_package WHERE name = ?");
 $offer->execute(array($_GET['name']));

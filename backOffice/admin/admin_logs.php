@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "admin_leftmenu.php";
 require($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $pageTitle = "Liste admins";
-require "../../database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 // PARTIE AFFICHAGE LISTE ADMINS
 $admins = $bdd->prepare("SELECT * FROM iw22_user WHERE role = 'admin'");

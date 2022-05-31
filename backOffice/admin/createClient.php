@@ -42,7 +42,7 @@ if (isset($_POST['formClient'])) {
         $points = $_POST['points'];
         $trajets = $_POST['trajets'];
 
-        require "../../database/database.php";
+        require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
         $insertclient = $bdd->prepare("INSERT INTO iw22_user(mail, lastname, firstname, password, confirm_key, role, points, races, registration_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insertclient->execute(array($mail, $nom, $prenom, $mdpf, $key, $role, $points, $trajets, $date_now->format("Y-m-d H:i:s")));
 

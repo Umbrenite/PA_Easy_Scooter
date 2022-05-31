@@ -4,7 +4,7 @@
 <?php 
 $pageTitle = "Home";
 require "struct/head.php";
-require "database/database.php";
+require($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 $packages = $bdd->prepare("SELECT * FROM iw22_package WHERE id >= 1");
 $packages->execute();
 $resultPacks = $packages->fetchAll();

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $pageTitle = "Map Gestion";
-require "../../database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 require "../../struct/head.php";
 ?>
 

@@ -19,7 +19,7 @@ if (isset($_POST['formProfil'])) {
     if (!isset($errorNewPwd)) {
         $newPwd = $_POST['confirmNewPwd'];
 
-        require_once "../../database/database.php";
+        require_once require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
         $stmt = $bdd->prepare('SELECT * FROM iw22_user WHERE id = :id');
         $stmt->bindValue('id', $_SESSION['id'], PDO::PARAM_INT); // Représente le type de données INTEGER SQL.
         $result = $stmt->execute();
@@ -48,7 +48,7 @@ if (isset($_POST['formProfil'])) {
     // PARTIE MODIF PRENOM
     if (isset($_POST['newFirstName']) && !empty($_POST['newFirstName']) && !isset($erreurNewFirstName)) {
         $newFirstname = htmlspecialchars($_POST['newFirstName']);
-        require_once "../../database/database.php";
+        require_once require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
         $insertFirstName = $bdd->prepare('UPDATE iw22_user SET firstname = ? WHERE id = ?');
         $insertFirstName->execute(array($newFirstname, $_SESSION['id']));
         $_SESSION['firstname'] = $newFirstname;
@@ -65,7 +65,7 @@ if (isset($_POST['formProfil'])) {
     // PARTIE MODIF NOM
     if (isset($_POST['newName']) && !empty($_POST['newName']) && !isset($erreurNewName)) {
         $newName = htmlspecialchars($_POST['newName']);
-        require_once "../../database/database.php";
+        require_once require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
         $insertName = $bdd->prepare('UPDATE iw22_user SET lastname = ? WHERE id = ?');
         $insertName->execute(array($newName, $_SESSION['id']));
         $_SESSION['lastname'] = $newName;

@@ -2,7 +2,7 @@
 session_start();
 
 if (!empty($_GET['idclient'])) {
-    require_once "database/database.php";
+    require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
     $delElement = $_GET['idclient'];
     $delE = $bdd->prepare('DELETE FROM iw22_user WHERE id = ?');
     $delE->execute([$delElement]);
@@ -11,7 +11,7 @@ if (!empty($_GET['idclient'])) {
 }
 
 if (!empty($_GET['idtrot'])) {
-    require_once "database/database.php";
+    require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
     $delElement = $_GET['idtrot'];
     $delE = $bdd->prepare('DELETE FROM iw22_scooter WHERE id = ?');
     $delE->execute([$delElement]);

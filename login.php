@@ -4,7 +4,7 @@ $pageTitle = "Connexion";
 
 if (isset($_POST['formconnect'])) {
 
-    require "database/database.php";
+    require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
     $mailconnect = htmlspecialchars($_POST['mailconnect']);
     $pwdconnect = $_POST['pwdconnect'];

@@ -1,7 +1,7 @@
 <?php 
 $pageTitle = "Détails d'un objet";
 require "struct/head.php";
-require "database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 $accessories = $bdd->prepare("SELECT * FROM iw22_accessory WHERE name = ?");
 $accessories->execute(array($_GET[object]));

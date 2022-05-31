@@ -5,7 +5,7 @@ $pageTitle = "Liste des trotinettes";
 if (!empty($_GET['id'])) $getId = intval($_GET['id']);
 if ($getId != $_SESSION['id']) header("Location: ../../index.php");
 
-require "../../database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 require "../../struct/head.php";
 ?>
 

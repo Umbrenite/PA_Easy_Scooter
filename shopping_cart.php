@@ -1,7 +1,7 @@
 <?php 
 $pageTitle = "Mon Panier";
 require "struct/head.php";
-require "database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 $accessories = $bdd->prepare("SELECT * FROM iw22_accessory WHERE name = ?");
 $accessories->execute(array($_GET['added_obj']));
 $resultAcc = $accessories->fetchAll();

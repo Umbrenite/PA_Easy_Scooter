@@ -327,14 +327,14 @@ body {
 
 /*  -------------------- LISTE CLIENTS --------------------  */
 #pratio {
-    border-bottom: 1px solid rgb(30, 55, 52);;
-    border-left: 1px solid rgb(30, 55, 52);;
-    border-top: 1px solid rgb(30, 55, 52);;
+    border-bottom: 1px solid rgb(30, 55, 52);
+    border-left: 1px solid rgb(30, 55, 52);
+    border-top: 1px solid rgb(30, 55, 52);
 }
 
 #dratio {
-    border-top: 1px solid rgb(30, 55, 52);;
-    border-bottom: 1px solid rgb(30, 55, 52);;
+    border-top: 1px solid rgb(30, 55, 52);
+    border-bottom: 1px solid rgb(30, 55, 52);
 }
 /*  -------------------- LISTE CLIENTS --------------------  */
 

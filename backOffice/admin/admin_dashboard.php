@@ -2,10 +2,15 @@
 session_start();
 $pageTitle = "Dashboard";
 
-if (!empty($_GET['id'])) $getId = intval($_GET['id']);
-if ($getId != $_SESSION['id']) header("Location: ../../index.php");
+// if (!empty($_GET['id'])) $getId = intval($_GET['id']);
+// if ($getId != $_SESSION['id']) header("Location: ../../index.php");
 
-require "../../database/database.php";
+if (!isset($_SESSION['id'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 require "../../struct/head.php";
 ?>
 

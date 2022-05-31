@@ -1,6 +1,6 @@
 <?php
 $pageTitle = "Confirmation";
-require "database/database.php";
+require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 if (isset($_GET['mail'], $_GET['mail'])) {
 

@@ -3,7 +3,7 @@ $pageTitle = "Inscription";
 
 if (isset($_POST['formRegis'])) {
 
-  require "database/database.php";
+  require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
   require "struct/functions.php";
 
   if (
