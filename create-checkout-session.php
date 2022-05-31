@@ -49,7 +49,7 @@ echo($selected_item);
 
 
 
-require '../../../home/pierre/vendor/autoload.php';
+require '../../../home/service/vendor/autoload.php';
 // This is your test secret API key.
 \Stripe\Stripe::setApiKey('sk_test_51L3RkeLYkSC4CFkXW8RGmdYJ9S6El7VJq2j7q4XGLAzftMeRfJ0GAjMvZIaqCKPAJxGyY8PiRUNVtnI18i8sHrKE00jXMvoLBe');
 
