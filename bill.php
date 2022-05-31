@@ -1,5 +1,5 @@
 <?php
-require '../../../home/pierre/vendor/autoload.php';
+require '../../../home/service/vendor/autoload.php';
 ?>
 
 <?php
