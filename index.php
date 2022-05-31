@@ -3,7 +3,12 @@
 
 <?php 
 $pageTitle = "Home";
-include "struct/head.php" 
+require "struct/head.php";
+require "database/database.php";
+$packages = $bdd->prepare("SELECT * FROM iw22_package WHERE id >= 1");
+$packages->execute();
+$resultPacks = $packages->fetchAll();
+$nbPacks = count($resultPacks);
 ?>
 <link rel="stylesheet" href="css/style.css">
 
@@ -49,28 +54,58 @@ include "struct/head.php"
     </section>
 
     <section id="offers" class="reveal">
-      <div class="pb-5 pt-5">
+        <div class="pb-5 pt-5">
         
           <div class="center pt-5">
           <h4><i class="textcolor pt-5 pb-2">Trajets</i></h4>
           <h1 class="textcolor pb-2">Nous vous proposons</h1>
           </div>
-          <div class="row py-3 px-5">
+          <!-- <div class="row py-3 px-5"> -->
 
-          <div class="col border_col_left border_col_right">
-              <div class="card bgfontblack">
-                <img class="card-img-top rounded" src="./img/unique.jpg" alt="Card image cap" height="500">
-                <div class="card-body">
-                  <h2 class="card-title textcolor">1 trajet</h2>
-                  <i>
-                    <p class="card-text textcolor pb-4">Pour ceux souhaitant s’essayer le temps d’un trajet</p>
-                  </i>
-                  <a href="offer_details.php?name=Unique" class="btn btn-success">Plus de détails sur cette offre</a>
+
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <?php for ($t = 1; $t < $nbPacks; $t++) { ?>
+              <li data-target="#carouselExampleIndicators" data-slide-to="<?php print_r($resultPacks[$t]["id"]); ?>"></li>
+              <?php } ?>
+              <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+            </ol>
+            <div class="carousel-inner pt-5">
+            <?php for ($t = 1; $t < $nbPacks; $t++) { ?>
+
+              <?php if($t == 1) {?>
+              <div class="carousel-item active">
+              <a href='offer_details.php?name=<?php print_r($resultPacks[$t-1]["name"]); ?>'><img class="d-flex justify-content-center" src="img/<?php print_r(strtolower(str_replace(' ','',$resultPacks[$t-1]["name"]))); ?>.jpg" width="40%"></a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5><?php echo($resultPacks[$t-1]["name"]); ?></h5>
+                  <p><?php echo($resultPacks[$t-1]["description"]); ?></p>
                 </div>
               </div>
+              <?php } ?>
+              
+              <div class="carousel-item">
+                <a href='offer_details.php?name=<?php print_r($resultPacks[$t]["name"]); ?>'><img class="d-flex justify-content-center" src="img/<?php print_r(strtolower(str_replace(' ','',$resultPacks[$t]["name"]))); ?>.jpg" width="40%"></a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5><?php echo($resultPacks[$t]["name"]); ?></h5>
+                  <p><?php echo($resultPacks[$t]["description"]); ?></p>
+                </div>
+              </div>
+              <?php } ?>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
 
-            <div class="col border_col_left border_col_right">
+
+            <!-- <div class="col border_col_left border_col_right">
               <div class="card bgfontblack">
                 <img class="card-img-top rounded" src="./img/slow.jpg" alt="Card image cap" height="500">
                 <div class="card-body">
@@ -95,9 +130,9 @@ include "struct/head.php"
                   <a href="offer_details.php?name=Speed" class="btn btn-success">Plus de détails sur cette offre</a>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-          </div>
+          <!-- </div> -->
 
         </div>
     </section>

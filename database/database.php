@@ -4,8 +4,8 @@ $admin = 'apadbadmin22';
 $pwdBDD = 'marchestp22+';
 $options = array(
 	PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-  PDO::MYSQL_ATTR_SSL_CA => $_SERVER['DOCUMENT_ROOT'] . '/database/DigiCertGlobalRootCA.crt.pem', // pour vps
-  // PDO::MYSQL_ATTR_SSL_CA => './database/DigiCertGlobalRootCA.crt.pem', // pour local login
+  //PDO::MYSQL_ATTR_SSL_CA => $_SERVER['DOCUMENT_ROOT'] . '/database/DigiCertGlobalRootCA.crt.pem', // pour vps
+  PDO::MYSQL_ATTR_SSL_CA => './database/DigiCertGlobalRootCA.crt.pem', // pour local login
   //PDO::MYSQL_ATTR_SSL_CA => '../../database/DigiCertGlobalRootCA.crt.pem', // pour local gestion admin
 	PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
 );

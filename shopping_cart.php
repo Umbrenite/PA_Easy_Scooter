@@ -21,7 +21,7 @@ $nbOff = count($resultOff);
   <?php include "struct/header.php" ?>
 
   <div class="container pt-5">
-      <div class="textcolor title py-5">Mon panier</div>
+      <div class="textcolor title py-5">Mon panier </div>
         <div class="row bgfontblack text-white rounded pt-4">
             <div class="col-6 pl-5">Produit</div>
             <div class="col">Quantité</div>
@@ -48,7 +48,7 @@ $nbOff = count($resultOff);
 
             <?php if($resultOff != null) {?>
             <div class="col-2 pl-5">
-            <img class="" src="./img/<?php print_r(strtolower($resultOff[0]["name"])); ?>.jpg"></img>
+            <img class="" src="img/<?php print_r(strtolower(str_replace(' ','',$resultOff[0]["name"]))); ?>.jpg"></img>
             </div>
             <div class="col-4">
             <div class="col"><b><?php echo($resultOff[0]['name']);?></b></div>
