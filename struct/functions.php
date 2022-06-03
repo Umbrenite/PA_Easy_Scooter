@@ -51,3 +51,14 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
     // Closing smtp connection
     $mail->smtpClose();
 }
+
+function printPkgName($packageID) {
+
+    global $bdd;
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $pkgName = $bdd->prepare("SELECT name FROM iw22_package WHERE id = ?");
+    $pkgName->execute(array($packageID));
+    $resultPkgName = $pkgName->fetchAll();
+    
+    return $resultPkgName[0]["name"];
+}
