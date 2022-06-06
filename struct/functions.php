@@ -3,7 +3,8 @@
 // Define name spaces
 use PHPMailer\PHPMailer\PHPMailer;
 
-function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
+function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail)
+{
 
     require($_SERVER['DOCUMENT_ROOT'] . '/includes/PHPMailer.php');
     require($_SERVER['DOCUMENT_ROOT'] . '/includes/SMTP.php');
@@ -52,13 +53,31 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
     $mail->smtpClose();
 }
 
-function printPkgName($packageID) {
+function printPkgName($packageID)
+{
 
     global $bdd;
     require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
     $pkgName = $bdd->prepare("SELECT name FROM iw22_package WHERE id = ?");
     $pkgName->execute(array($packageID));
-    $resultPkgName = $pkgName->fetchAll();
-    
-    return $resultPkgName[0]["name"];
+    $resultPkgName = $pkgName->fetch();
+
+    return $resultPkgName["name"];
+}
+
+function changeUser($dataPost, int $idUser, string $tableName)
+{
+    global $bdd;
+    $updtU = $bdd->prepare("UPDATE iw22_user SET $tableName = ? WHERE id = ?");
+    $updtU->execute(array($dataPost, $idUser));
+?>
+    <script>
+        console.log("<?php echo $dataPost; ?>");
+        console.log("<?php echo $idUser; ?>");
+        console.log("<?php echo $tableName; ?>");
+        var idu = <?php echo json_encode($idUser); ?>;
+        var create = alert("La modification de l'utilisateur a bien été prise en compte.");
+        document.location.href = "modify.php?userm=" + idu;
+    </script>
+<?php
 }
