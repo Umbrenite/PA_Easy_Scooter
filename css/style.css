@@ -25,7 +25,8 @@ li a {
 .border_bottom {
     border-bottom: 1px solid green;
 }
-.border_dark{
+
+.border_dark {
     border: 1px solid #1E2834;
 }
 
@@ -53,6 +54,7 @@ li a {
 .star_color {
     color: yellow;
 }
+
 /*  -------------------- COLORS --------------------  */
 
 
@@ -98,18 +100,18 @@ li a {
     position: fixed;
 }
 
-.language_pos{
-    position:fixed;
-    right:25px;
-    bottom:15px;
-    z-index:1500;
+.language_pos {
+    position: fixed;
+    right: 25px;
+    bottom: 15px;
+    z-index: 1500;
 }
 
-.align-section{
-    max-height:90%;
+.align-section {
+    max-height: 90%;
 }
 
-.blur_bg{
+.blur_bg {
     filter: blur(8px);
     -webkit-filter: blur(8px);
     max-height: 98%;
@@ -155,6 +157,7 @@ li a {
     margin: auto;
     width: 50%;
 }
+
 /*  -------------------- POSITIONS --------------------  */
 
 
@@ -178,21 +181,22 @@ input:focus {
     outline: none;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     outline: none;
 }
 
-.front_title{
-    font-size:500%;
+.front_title {
+    font-size: 500%;
 }
 
-.up_text{
-    writing-mode:vertical-rl;
+.up_text {
+    writing-mode: vertical-rl;
 }
 
 .front_subtitle {
-    font-size:125%;
+    font-size: 125%;
 }
+
 /*  -------------------- TEXTS --------------------  */
 
 
@@ -213,11 +217,13 @@ hr {
 #footer li {
     list-style-type: none;
 }
+
 section {
     height: 100vh;
 }
 
-*, html {
+*,
+html {
 
     scroll-behavior: smooth;
     overscroll-behavior: smooth;
@@ -226,14 +232,15 @@ section {
 
 .reveal {
     transition: width 0.5s, height 2s, background-color 2s, transform 2s;
-    opacity:1;
+    opacity: 1;
     transition: 1s all ease;
     animation-fill-mode: forwards;
 }
 
 .carousel-item img {
     margin: auto;
-  }
+}
+
 /*  -------------------- BALISES MODIFIEES --------------------  */
 
 /*  -------------------- FOOTER --------------------  */
@@ -253,6 +260,7 @@ footer img {
 footer {
     margin-bottom: 1%;
 }
+
 /*  -------------------- FOOTER --------------------  */
 
 
@@ -266,15 +274,17 @@ body {
     background-color: #0E151B;
     position: fixed;
     top: 0;
-    width: 100%; 
-    z-index: 1; /* place la navbar en avant de la page */
+    width: 100%;
+    z-index: 1;
+    /* place la navbar en avant de la page */
     opacity: 90%;
 }
 
 .navbar a {
     color: #f2f2f2;
-    text-align: center; 
-    text-decoration: none; /* enlève le soulignement */
+    text-align: center;
+    text-decoration: none;
+    /* enlève le soulignement */
 }
 
 .navbar a:hover {
@@ -300,7 +310,7 @@ body {
     background-color: #249340;
     color: #f2f2f2;
     border-radius: 2px;
-  }
+}
 
 .col-sm-3 a:hover {
     background-color: rgba(0, 0, 0, 0.0);
@@ -322,20 +332,43 @@ body {
 .col-sm-3 img {
     margin-right: 2%;
 }
+
 /*  -------------------- NAVBAR --------------------  */
 
 
 /*  -------------------- LISTE CLIENTS --------------------  */
-#pratio {
+#mod {
     border-bottom: 1px solid rgb(30, 55, 52);
     border-left: 1px solid rgb(30, 55, 52);
     border-top: 1px solid rgb(30, 55, 52);
+    padding-left: 5px;
 }
 
-#dratio {
+#listc td {
+    width: 0 !important;
+}
+
+#del {
     border-top: 1px solid rgb(30, 55, 52);
     border-bottom: 1px solid rgb(30, 55, 52);
+    padding-right: 5px;
 }
+
+#lgn {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#listc {
+    padding-right: 20px;
+    max-width: 100%;
+}
+
+#listm {
+    padding-right: 20px;
+    max-width: 100%;
+}
+
 /*  -------------------- LISTE CLIENTS --------------------  */
 
 /*  -------------------- CREATION CLIENT --------------------  */
@@ -343,6 +376,7 @@ body {
     margin-left: 2%;
     margin-right: 2%;
 }
+
 /*  -------------------- CREATION CLIENT --------------------  */
 
 /*  -------------------- CHARGEMENT DE LA PAGE --------------------  */
@@ -351,11 +385,12 @@ body {
     width: 100%;
     height: 100%;
     background: #000;
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index:500;
+    z-index: 500;
 }
+
 .lettre {
     color: #484848;
     font-size: 80px;
@@ -363,55 +398,114 @@ body {
     margin-bottom: 150px;
     animation: flash 1.2s linear infinite;
 }
+
 @keyframes flash {
     0% {
         color: #fff900;
         text-shadow: 0 0 7px #fff900;
     }
+
     90% {
         color: #484848;
         text-shadow: none;
     }
+
     100% {
         color: #fff900;
         text-shadow: 0 0 7px #fff900;
     }
 }
 
-.lettre:nth-child(1){
+.lettre:nth-child(1) {
     animation-delay: 0.1s;
 }
-.lettre:nth-child(2){
+
+.lettre:nth-child(2) {
     animation-delay: 0.2s;
 }
-.lettre:nth-child(3){
+
+.lettre:nth-child(3) {
     animation-delay: 0.3s;
 }
-.lettre:nth-child(4){
+
+.lettre:nth-child(4) {
     animation-delay: 0.4s;
 }
-.lettre:nth-child(5){
+
+.lettre:nth-child(5) {
     animation-delay: 0.5s;
 }
-.lettre:nth-child(6){
+
+.lettre:nth-child(6) {
     animation-delay: 0.6s;
 }
-.lettre:nth-child(7){
+
+.lettre:nth-child(7) {
     animation-delay: 0.7s;
 }
-.lettre:nth-child(8){
+
+.lettre:nth-child(8) {
     animation-delay: 0.8s;
 }
-.lettre:nth-child(9){
+
+.lettre:nth-child(9) {
     animation-delay: 0.9s;
 }
-.lettre:nth-child(10){
+
+.lettre:nth-child(10) {
     animation-delay: 1s;
 }
 
 .fondu-out {
     opacity: 0;
     transition: opacity 0.4s ease-out;
-    z-index:1;
+    z-index: 1;
 }
+
 /*  -------------------- CHARGEMENT DE LA PAGE --------------------  */
+
+/*  -------------------- MODIDY --------------------  */
+
+#ctn::placeholder {
+    text-align: center;
+}
+
+#ctn {
+    text-align: center;
+    color: black;
+}
+
+td {
+    width: 70%;
+}
+
+select:required:invalid {
+    color: gray;
+    text-align: center;
+}
+
+select:required:valid {
+    color: black;
+    text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#subm {
+    display: flex;
+    justify-content: right;
+    margin-top: 2%;
+    width: 100%;
+}
+
+#annul {
+    display: flex;
+    justify-content: left;
+    margin-top: 2%;
+    width: 100%;
+}
+
+/*  -------------------- MODIDY --------------------  */
