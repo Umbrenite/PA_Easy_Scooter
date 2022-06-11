@@ -65,19 +65,27 @@ function printPkgName($packageID)
     return $resultPkgName["name"];
 }
 
-function changeUser($dataPost, int $idUser, string $tableName)
+function changeUser($dataPost, int $idUser, string $tableName, $oldData)
 {
-    global $bdd;
-    $updtU = $bdd->prepare("UPDATE iw22_user SET $tableName = ? WHERE id = ?");
-    $updtU->execute(array($dataPost, $idUser));
+    if ($dataPost != $oldData) {
+        
+        if (is_numeric($dataPost) && $dataPost < 0 || $dataPost > pow(10, 12)) {
+            exit();
+        }
+
+        global $bdd;
+        $updtU = $bdd->prepare("UPDATE iw22_user SET $tableName = ? WHERE id = ?");
+        $updtU->execute(array($dataPost, $idUser));
 ?>
-    <script>
-        console.log("<?php echo $dataPost; ?>");
-        console.log("<?php echo $idUser; ?>");
-        console.log("<?php echo $tableName; ?>");
-        var idu = <?php echo json_encode($idUser); ?>;
-        var create = alert("La modification de l'utilisateur a bien été prise en compte.");
-        document.location.href = "modify.php?userm=" + idu;
-    </script>
+        <script>
+            console.log("<?php echo $tableName; ?>");
+            console.log("<?php echo $dataPost; ?>");
+            console.log("<?php echo $idUser; ?>");
+            console.log("<?php echo $oldData; ?>");
+            var idu = <?php echo json_encode($idUser); ?>;
+            var create = alert("La modification de l'utilisateur a bien été prise en compte.");
+            document.location.href = "modify.php?userm=" + idu;
+        </script>
 <?php
+    }
 }

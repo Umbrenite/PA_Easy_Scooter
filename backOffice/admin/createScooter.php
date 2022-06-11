@@ -96,7 +96,15 @@ include "admin_leftmenu.php";
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div id="subm" class="col-sm">
+                                    
                             <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                                <div id="annul" class="col-sm">
+                                    <a href="javascript:history.back()" class="btn btn-danger right">Annuler</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

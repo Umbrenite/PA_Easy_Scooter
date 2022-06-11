@@ -16,42 +16,30 @@ $forfs->execute();
 $resultForfs = $forfs->fetchAll();
 $nbForfs = count($resultForfs);
 
+$id = $infoUser['id'];
+
 if (isset($_POST['formModifyC'])) {
 
-    $id = $infoUser['id'];
-
-    if ((isset($_POST['mailU'])) && !empty($_POST['mailU'])) {
-        changeUser($_POST['mailU'], $id, "mail");
-    }
-
-    if (isset($_POST['racesU']) && !empty($_POST['racesU']) && $_POST['racesU'] != $infoUser['races']) {
-        echo "<pre>".var_dump($_POST)."</pre>";
-        
-        changeUser(intval($_POST['racesU']), $id, "races");
-    }
-
-    if (isset($_POST['mailU']) && !empty($_POST['mailU'])) changeUser($_POST['mailU'], $id, "mail"); // mail
-    if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) changeUser($_POST['lnameU'], $id, "lastname"); // lastname
-    if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) changeUser($_POST['fnameU'], $id, "firstname"); // firstname
-    if (isset($_POST['roleU']) && !empty($_POST['roleU'] && $_POST['roleU'] != $infoUser['role'])) changeUser($_POST['roleU'], $id, "role"); // role
-    if (isset($_POST['pkgU']) && !empty($_POST['pkgU']) && substr($_POST['pkgU'], 0, 1) != $infoUser['fg_package']) changeUser(substr($_POST['pkgU'], 0, 1), $id, "fg_package"); // forfait
-    
-
-    // if ($_POST['racesU'] != $infoUser['races']) changeUser(intval($_POST['racesU']), $id, "races"); // trajets
-    if (floatval($_POST['ptsU']) < pow(10, 12) && $_POST['ptsU'] != $infoUser['points']) changeUser(floatval($_POST['ptsU']), $id, "points"); // points
-    if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) changeUser($_POST['confirmKeyU'], $id, "confirm_key"); // confirmkey
-    if (intval($_POST['confU']) != intval($infoUser['account_confirm'] && intval($_POST['confU']) === 0 || intval($_POST['confU']) === 1) && intval($_POST['confU']) > 0 && intval($_POST['confU']) < 2) changeUser(intval($_POST['confU']), $id, "account_confirm"); // vérification
+    if (isset($_POST['mailU']) && !empty($_POST['mailU'])) changeUser($_POST['mailU'], $id, "mail", $infoUser['mail']); // mail
+    if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) changeUser($_POST['lnameU'], $id, "lastname", $infoUser['lastname']); // lastname
+    if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) changeUser($_POST['fnameU'], $id, "firstname", $infoUser['firstname']); // firstname
+    if (isset($_POST['roleU']) && !empty($_POST['roleU'])) changeUser($_POST['roleU'], $id, "role", $infoUser['role']); // role
+    if (isset($_POST['pkgU']) && !empty($_POST['pkgU'])) changeUser(substr($_POST['pkgU'], 0, 1), $id, "fg_package", $infoUser['fg_package']); // forfait
+    if (isset($_POST['racesU'])) changeUser(intval($_POST['racesU']), $id, "races", $infoUser['races']); // trajets
+    if (isset($_POST['ptsU'])) changeUser(floatval($_POST['ptsU']), $id, "points", $infoUser['points']); // points
+    if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) changeUser(intval($_POST['confirmKeyU']), $id, "confirm_key", $infoUser['confirm_key']); // confirmkey
+    if (isset($_POST['confU'])) changeUser(intval($_POST['confU']), $id, "account_confirm", $infoUser['account_confirm']); // vérification
 }
 
-// if (isset($_POST['formModifyA'])) {
+if (isset($_POST['formModifyA'])) {
 
-    // if (isset($_POST['mailU']) && !empty($_POST['mailU'])) changeUser($_POST['mailU'], $infoUser['id'], "mail"); // mail
-    // if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) changeUser($_POST['lnameU'], $infoUser['id'], "lastname"); // lastname
-    // if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) changeUser($_POST['fnameU'], $infoUser['id'], "firstname"); // firstname
-    // if (isset($_POST['roleU']) && !empty($_POST['roleU'])) changeUser($_POST['roleU'], $infoUser['id'], "role"); // role
-    // if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) changeUser($_POST['confirmKeyU'], $infoUser['id'], "confirm_key"); // confirmkey
-    // if (isset($_POST['confU']) && !empty($_POST['confU'])) changeUser($_POST['confU'], $infoUser['id'], "account_confirm"); // vérification
-// }
+    if (isset($_POST['mailU']) && !empty($_POST['mailU'])) changeUser($_POST['mailU'], $id, "mail", $infoUser['mail']); // mail
+    if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) changeUser($_POST['lnameU'], $id, "lastname", $infoUser['lastname']); // lastname
+    if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) changeUser($_POST['fnameU'], $id, "firstname", $infoUser['firstname']); // firstname
+    if (isset($_POST['roleU']) && !empty($_POST['roleU'])) changeUser($_POST['roleU'], $id, "role", $infoUser['role']); // role
+    if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) changeUser(intval($_POST['confirmKeyU']), $id, "confirm_key", $infoUser['confirm_key']); // confirmkey
+    if (isset($_POST['confU']) && !empty($_POST['confU'])) changeUser(intval($_POST['confU']), $id, "account_confirm", $infoUser['account_confirm']); // vérification
+}
 
 require "../../struct/head.php";
 ?>
@@ -91,7 +79,7 @@ include "admin_leftmenu.php";
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <table id="listc">
+                                    <table id="listm">
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">ID :</th>
                                             <td><input id="ctn" type="text" class="form-control" value="<?php echo $infoUser['id']; ?>" disabled></td>
@@ -145,7 +133,7 @@ include "admin_leftmenu.php";
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Verif :</th>
-                                            <td><input id="ctn" name="confU" type="text" class="form-control" value="<?php echo $infoUser['account_confirm']; ?>"></td>
+                                            <td><input id="ctn" name="confU" type="number" min="0" max="1" class="form-control" value="<?php echo $infoUser['account_confirm']; ?>"></td>
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Date d'inscription :</th>
@@ -174,42 +162,40 @@ include "admin_leftmenu.php";
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <table id="listc">
+                                    <table id="listm">
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">ID :</th>
                                             <td><input id="ctn" type="text" class="form-control" value="<?php echo $infoUser['id']; ?>" disabled></td>
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Mail :</th>
-                                            <td><input id="ctn" name="mailU" type="mail" class="form-control" placeholder="<?php echo $infoUser['mail']; ?>"></td>
+                                            <td><input id="ctn" name="mailU" type="mail" class="form-control" value="<?php echo $infoUser['mail']; ?>"></td>
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Nom :</th>
-                                            <td><input id="ctn" name="lnameU" Utype="text" class="form-control" placeholder="<?php echo $infoUser['lastname']; ?>"></td>
+                                            <td><input id="ctn" name="lnameU" type="text" class="form-control" value="<?php echo $infoUser['lastname']; ?>"></td>
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Prénom :</th>
-                                            <td><input id="ctn" name="fnameU" type="text" class="form-control" placeholder="<?php echo $infoUser['firstname']; ?>"></td>
+                                            <td><input id="ctn" name="fnameU" type="text" class="form-control" value="<?php echo $infoUser['firstname']; ?>"></td>
                                         </tr>
-
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Rôle :</th>
                                             <td>
                                                 <select class="form-control" name="roleU" required>
-                                                    <option id="ratiolol" value="" disabled selected><?php print_r("-- " . $infoUser['role'] . " --"); ?></option>
-
-                                                    <option value="admin">admin</option>
-                                                    <option value="client">client</option>
+                                                    <option selected><?php print_r($infoUser['role']); ?></option>
+                                                    <option>admin</option>
+                                                    <option>client</option>
                                                 </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Confirmkey :</th>
-                                            <td><input id="ctn" name="confirmKeyU" type="number" min="0" class="form-control" placeholder="<?php echo $infoUser['confirm_key']; ?>"></td>
+                                            <td><input id="ctn" name="confirmKeyU" type="number" min="0" class="form-control" value="<?php echo $infoUser['confirm_key']; ?>"></td>
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Verif :</th>
-                                            <td><input id="ctn" name="confU" type="number" min="0" max="1" class="form-control" placeholder="<?php echo $infoUser['account_confirm']; ?>"></td>
+                                            <td><input id="ctn" name="confU" type="number" min="0" max="1" class="form-control" value="<?php echo $infoUser['account_confirm']; ?>"></td>
                                         </tr>
                                         <tr>
                                             <th class="table_border table_font_1 textcolor center px-4" scope="row">Date d'inscription :</th>
