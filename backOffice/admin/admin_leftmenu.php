@@ -29,8 +29,8 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
     </button>
     <div class="dropdown-container px-5">
         <ul>
-            <li><a href="admin_users.php"><span class="subtitle">Admins</span></a>
-            <li><a href="admin_users_client.php"><span class="subtitle">Clients</span></a>
+            <li><a href="admin_list.php"><span class="subtitle">Admins</span></a>
+            <li><a href="client_list.php"><span class="subtitle">Clients</span></a>
         </ul>
     </div>
 

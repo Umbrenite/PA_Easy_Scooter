@@ -1,5 +1,4 @@
 <?php
-session_start();
 $pageTitle = "Ajout d'un utilisateur";
 require "../../struct/head.php";
 ?>
@@ -43,7 +42,7 @@ if (isset($_POST['formClient'])) {
         $trajets = $_POST['trajets'];
 
         require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
-        $insertclient = $bdd->prepare("INSERT INTO iw22_user(mail, lastname, firstname, password, confirm_key, role, points, races, registration_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insertclient = $bdd->prepare("INSERT INTO iw22_user(mail, lastname, firstname, password, confirm_key, role, points, races, registration_date, fg_package) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
         $insertclient->execute(array($mail, $nom, $prenom, $mdpf, $key, $role, $points, $trajets, $date_now->format("Y-m-d H:i:s")));
 
         require "../../struct/functions.php";
@@ -66,7 +65,14 @@ if (isset($_POST['formClient'])) {
 
         <script>
             var create = alert("Le nouvel utilisateur <?php echo ($mail) ?> a bien été créé.\nUn mail de confirmation lui a été envoyé !");
-            document.location.href = "createClient.php";
+
+            var roleu = <?php echo json_encode($role); ?>;
+            if (roleu == "admin") {
+                document.location.href = "admin_list.php";
+            }
+            if (roleu == "client") {
+                document.location.href = "client_list.php";
+            }
         </script>
 
 <?php
@@ -149,7 +155,7 @@ if (isset($_POST['formClient'])) {
                                     <input type="submit" class="btn btn-success" name="formClient" value="Ajouter">
                                 </div>
                                 <div id="annul" class="col-sm">
-                                    <a href="javascript:history.back()" class="btn btn-danger right">Annuler</a>
+                                    <a href="javascript:history.back()" class="btn btn-danger right">Retour</a>
                                 </div>
                             </div>
                             <?php if (!empty($msgerror)) echo ($msgerror); ?>

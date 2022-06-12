@@ -63,7 +63,7 @@ include "admin_leftmenu.php";
                             <?php for ($t = 0; $t < $nbAdmins; $t++) { ?>
                                 <tr>
                                     <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modify.php?userm=<?php echo $resultAdmins[$t]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
-                                    <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idclient=<?php echo ($resultAdmins[$t]['id']); ?>"><i class='bx bx-trash'></i></a></td>
+                                    <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idadmin=<?php echo ($resultAdmins[$t]['id']); ?>"><i class='bx bx-trash'></i></a></td>
                                     <td id="lgn" class="table_border table_font_2 center py-2 text-white"><?php print_r($resultAdmins[$t]["id"]); ?></td>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultAdmins[$t]["mail"]); ?></td>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultAdmins[$t]["lastname"]); ?></td>

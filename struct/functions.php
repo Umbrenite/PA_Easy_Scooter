@@ -65,7 +65,7 @@ function printPkgName($packageID)
     return $resultPkgName["name"];
 }
 
-function changeUser($dataPost, int $idUser, string $tableName, $oldData)
+function modifUser($dataPost, int $idUser, string $tableName, $oldData)
 {
     if ($dataPost != $oldData) {
         
@@ -78,10 +78,10 @@ function changeUser($dataPost, int $idUser, string $tableName, $oldData)
         $updtU->execute(array($dataPost, $idUser));
 ?>
         <script>
-            console.log("<?php echo $tableName; ?>");
-            console.log("<?php echo $dataPost; ?>");
-            console.log("<?php echo $idUser; ?>");
-            console.log("<?php echo $oldData; ?>");
+            // console.log("<?php //echo $tableName; ?>");
+            // console.log("<?php //echo $dataPost; ?>");
+            // console.log("<?php //echo $idUser; ?>");
+            // console.log("<?php //echo $oldData; ?>");
             var idu = <?php echo json_encode($idUser); ?>;
             var create = alert("La modification de l'utilisateur a bien été prise en compte.");
             document.location.href = "modify.php?userm=" + idu;

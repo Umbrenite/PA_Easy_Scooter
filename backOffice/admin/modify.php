@@ -20,25 +20,27 @@ $id = $infoUser['id'];
 
 if (isset($_POST['formModifyC'])) {
 
-    if (isset($_POST['mailU']) && !empty($_POST['mailU'])) changeUser($_POST['mailU'], $id, "mail", $infoUser['mail']); // mail
-    if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) changeUser($_POST['lnameU'], $id, "lastname", $infoUser['lastname']); // lastname
-    if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) changeUser($_POST['fnameU'], $id, "firstname", $infoUser['firstname']); // firstname
-    if (isset($_POST['roleU']) && !empty($_POST['roleU'])) changeUser($_POST['roleU'], $id, "role", $infoUser['role']); // role
-    if (isset($_POST['pkgU']) && !empty($_POST['pkgU'])) changeUser(substr($_POST['pkgU'], 0, 1), $id, "fg_package", $infoUser['fg_package']); // forfait
-    if (isset($_POST['racesU'])) changeUser(intval($_POST['racesU']), $id, "races", $infoUser['races']); // trajets
-    if (isset($_POST['ptsU'])) changeUser(floatval($_POST['ptsU']), $id, "points", $infoUser['points']); // points
-    if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) changeUser(intval($_POST['confirmKeyU']), $id, "confirm_key", $infoUser['confirm_key']); // confirmkey
-    if (isset($_POST['confU'])) changeUser(intval($_POST['confU']), $id, "account_confirm", $infoUser['account_confirm']); // vérification
+    if (isset($_POST['mailU']) && !empty($_POST['mailU'])) modifUser($_POST['mailU'], $id, "mail", $infoUser['mail']); // mail
+    if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) modifUser($_POST['lnameU'], $id, "lastname", $infoUser['lastname']); // lastname
+    if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) modifUser($_POST['fnameU'], $id, "firstname", $infoUser['firstname']); // firstname
+    if (isset($_POST['roleU']) && !empty($_POST['roleU'])) modifUser($_POST['roleU'], $id, "role", $infoUser['role']); // role
+    if (isset($_POST['pkgU']) && !empty($_POST['pkgU'])) modifUser(substr($_POST['pkgU'], 0, 1), $id, "fg_package", $infoUser['fg_package']); // forfait
+    if (isset($_POST['racesU'])) modifUser(intval($_POST['racesU']), $id, "races", $infoUser['races']); // trajets
+    if (isset($_POST['ptsU'])) modifUser(floatval($_POST['ptsU']), $id, "points", $infoUser['points']); // points
+    if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) modifUser(intval($_POST['confirmKeyU']), $id, "confirm_key", $infoUser['confirm_key']); // confirmkey
+    if (isset($_POST['confU'])) modifUser(intval($_POST['confU']), $id, "account_confirm", $infoUser['account_confirm']); // vérification
+    header("Location: client_list.php");
 }
 
 if (isset($_POST['formModifyA'])) {
-
-    if (isset($_POST['mailU']) && !empty($_POST['mailU'])) changeUser($_POST['mailU'], $id, "mail", $infoUser['mail']); // mail
-    if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) changeUser($_POST['lnameU'], $id, "lastname", $infoUser['lastname']); // lastname
-    if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) changeUser($_POST['fnameU'], $id, "firstname", $infoUser['firstname']); // firstname
-    if (isset($_POST['roleU']) && !empty($_POST['roleU'])) changeUser($_POST['roleU'], $id, "role", $infoUser['role']); // role
-    if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) changeUser(intval($_POST['confirmKeyU']), $id, "confirm_key", $infoUser['confirm_key']); // confirmkey
-    if (isset($_POST['confU']) && !empty($_POST['confU'])) changeUser(intval($_POST['confU']), $id, "account_confirm", $infoUser['account_confirm']); // vérification
+    
+    if (isset($_POST['mailU']) && !empty($_POST['mailU'])) modifUser($_POST['mailU'], $id, "mail", $infoUser['mail']); // mail
+    if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) modifUser($_POST['lnameU'], $id, "lastname", $infoUser['lastname']); // lastname
+    if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) modifUser($_POST['fnameU'], $id, "firstname", $infoUser['firstname']); // firstname
+    if (isset($_POST['roleU']) && !empty($_POST['roleU'])) modifUser($_POST['roleU'], $id, "role", $infoUser['role']); // role
+    if (isset($_POST['confirmKeyU']) && !empty($_POST['confirmKeyU'])) modifUser(intval($_POST['confirmKeyU']), $id, "confirm_key", $infoUser['confirm_key']); // confirmkey
+    if (isset($_POST['confU']) && !empty($_POST['confU'])) modifUser(intval($_POST['confU']), $id, "account_confirm", $infoUser['account_confirm']); // vérification
+    header("Location: admin_list.php");
 }
 
 require "../../struct/head.php";
@@ -65,8 +67,8 @@ include "admin_leftmenu.php";
                     <div class="col pt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent right">
-                                <li class="breadcrumb-item"><a href="admin_users.php">Liste admins</a></li>
-                                <li class="breadcrumb-item"><a href="admin_users_client.php">Liste users</a></li>
+                                <li class="breadcrumb-item"><a href="admin_list.php">Liste admins</a></li>
+                                <li class="breadcrumb-item"><a href="client_list.php">Liste users</a></li>
                             </ol>
                         </nav>
                     </div>
