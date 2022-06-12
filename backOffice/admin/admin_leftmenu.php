@@ -42,7 +42,7 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
     <div class="dropdown-container px-5">
         <ul>
             <li><a href="admin_list_scooter.php"><span class="subtitle">Liste</span></a>
-            <li><a href="admin_scooter_gestion.php"><span class="subtitle">Map</span></a>
+            <li><a href="admin_map.php"><span class="subtitle">Map</span></a>
         </ul>
     </div>
 
