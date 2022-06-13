@@ -513,6 +513,6 @@ table {
 /*  -------------------- MAP ADMIN --------------------  */
 #map {
     /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-    height: 800px;
+    height: 700px;
 }
 /*  -------------------- MAP ADMIN --------------------  */
