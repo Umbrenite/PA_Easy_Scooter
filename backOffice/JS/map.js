@@ -1,7 +1,7 @@
 // On initialise la latitude et la longitude de Lyon (centre de la carte)
 const lyon = {lat : 45.75, lon : 4.8533}
 
-const doGet = async (url) => {
+const doGet = async (url) => { // asynchrone = fait les choses de manière parrallele
 	try {
 	  return axios.get(url); // on renvoie le contenu de la page spécifiée
 	} catch (error) {
