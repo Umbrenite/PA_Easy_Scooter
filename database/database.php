@@ -8,9 +8,12 @@ $options = array(
 	PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
 );
 
+
 try {
   $bdd = new PDO('mysql:host=electrot2esgi.mysql.database.azure.com;dbname=electrotapa', $admin, $pwdBDD, $options);
   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  return $bdd;
 }
 catch(Exception $e)
 {
