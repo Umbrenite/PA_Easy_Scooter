@@ -2,6 +2,7 @@
 session_start();
 $pageTitle = "Statistiques";
 require('../../struct/head.php');
+require "bdd-connexions.php";
 ?>
 
 <link href="../../css/dashboard.css" rel="stylesheet" type="text/css">
@@ -33,11 +34,11 @@ require('../../struct/head.php');
                     <div class="pl-5 rounded">
                         <div class="row pl-2">
                             <div class="col">
-                                <div class="row bgfontpurple rounded py-3">
+                                <div class="row bg-info rounded py-3">
                                     <div class="col-sm-2 pt-4"><i class="fa-solid fa-user fa-2xl right"></i></div>
                                     <div class="col">
                                         <div class="row">Users</div>
-                                        <div class="row"><b class="title">45</b>
+                                        <div class="row"><b class="title"><?php echo($nbUsers);?></b>
                                         </div>
                                     </div>
                                 </div>
@@ -47,7 +48,7 @@ require('../../struct/head.php');
                                 <div class="row bg-success rounded py-3">
                                     <div class="col-sm-2 pt-4"><i class="fa-solid fa-dollar fa-2xl right"></i></div>
                                     <div class="col">
-                                        <div class="row">Revenus</div>
+                                        <div class="row">Chiffre d'affaires</div>
                                         <div class="row"><b class="title">5,200 $</b>
                                         </div>
                                     </div>
@@ -58,8 +59,8 @@ require('../../struct/head.php');
                                 <div class="row bg-primary rounded py-3">
                                     <div class="col-sm-2 pt-4"><i class="fa-solid fa-download fa-2xl"></i></div>
                                     <div class="col">
-                                        <div class="row">Revenus</div>
-                                        <div class="row"><b class="title">5,200 $</b>
+                                        <div class="row">Nombre de forfaits actifs</div>
+                                        <div class="row"><b class="title"><?php echo($nbActivePacks); ?></b>
                                         </div>
                                     </div>
                                 </div>
@@ -67,10 +68,10 @@ require('../../struct/head.php');
 
                             <div class="col">
                                 <div class="row bg-warning rounded py-3">
-                                    <div class="col-sm-2 pt-4"><i class="fa-solid fa-download fa-2xl"></i></div>
+                                    <div class="col-sm-2 pt-4"><i class="fa-solid fa-gear fa-2xl"></i></div>
                                     <div class="col">
-                                        <div class="row">Revenus</div>
-                                        <div class="row"><b class="title">5,200 $</b>
+                                        <div class="row">CPU utilisée</div>
+                                        <div class="row"><b class="title"><?php echo("15");//get_server_cpu_usage())?>%</b>
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +82,7 @@ require('../../struct/head.php');
                         <div class="col-sm-9 py-5 pl-5">
                             <div class="px-2">
                                 <div class="card">
-                                    <h5 class="card-header">Distance parcourue (Kilomètres)</h5>
+                                    <h5 class="card-header">Bénéfices par mois</h5>
                                     <div class="card-body">
                                         <canvas id="revenues" width="750" height="200"></canvas>
                                     </div>

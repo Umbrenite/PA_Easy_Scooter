@@ -5,11 +5,13 @@ $pageTitle = "Dashboard";
 // if (!empty($_GET['id'])) $getId = intval($_GET['id']);
 // if ($getId != $_SESSION['id']) header("Location: ../../index.php");
 
+
 if (!isset($_SESSION['id'])) {
     header("Location: ../../index.php");
     exit();
 }
 
+require "bdd-connexions.php";
 require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 require "../../struct/head.php";
 ?>
@@ -44,28 +46,28 @@ require "admin_leftmenu.php"
                             <div class="col px-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        Traffic de trottinettes actif : 50%
+                                        Traffic de trottinettes actif : <?php echo(($nbScooters/$nbScooters_total)*100) ;?>%
                                     </div>
                                 </div>
                             </div>
                             <div class="col px-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        Nombre de tickets : 60
+                                        Nombre de ticket(s) : <?php echo("$nbTickets");?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col px-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        Nouveaux membres mensuel : 25
+                                        Nouveaux membres le mois dernier : <?php echo($nbUsers_last_month);?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col px-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        Nouveaux membres annuels : 250
+                                        Nouveaux membres annuels : <?php echo($nbUsers_this_year);?>
                                     </div>
                                 </div>
                             </div>
@@ -93,44 +95,33 @@ require "admin_leftmenu.php"
                                                 <u><b><span class="pl-5">Statut actuel</span></b></u>
                                                 <div class="pt-3">
                                                     <div class="col-xs">Clients mensuels
-                                                        <div class="right"><b>25/100</b></div>
+                                                        <div class="right"><b><?php echo($nbUsers_this_month) ;?>/100</b></div>
                                                     </div>
                                                     <div class="col-xs-8">
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo($nbUsers_this_month) ;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="pt-3">
                                                     <div class="col-xs">Nombre de trottinettes hors-services
-                                                        <div class="right"><b>10/100</b></div>
+                                                        <div class="right"><b><?php echo($nbScooters_off); ?>/100</b></div>
                                                     </div>
                                                     <div class="col-xs-8">
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="pt-3">
-                                                    <div class="col-xs">Nombres de courses effectuées
-                                                        <div class="right"><b>50/100</b></div>
-                                                    </div>
-                                                    <div class="col-xs-8">
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo($nbScooters_off); ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="pt-3">
                                                     <div class="col-xs">Pourcentage de tickets non résolus
-                                                        <div class="right"><b>85/100</b></div>
+                                                        <div class="right"><b><?php echo($nbTickets_pendent); ?>/100</b></div>
                                                     </div>
                                                     <div class="col-xs-8">
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo($nbTickets_pendent); ?>%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -231,7 +222,7 @@ require "admin_leftmenu.php"
 
                                             <div class="col">
                                                 <div class="row">Trottinettes en service</div>
-                                                <div class="row"><b>4,500</b></div>
+                                                <div class="row"><b><?php echo($nbScooters);?></b></div>
                                             </div>
                                         </div>
                                     </div>
@@ -244,8 +235,8 @@ require "admin_leftmenu.php"
                                             <div class="col-sm-2 pt-3"><i class="fa-solid fa-ticket fa-2xl"></i></div>
 
                                             <div class="col">
-                                                <div class="row">Tickets</div>
-                                                <div class="row"><b>280</b></div>
+                                                <div class="row">Ticket(s)</div>
+                                                <div class="row"><b><?php echo("$nbTickets");?></b></div>
                                             </div>
                                         </div>
                                     </div>
