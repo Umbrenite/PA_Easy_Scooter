@@ -11,7 +11,6 @@
     <div class="dropdown-container px-5">
         <ul>
             <li><a href="admin_dashboard.php?id=<?php echo ($_SESSION['id']); ?>"><span class="subtitle">Dashboard</span></a>
-            <li><a href="admin_revenue.php?id=<?php echo ($_SESSION['id']); ?>"><span class="subtitle">Statistiques</span></a>
             <li><a href="admin_logs.php?id=<?php echo ($_SESSION['id']); ?>"><span class="subtitle">Logs</span></a>
         </ul>
     </div>

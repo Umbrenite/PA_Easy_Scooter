@@ -42,37 +42,6 @@ require "admin_leftmenu.php"
                 </div>
                 <div class="pb-4 pl-5">
                     <div class="pl-4">
-                        <div class="row pb-4">
-                            <div class="col px-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        Traffic de trottinettes actif : <?php echo(($nbScooters/$nbScooters_total)*100) ;?>%
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col px-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        Nombre de ticket(s) : <?php echo("$nbTickets");?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col px-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        Nouveaux membres le mois dernier : <?php echo($nbUsers_last_month);?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col px-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        Nouveaux membres annuels : <?php echo($nbUsers_this_year);?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col pl-2 pr-4 pb-4">
                             <div class="pr-3">
                                 <div class="card">
@@ -133,89 +102,73 @@ require "admin_leftmenu.php"
                         </div>
 
                         <div class="row pl-2 pr-4">
-                            <div class="col-sm-3">
+                            <div class="col px-3">
                                 <div class="card">
-                                    <h5 class="card-header">Navigateurs utilisés</h5>
-                                    <div class="card-body">
-                                        <canvas id="donut_chart" style="display: block; box-sizing: border-box;" height=232></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-5">
-                                <div class="card pb-3">
-                                    <h5 class="card-header">Chat en direct</h5>
-                                    <div class="card-body">
-                                        <div class="row pl-2 pb-2">
-                                            <div class="col"><b> Administrateur </b></div>
-                                            <div class="col">
-                                                <div class="right text-muted pt-1 sub_date">26 Jan.2022, 9:59:00</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-1">
-                                                <img src="../../img/man_example.png">
-                                            </div>
-
-                                            <div class="col">
-                                                <div class="rounded admin_text pl-4 py-1">Ceci est un test</div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row pl-2">
-                                            <div class="col">
-                                                <div class="text-muted pt-1 sub_date">26 Jan.2022, 10:00:00</div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="right"><b>Client </b></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row pl-4">
-                                            <div class="col">
-                                                <div class="rounded client_text pl-2 py-1">Ceci est un autre test</div>
-                                            </div>
-                                            <div class="col-sm-1">
-                                                <img src="../../img/man_example.png">
-                                            </div>
+                                    <h5 class="card-header">Type de forfait</h5>
+                                    <div class="card-body pt-5">
+                                        <canvas id="donut_stats"></canvas>
+                                        <div class="pl-4 pt-5">
+                                            <canvas id="myCanvas" width="10" height="10" style="border:1px solid #000000;background-color:cyan;"></canvas>
+                                            <span class="pr-2">- Simple</span>
+                                            <canvas id="myCanvas" width="10" height="10" style="border:1px solid #000000;background-color:orange;"></canvas>
+                                            <span class="pr-2">- Medium</span>
+                                            <canvas id="myCanvas" width="10" height="10" style="border:1px solid #000000;background-color:green;"></canvas>
+                                            <span class="pr-2">- Deluxe</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            
                             <div class="col">
                                 <div class="pb-5">
 
-                                    <div class="container bg-warning py-2 rounded">
+                                    <div class="container bg-success py-1 rounded">
                                         <div class="row pl-2">
 
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-download fa-2xl"></i></div>
+                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-dollar fa-2xl"></i></div>
 
                                             <div class="col">
-                                                <div class="row">Inventaire</div>
-                                                <div class="row"><b>5,200</b></div>
+                                                <div class="row">Nombre de forfaits</div>
+                                                <div class="row"><b><?php echo($nbPacks);?></b></div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="py-2"></div>
+                                    <div class="py-1"></div>
 
-                                    <div class="container bg-success py-2 rounded">
+                                    <div class="container bg-success py-1 rounded">
                                         <div class="row pl-2">
 
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-heart-circle-check fa-2xl"></i></div>
+                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-dollar fa-2xl"></i></div>
 
                                             <div class="col">
-                                                <div class="row">Likes</div>
-                                                <div class="row"><b>10,680</b></div>
+                                                <div class="row">Chiffre d'affaires</div>
+                                                <div class="row"><b><?php get_money_from_packages($nbActivePacks, $resultPacks, $resultUsers); ?> €</b></div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="py-2"></div>
+                                    <div class="py-4"><hr></div>
 
-                                    <div class="container bg-primary py-2 rounded">
+                                    <div class="container bg-danger py-1 rounded">
+                                        <div class="row pl-2">
+
+                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-ticket fa-2xl"></i></div>
+
+                                            <div class="col">
+                                                <div class="row">Ticket(s)</div>
+                                                <div class="row"><b><?php echo("$nbTickets");?></b></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="pb-5">
+
+                                    <div class="container bg-warning py-1 rounded">
                                         <div class="row pl-2">
 
                                             <div class="col-sm-2 pt-3"><i class="fa-solid fa-person-running fa-2xl"></i></div>
@@ -227,16 +180,44 @@ require "admin_leftmenu.php"
                                         </div>
                                     </div>
 
-                                    <div class="py-2"></div>
+                                    <div class="py-1"></div>
 
-                                    <div class="container bg-danger py-2 rounded">
-                                        <div class="row pl-2">
+                                    <div class="container bg-warning py-1 rounded">
+                                        <div class="row pl-1">
 
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-ticket fa-2xl"></i></div>
+                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-dollar fa-2xl"></i></div>
 
                                             <div class="col">
-                                                <div class="row">Ticket(s)</div>
-                                                <div class="row"><b><?php echo("$nbTickets");?></b></div>
+                                                <div class="row">Traffic de trottinette actif : </div>
+                                                <div class="row"><b><?php echo(($nbScooters/$nbScooters_total)*100) ;?>%</b></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="py-4"><hr></div>
+
+                                    <div class="container bg-info py-1 rounded">
+                                        <div class="row pl-1">
+
+                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-user fa-2xl"></i></div>
+
+                                            <div class="col">
+                                                <div class="row">Membres mensuels du mois précédent</div>
+                                                <div class="row"><b><?php echo($nbUsers_last_month);?></b></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="py-1"></div>
+
+                                    <div class="container bg-info py-1 rounded">
+                                        <div class="row pl-1">
+
+                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-user fa-2xl"></i></div>
+
+                                            <div class="col">
+                                                <div class="row">Membres annuels</div>
+                                                <div class="row"><b><?php echo($nbUsers_this_year);?></b></div>
                                             </div>
                                         </div>
                                     </div>
@@ -254,6 +235,6 @@ require "admin_leftmenu.php"
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <script src="../JS/admin_graph_scooter.js"></script>
-<script src="../JS/admin_doughnut.js"></script>
+<script src="../JS/admin_doughnut_stats.js"></script>
 
 </html>

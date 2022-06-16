@@ -1,5 +1,4 @@
 <?php
-$pageTitle = "BDD";
 
 // if (!empty($_GET['id'])) $getId = intval($_GET['id']);
 // if ($getId != $_SESSION['id']) header("Location: ../../index.php");
@@ -15,6 +14,7 @@ $users = $bdd->prepare("SELECT * FROM iw22_user where role='client' AND id >= 1"
 $users->execute();
 $resultUsers = $users->fetchAll();
 $nbUsers = count($resultUsers);
+
 
 $users_this_month = $bdd->prepare("SELECT * FROM iw22_user where role='client' AND MONTH(registration_date) = (SELECT EXTRACT(MONTH FROM CURRENT_TIMESTAMP))"); //Select tous les utilisateurs créé durant le mois actuel
 $users_this_month->execute();
@@ -73,4 +73,15 @@ function get_server_cpu_usage(){
     return $load[0];
 
 }
+
+
+function get_money_from_packages($nbActivePacks, $resultPacks, $resultUsers){
+    $total = 0;
+    $i = 0;
+    for ($i = 0; $i< $nbActivePacks; $i++) {
+        $total += $resultPacks[($resultUsers[$i]["fg_package"]-1)]["price"];
+    }
+    echo ($total);
+}
 ?>
+
