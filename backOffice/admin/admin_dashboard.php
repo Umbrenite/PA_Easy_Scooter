@@ -1,18 +1,8 @@
 <?php
-session_start();
 $pageTitle = "Dashboard";
 
-// if (!empty($_GET['id'])) $getId = intval($_GET['id']);
-// if ($getId != $_SESSION['id']) header("Location: ../../index.php");
-
-
-if (!isset($_SESSION['id'])) {
-    header("Location: ../../index.php");
-    exit();
-}
-
 require "bdd-connexions.php";
-require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
 require "../../struct/head.php";
 ?>
 
@@ -25,9 +15,11 @@ require "admin_leftmenu.php"
 ?>
 
 <body class="bgfontdark">
+
     <div class="pl-5">
         <div class="pl-5">
             <div class="pl-5">
+
                 <div class="row pt-3 pl-3">
                     <div class="col pl-5">
                         <span class="title pt-3 textcolor px-5">Menu</span>
@@ -40,8 +32,10 @@ require "admin_leftmenu.php"
                         </nav>
                     </div>
                 </div>
+
                 <div class="pb-4 pl-5">
                     <div class="pl-4">
+
                         <div class="col pl-2 pr-4 pb-4">
                             <div class="pr-3">
                                 <div class="card">
@@ -55,42 +49,40 @@ require "admin_leftmenu.php"
                                                     <canvas id="myCanvas" width="10" height="10" style="border:1px solid #000000;background-color:blue;"></canvas>
                                                     <span class="pr-4">- Trottinettes utilisées</span>
                                                     <canvas id="myCanvas" width="10" height="10" style="border:1px solid #000000;background-color:green;"></canvas>
-                                                    <span class="pr-4">- Trottinettes utilisables</span>
+                                                    <span class="pr-4">- Trottinettes libres</span>
                                                     <canvas id="myCanvas" width="10" height="10" style="border:1px solid #000000;background-color:red;"></canvas>
-                                                    <span class="pr-4">- Problèmes rencontrés</span>
+                                                    <span class="pr-4">- Problèmes</span>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <u><b><span class="pl-5">Statut actuel</span></b></u>
                                                 <div class="pt-3">
                                                     <div class="col-xs">Clients mensuels
-                                                        <div class="right"><b><?php echo($nbUsers_this_month) ;?>/100</b></div>
+                                                        <div class="right"><b><?php echo ($nbUsers_this_month); ?>/100</b></div>
                                                     </div>
                                                     <div class="col-xs-8">
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo($nbUsers_this_month) ;?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo ($nbUsers_this_month); ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="pt-3">
                                                     <div class="col-xs">Nombre de trottinettes hors-services
-                                                        <div class="right"><b><?php echo($nbScooters_off); ?>/100</b></div>
+                                                        <div class="right"><b><?php echo ($nbScooters_off); ?>/100</b></div>
                                                     </div>
                                                     <div class="col-xs-8">
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo($nbScooters_off); ?>%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo ($nbScooters_off); ?>%" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="pt-3">
                                                     <div class="col-xs">Pourcentage de tickets non résolus
-                                                        <div class="right"><b><?php echo($nbTickets_pendent); ?>/100</b></div>
+                                                        <div class="right"><b><?php echo ($nbTickets_pendent); ?>/100</b></div>
                                                     </div>
                                                     <div class="col-xs-8">
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo($nbTickets_pendent); ?>%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo ($nbTickets_pendent); ?>%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,6 +94,7 @@ require "admin_leftmenu.php"
                         </div>
 
                         <div class="row pl-2 pr-4">
+
                             <div class="col px-3">
                                 <div class="card">
                                     <h5 class="card-header">Type de forfait</h5>
@@ -119,18 +112,17 @@ require "admin_leftmenu.php"
                                 </div>
                             </div>
 
-                            
                             <div class="col">
                                 <div class="pb-5">
 
                                     <div class="container bg-success py-1 rounded">
                                         <div class="row pl-2">
-
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-dollar fa-2xl"></i></div>
-
+                                            <div class="col-sm-2 pt-3">
+                                                <i class="fa-solid fa-dollar fa-2xl"></i>
+                                            </div>
                                             <div class="col">
                                                 <div class="row">Nombre de forfaits</div>
-                                                <div class="row"><b><?php echo($nbPacks);?></b></div>
+                                                <div class="row"><b><?php echo ($nbPacks); ?></b></div>
                                             </div>
                                         </div>
                                     </div>
@@ -139,9 +131,9 @@ require "admin_leftmenu.php"
 
                                     <div class="container bg-success py-1 rounded">
                                         <div class="row pl-2">
-
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-dollar fa-2xl"></i></div>
-
+                                            <div class="col-sm-2 pt-3">
+                                                <i class="fa-solid fa-dollar fa-2xl"></i>
+                                            </div>
                                             <div class="col">
                                                 <div class="row">Chiffre d'affaires</div>
                                                 <div class="row"><b><?php get_money_from_packages($nbActivePacks, $resultPacks, $resultUsers); ?> €</b></div>
@@ -149,19 +141,22 @@ require "admin_leftmenu.php"
                                         </div>
                                     </div>
 
-                                    <div class="py-4"><hr></div>
+                                    <div class="py-4">
+                                        <hr>
+                                    </div>
 
                                     <div class="container bg-danger py-1 rounded">
                                         <div class="row pl-2">
-
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-ticket fa-2xl"></i></div>
-
+                                            <div class="col-sm-2 pt-3">
+                                                <i class="fa-solid fa-ticket fa-2xl"></i>
+                                            </div>
                                             <div class="col">
                                                 <div class="row">Ticket(s)</div>
-                                                <div class="row"><b><?php echo("$nbTickets");?></b></div>
+                                                <div class="row"><b><?php echo ("$nbTickets"); ?></b></div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -170,12 +165,12 @@ require "admin_leftmenu.php"
 
                                     <div class="container bg-warning py-1 rounded">
                                         <div class="row pl-2">
-
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-person-running fa-2xl"></i></div>
-
+                                            <div class="col-sm-2 pt-3">
+                                                <i class="fa-solid fa-person-running fa-2xl"></i>
+                                            </div>
                                             <div class="col">
                                                 <div class="row">Trottinettes en service</div>
-                                                <div class="row"><b><?php echo($nbScooters);?></b></div>
+                                                <div class="row"><b><?php echo ($nbScooters); ?></b></div>
                                             </div>
                                         </div>
                                     </div>
@@ -184,26 +179,28 @@ require "admin_leftmenu.php"
 
                                     <div class="container bg-warning py-1 rounded">
                                         <div class="row pl-1">
-
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-dollar fa-2xl"></i></div>
-
+                                            <div class="col-sm-2 pt-3">
+                                                <i class="fa-solid fa-dollar fa-2xl"></i>
+                                            </div>
                                             <div class="col">
                                                 <div class="row">Traffic de trottinette actif : </div>
-                                                <div class="row"><b><?php echo(($nbScooters/$nbScooters_total)*100) ;?>%</b></div>
+                                                <div class="row"><b><?php echo (($nbScooters / $nbScooters_total) * 100); ?>%</b></div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="py-4"><hr></div>
+                                    <div class="py-4">
+                                        <hr>
+                                    </div>
 
                                     <div class="container bg-info py-1 rounded">
                                         <div class="row pl-1">
-
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-user fa-2xl"></i></div>
-
+                                            <div class="col-sm-2 pt-3">
+                                                <i class="fa-solid fa-user fa-2xl"></i>
+                                            </div>
                                             <div class="col">
                                                 <div class="row">Membres mensuels du mois précédent</div>
-                                                <div class="row"><b><?php echo($nbUsers_last_month);?></b></div>
+                                                <div class="row"><b><?php echo ($nbUsers_last_month); ?></b></div>
                                             </div>
                                         </div>
                                     </div>
@@ -212,20 +209,24 @@ require "admin_leftmenu.php"
 
                                     <div class="container bg-info py-1 rounded">
                                         <div class="row pl-1">
-
-                                            <div class="col-sm-2 pt-3"><i class="fa-solid fa-user fa-2xl"></i></div>
-
+                                            <div class="col-sm-2 pt-3">
+                                                <i class="fa-solid fa-user fa-2xl"></i>
+                                            </div>
                                             <div class="col">
                                                 <div class="row">Membres annuels</div>
-                                                <div class="row"><b><?php echo($nbUsers_this_year);?></b></div>
+                                                <div class="row"><b><?php echo ($nbUsers_this_year); ?></b></div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

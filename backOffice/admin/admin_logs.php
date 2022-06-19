@@ -1,11 +1,21 @@
 <?php
-require "admin_leftmenu.php";
-require($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+$pageTitle = "Logs";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
 
 $logs = $bdd->prepare("SELECT * FROM iw22_log WHERE id > 1");
 $logs->execute();
 $resultLogs = $logs->fetchAll();
 $nbLogs = count($resultLogs);
+
+require "../../struct/head.php";
+?>
+
+<link href="../../css/dashboard.css" rel="stylesheet" type="text/css">
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<?php
+include "admin_leftmenu.php";
 ?>
 
 <body class="bgfontdark">
@@ -15,7 +25,7 @@ $nbLogs = count($resultLogs);
             <div class="pl-5">
                 <div class="row pt-3 pl-3">
                     <div class="col pl-5 pb-5 pt-3">
-                        <span class="title pt-3 textcolor px-5">Administrateurs</span>
+                        <span class="title pt-3 textcolor px-5"><?php echo($pageTitle); ?></span>
                     </div>
                     <div class="col pt-3">
                         <nav aria-label="breadcrumb">
@@ -61,3 +71,5 @@ $nbLogs = count($resultLogs);
     </div>
 
 </body>
+
+</html>

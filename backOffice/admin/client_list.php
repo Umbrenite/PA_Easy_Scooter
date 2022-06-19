@@ -41,8 +41,8 @@ include "admin_leftmenu.php";
                 </div>
                 <div class="pl-5">
                     <form action="" class="my-4">
-                        <div class="from-group row">
-                            <div class="col-sm-12 pr-4">
+                        <div class="row justify-content-end">
+                            <div class="col-md-auto">
                                 <a href="createClient.php" class="btn btn-success right">Ajouter un utilisateur</a>
                             </div>
                         </div>

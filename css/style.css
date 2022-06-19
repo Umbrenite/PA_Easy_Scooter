@@ -277,6 +277,10 @@ body {
     margin: 0;
 }
 
+.btn {
+    width: 100%;
+}
+
 .navbar {
     overflow: hidden;
     background-color: #0E151B;
@@ -521,9 +525,11 @@ table {
 /*  -------------------- MAP ADMIN --------------------  */
 #map {
     /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-    height: 700px;
+    height: 550px;
+    width: 100%;
 }
 /*  -------------------- MAP ADMIN --------------------  */
+
 }
 
 @media(min-width: 426px) and (max-width: 767px) { /* Pour les Smartphones*/
@@ -796,6 +802,10 @@ body {
     margin: 0;
 }
 
+.btn {
+    width: 100%;
+}
+
 .navbar {
     overflow: hidden;
     background-color: #0E151B;
@@ -950,6 +960,16 @@ body {
     z-index:1;
 }
 /*  -------------------- CHARGEMENT DE LA PAGE --------------------  */
+
+
+/*  -------------------- MAP ADMIN --------------------  */
+#map {
+    /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+    height: 550px;
+    width: 100%;
+}
+/*  -------------------- MAP ADMIN --------------------  */
+
 }
 
 @media(min-width: 768px) and (max-width: 1388px) { /* Pour les Tablettes/Ordi portables*/
@@ -1222,6 +1242,10 @@ body {
     margin: 0;
 }
 
+.btn {
+    width: 100%;
+}
+
 .navbar {
     overflow: hidden;
     background-color: #0E151B;
@@ -1376,6 +1400,16 @@ body {
     z-index:1;
 }
 /*  -------------------- CHARGEMENT DE LA PAGE --------------------  */
+
+
+/*  -------------------- MAP ADMIN --------------------  */
+#map {
+    /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+    height: 550px;
+    width: 100%;
+}
+/*  -------------------- MAP ADMIN --------------------  */
+
 }
 
 @media(min-width: 1388px) { /* Pour les écrans de PC*/
@@ -1645,6 +1679,10 @@ body {
     margin: 0;
 }
 
+.btn {
+    width: 100%;
+}
+
 .navbar {
     overflow: hidden;
     background-color: #0E151B;
@@ -1799,4 +1837,14 @@ body {
     z-index:1;
 }
 /*  -------------------- CHARGEMENT DE LA PAGE --------------------  */
+
+
+/*  -------------------- MAP ADMIN --------------------  */
+#map {
+    /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+    height: 550px;
+    width: 100%;
+}
+/*  -------------------- MAP ADMIN --------------------  */
+
 }

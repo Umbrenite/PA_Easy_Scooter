@@ -55,7 +55,6 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail)
 
 function printPkgName($packageID)
 {
-
     global $bdd;
     require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
     $pkgName = $bdd->prepare("SELECT name FROM iw22_package WHERE id = ?");
@@ -68,7 +67,7 @@ function printPkgName($packageID)
 function modifUser($dataPost, int $idUser, string $tableName, $oldData)
 {
     if ($dataPost != $oldData) {
-        
+
         if (is_numeric($dataPost) && $dataPost < 0 || $dataPost > pow(10, 12)) {
             exit();
         }
@@ -78,14 +77,19 @@ function modifUser($dataPost, int $idUser, string $tableName, $oldData)
         $updtU->execute(array($dataPost, $idUser));
 ?>
         <script>
-            // console.log("<?php //echo $tableName; ?>");
-            // console.log("<?php //echo $dataPost; ?>");
-            // console.log("<?php //echo $idUser; ?>");
-            // console.log("<?php //echo $oldData; ?>");
             var idu = <?php echo json_encode($idUser); ?>;
             var create = alert("La modification de l'utilisateur a bien été prise en compte.");
             document.location.href = "modify.php?userm=" + idu;
         </script>
 <?php
     }
+}
+
+function deleteT(int $idTrot, string $tableName, string $fileName)
+{
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $delT = $bdd->prepare("DELETE FROM $tableName WHERE id = ?");
+    $delT->execute(array($idTrot));
+    header("Location: backOffice/admin/" . $fileName . ".php");
+    exit();
 }
