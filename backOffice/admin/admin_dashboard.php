@@ -6,7 +6,7 @@ $pageTitle = "Dashboard";
 // if ($getId != $_SESSION['id']) header("Location: ../../index.php");
 
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
     header("Location: ../../index.php");
     exit();
 }

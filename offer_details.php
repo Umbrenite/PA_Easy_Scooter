@@ -1,5 +1,6 @@
 <?php 
 $pageTitle = "Détails du forfait";
+session_start();
 require "struct/head.php";
 require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
@@ -33,9 +34,14 @@ $resultOffer = $offer->fetchAll();
             </div>
 
             <div class="row pt-5">
+              <?php if (!isset($_SESSION['id'])) { ?>
+                <div class="col pt-4"><p class="textcolor center">Vous devez vous connecter pour pouvoir ajouter un produit au panier !</p></div>
+              <?php }
+              if (isset($_SESSION['id'])) { ?>
                 <div class="col center">
                     <a href="shopping_cart.php?added_obj=<?php echo($resultOffer[0]['name']);?>"><button type="button" class="btn btn-success">Ajouter au panier</button>
                 </div>
+              <?php }?>
             </div>
           </div>
         </div>

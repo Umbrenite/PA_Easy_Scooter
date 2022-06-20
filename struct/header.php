@@ -28,11 +28,25 @@
                         </a>
                     </div>
 
+                    <?php
+                    if (!isset($_SESSION['id'])) { ?>
                     <div class="col-sm-3 d-flex align-items-center">
                         <button type="button" onclick="window.location.href='./login.php'" class="btn btn-outline-success">Connexion</button>
                         <button type="button" onclick="window.location.href='./register.php'" class="btn btn-success">Inscription</button>
                     </div>
+                    <?php }
+                    if (isset($_SESSION['id']) && $_SESSION['role'] == 'client') { ?>
+                        <div class="col-sm-3 d-flex align-items-center">
+                            <button type="button" onclick="window.location='./backOffice/client/client_dashboard.php?id=<?php echo($_SESSION['id']); ?>'" class="btn btn-outline-success">Panel client</button>
+                        </div>
+                    <?php }
 
+                    if (isset($_SESSION['id']) && $_SESSION['role'] == 'admin') { ?>
+                        <div class="col-sm-3 d-flex align-items-center">
+                            <button type="button" onclick="window.location.href='./backOffice/admin/admin_dashboard.php?id=<?php echo($_SESSION['id']); ?>'" class="btn btn-outline-success">Panel Administrateur</button>
+                        </div>
+                    <?php } 
+                    ?>
                 </div>
             </div>
 

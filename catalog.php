@@ -1,5 +1,6 @@
 <?php 
 $pageTitle = "Catalogue";
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 // PARTIE AFFICHAGE LISTE ACCESSOIRES
