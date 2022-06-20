@@ -3,6 +3,7 @@ session_start();
 $pageTitle = "Vos factures";
 require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 require "../../struct/head.php";
+require "bdd-connexions.php";
 ?>
 
 <?php include "client_leftmenu.php" ?>
@@ -25,6 +26,43 @@ require "../../struct/head.php";
                     </nav>
                 </div>
             </div>
+            <div class="pl-5">
+                    <form action="" class="my-4">
+                        <div class="from-group row">
+                        </div>
+                    </form>
+                    <div class="col">
+                        <table>
+
+                            <tr>
+                                <th class="table_border table_font_1 textcolor center px-4 py-2">ID</th>
+                                <th class="table_border table_font_1 textcolor center px-4">ID user</th>
+                                <th class="table_border table_font_1 textcolor center px-4">Prix total (€)</th>
+                                <th class="table_border table_font_1 textcolor center px-5">Status</th>
+                                <th class="table_border table_font_1 textcolor center px-5">Date de paiement</th>
+                                <th class="table_border table_font_1 textcolor center px-5">Facture en PDF</th>
+                            </tr>
+
+                            <?php for ($t = 0; $t < 1; $t++) { ?>
+                                <tr>
+                                    <td class="table_border table_font_2 center py-2 text-white"><?php echo ($resultBills[$t]['id']); ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['user_id']); ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['price_total']); ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['status']); ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['date_created']); ?></td>
+                                    <td class="table_border table_font_2 center text-white"><a href="/bill.php?id=<?php echo($_SESSION['id']) ?>"><button class="btn bgfontgreen px-3"><span class="text-white center"><i class="fa-solid fa-paperclip"></i></span></button></td>
+
+                                </tr>
+                            <?php } ?>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
         </div>
     </div>
 </div>

@@ -19,6 +19,10 @@ $member->execute();
 $resultMember = $member->fetchAll();
 $fg_pack_member = $resultMember[0]['fg_package'];
 
+$bills = $bdd->prepare("SELECT * FROM iw22_bill where user_id = $_GET[id]");
+$bills->execute();
+$resultBills = $bills->fetchAll();
+
 $package_per_users = $bdd->prepare("SELECT name FROM iw22_package left join iw22_user on iw22_package.id = iw22_user.fg_package where fg_package = $fg_pack_member");
 $package_per_users->execute();
 $resultPackage_per_users = $package_per_users->fetchAll();
