@@ -1,5 +1,13 @@
 <?php
 $pageTitle = "Liste tickets";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+
+// PARTIE AFFICHAGE LISTE TICKETS
+$tickets = $bdd->prepare("SELECT * FROM iw22_ticket");
+$tickets->execute();
+$resultTickets = $tickets->fetchAll();
+$nbTickets = count($resultTickets);
+
 require "../../struct/head.php";
 ?>
 
@@ -33,13 +41,15 @@ include "admin_leftmenu.php";
                     <form action="" class="my-4">
                         <div class="row justify-content-end">
                             <div class="col-md-auto">
-                                <a href="editTickets.php" class="btn btn-success right">Modifier un ticket</a>
+                                <a href="addTickets.php" class="btn btn-success right">Ajouter un ticket</a>
                             </div>
                         </div>
                     </form>
                     <div class="col">
                         <table>
                             <tr>
+                                <th class="table_font_1 textcolor center px-2"></th>
+                                <th class="table_font_1 textcolor center px-2"></th>
                                 <th class="table_border table_font_1 textcolor center px-5 py-2">ID</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Utilisateur</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Titre</th>
@@ -50,39 +60,21 @@ include "admin_leftmenu.php";
                                 <th class="table_border table_font_1 textcolor center px-5">Date de création</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Date de modification</th>
                             </tr>
-                            <tr>
-                                <td class="table_border table_font_2 center py-2 text-white">1</td>
-                                <td class="table_border table_font_2 center text-white">Arthur</td>
-                                <td class="table_border table_font_2 center text-white">Ticket d'exemple</td>
-                                <td class="table_border table_font_2 center text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                <td class="table_border table_font_2 center text-white">En attente de validation</td>
-                                <td class="table_border table_font_2 center text-white">Dev Web</td>
-                                <td class="table_border table_font_2 center text-white">Urgente</td>
-                                <td class="table_border table_font_2 center text-white">12/01/22</td>
-                                <td class="table_border table_font_2 center text-white">12/01/22</td>
-                            </tr>
-                            <tr>
-                                <td class="table_border table_font_1 center py-2 text-white">2</td>
-                                <td class="table_border table_font_1 center text-white">Pierre</td>
-                                <td class="table_border table_font_1 center text-white">Ticket d'exemple N°2</td>
-                                <td class="table_border table_font_1 center text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                <td class="table_border table_font_1 center text-white">Résolue</td>
-                                <td class="table_border table_font_1 center text-white">Dev Web</td>
-                                <td class="table_border table_font_1 center text-white">Modérée</td>
-                                <td class="table_border table_font_1 center text-white">12/01/22</td>
-                                <td class="table_border table_font_1 center text-white">12/01/22</td>
-                            </tr>
-                            <tr>
-                                <td class="table_border table_font_2 center py-2 text-white">2</td>
-                                <td class="table_border table_font_2 center text-white">Axel</td>
-                                <td class="table_border table_font_2 center text-white">Ticket d'exemple N°2</td>
-                                <td class="table_border table_font_2 center text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                <td class="table_border table_font_2 center text-white">En cours de trairement</td>
-                                <td class="table_border table_font_2 center text-white">Dev Web</td>
-                                <td class="table_border table_font_2 center text-white">Basique</td>
-                                <td class="table_border table_font_2 center text-white">12/01/22</td>
-                                <td class="table_border table_font_2 center text-white">12/01/22</td>
-                            </tr>
+                            <?php for ($n = 0; $n < $nbTickets; $n++) { ?>
+                                <tr>
+                                    <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="editTickets.php?ticketid=<?php echo $resultTickets[$n]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
+                                    <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idadmin=<?php echo ($resultTickets[$n]['id']); ?>"><i class='bx bx-trash'></i></a></td>
+                                    <td class="table_border table_font_2 center py-2 text-white"><?php echo $resultTickets[$n]['id']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['id_user']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['title']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['description']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['status']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['request_type']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['priority_level']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['date_created']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['date_updated']; ?></td>
+                                </tr>
+                            <?php } ?>
                         </table>
                     </div>
                 </div>

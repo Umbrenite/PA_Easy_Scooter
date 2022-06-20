@@ -1,6 +1,5 @@
 <?php
-session_start();
-$pageTitle = "404 Not found";
+$pageTitle = "Modification Ticket";
 require "admin_leftmenu.php";
 require "../../struct/head.php";
 ?>
@@ -18,7 +17,7 @@ require "../../struct/head.php";
                 <div class="row pt-3 pl-3">
 
                     <div class="col pl-5 pb-5 pt-3">
-                        <span class="title pt-3 textcolor px-5">Modifier un ticket</span>
+                        <span class="title pt-3 textcolor px-5"><?php echo($pageTitle); ?></span>
                     </div>
 
                     <div class="col pt-3">

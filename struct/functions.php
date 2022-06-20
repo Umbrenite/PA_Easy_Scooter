@@ -79,7 +79,7 @@ function modifUser($dataPost, int $idUser, string $tableName, $oldData)
         <script>
             var idu = <?php echo json_encode($idUser); ?>;
             var create = alert("La modification de l'utilisateur a bien été prise en compte.");
-            document.location.href = "modify.php?userm=" + idu;
+            document.location.href = "modifyUser.php?userm=" + idu;
         </script>
 <?php
     }

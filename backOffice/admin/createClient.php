@@ -150,11 +150,11 @@ if (isset($_POST['formClient'])) {
                                     <input type="number" min=0 id="trajets" name="trajets" class="form-control" value=0 required="required">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div id="subm" class="col-sm">
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
                                     <input type="submit" class="btn btn-success" name="formClient" value="Ajouter">
                                 </div>
-                                <div id="annul" class="col-sm">
+                                <div class="col-md-auto">
                                     <a href="javascript:history.back()" class="btn btn-danger right">Retour</a>
                                 </div>
                             </div>

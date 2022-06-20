@@ -33,7 +33,7 @@ if (isset($_POST['formModifyC'])) {
 }
 
 if (isset($_POST['formModifyA'])) {
-    
+
     if (isset($_POST['mailU']) && !empty($_POST['mailU'])) modifUser($_POST['mailU'], $id, "mail", $infoUser['mail']); // mail
     if (isset($_POST['lnameU']) && !empty($_POST['lnameU'])) modifUser($_POST['lnameU'], $id, "lastname", $infoUser['lastname']); // lastname
     if (isset($_POST['fnameU']) && !empty($_POST['fnameU'])) modifUser($_POST['fnameU'], $id, "firstname", $infoUser['firstname']); // firstname
@@ -162,7 +162,7 @@ include "admin_leftmenu.php";
 
                     <form method="post">
                         <div class="container">
-                            <div class="row">
+                            <div class="row align-items-center">
                                 <div class="col">
                                     <table id="listm">
                                         <tr>
@@ -206,11 +206,11 @@ include "admin_leftmenu.php";
                                     </table>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div id="subm" class="col-sm">
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
                                     <input type="submit" class="btn btn-success" name="formModifyA" value="Modifier">
                                 </div>
-                                <div id="annul" class="col-sm">
+                                <div class="col-md-auto">
                                     <a href="javascript:history.back()" class="btn btn-danger right">Annuler</a>
                                 </div>
                             </div>
