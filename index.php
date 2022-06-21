@@ -3,6 +3,7 @@
 
 <?php 
 $pageTitle = "Home";
+session_start();
 require "struct/head.php";
 require($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 $packages = $bdd->prepare("SELECT * FROM iw22_package WHERE id >= 1");
@@ -45,11 +46,11 @@ $nbPacks = count($resultPacks);
     <img src="img/front_img.jpg" class="d-inline-block align-top blur_bg centered" alt="">
       <div class="container">
       <img src="img/front_img.jpg" class="d-inline-block align-top align-section centered" alt="">
-      <div class="title1 text-white front_title"><strong>Bienvenue<br></strong></div>
+      <div class="title1 text-white front_title"><strong>Bienvenue <br></strong></div>
       <div class="title2 text-white title"><strong>chez</strong></div>
       <div class="title3 text-white front_title"><strong>Electrot</strong></div>
 
-      <div class="subtitle_front text-white center"><i>Voyagez libre comme l'air</i></div>
+      <div class="subtitle_front title text-white center"><i>Voyagez libre comme l'air</i></div>
       </div>
     </section>
 
@@ -108,12 +109,21 @@ $nbPacks = count($resultPacks);
         <div class="col acc_img_resize"><a href="object_details.php"><img class="card-img-top rounded" src="./img/accessory-catalog.jpeg"></a></div>
 
         <div class="col pl-4 vertical_center">
-          <h2 class="textcolor pb-4">Notre catalogue d'accessoires</h2>
+          <h2 class="textcolor pb-4 pl-2">Notre catalogue d'accessoires</h2>
           <div class="col-8 textcolor front_subtitle">
-                Lorem Ipsum.
+                Consultez notre catalogue d'accessoire afin de vous permettre un trajet sécurisé !
           </div>
 
+          <?php if (!isset($_SESSION['id'])) { ?>
+
+            <div class="col pt-4"><p class="textcolor">Vous devez vous connecter pour pouvoir accéder au catalogue !</p></div>
+
+          <?php } 
+          if (isset($_SESSION['id'])) { ?>
+
           <div class="col pt-4"><a href ="catalog.php"><button class="btn btn-success textdark front_subtitle rounded">Consulter le catalogue</button></a></div>
+
+          <?php } ?>
 
           </div>
         </div>

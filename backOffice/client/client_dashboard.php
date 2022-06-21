@@ -1,6 +1,18 @@
 <?php
+$pageTitle = "Dashboard";
 session_start();
-$pageTitle = "Votre Dashboard";
+
+// if (!empty($_GET['id'])) $getId = intval($_GET['id']);
+// if ($getId != $_SESSION['id']) header("Location: ../../index.php");
+
+
+if (!isset($_SESSION['id']) && $_SESSION['role'] != 'client') {
+    header("Location: ../../index.php");
+    exit();
+}
+
+
+require "bdd-connexions.php";
 require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 require "../../struct/head.php";
 ?>
@@ -30,108 +42,52 @@ require "../../struct/head.php";
                         <div class="col pl-2 pr-4 pb-3">
                             <div class="pr-3">
                                 <div class="card">
-                                    <h5 class="card-header">Évolution de vos trajets</h5>
+                                    <h5 class="card-header">Vos informations</h5>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-3 mb-4">
                                                 <div class="bg-white rounded-lg p-5 shadow">
-                                                    <h2 class="h6 font-weight-bold text-center mb-4">Trajets effectués</h2>
+                                                    <h2 class="h6 font-weight-bold text-center mb-4">Trajets restants</h2>
 
                                                     <!-- Progress bar 1 -->
-                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center">
-                                                        <div class="h2 font-weight-bold">80<sup class="small">%</sup></div>
-                                                    </div>
-
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center pb-3q">
+                                                        <div class="h3 font-weight-bold"><?php echo($resultMember[0]['races']) ?></div>
                                                     </div>
                                                     <!-- END -->
-
-                                                    <!-- Demo info -->
-                                                    <div class="row text-center mt-4">
-                                                        <div class="col-6 border-right">
-                                                            <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Semaine dernière</span>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Le mois dernier</span>
-                                                            </div>
-                                                        </div>
-                                                            <!-- END -->
-                                                    </div>
-                                                </div>
-
-                                        <div class="col-sm-3 mb-4">
-                                            <div class="bg-white rounded-lg p-5 shadow">
-                                                <h2 class="h6 font-weight-bold text-center mb-4">Profil complété</h2>
-
-                                                <!-- Progress bar 2 -->
-                                                <div class="progress-value rounded-circle d-flex align-items-center justify-content-center">
-                                                    <div class="h2 font-weight-bold">50<sup class="small">%</sup></div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <!-- END -->
-                                                <!-- Demo info -->
-                                                <div class="row text-center mt-4">
-                                                    <div class="col-6 border-right">
-                                                        <div class="h4 font-weight-bold mb-0">25%</div><span class="small text-gray">Semaine dernière</span>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="h4 font-weight-bold mb-0">40%</div><span class="small text-gray">Le mois dernier</span>
-                                                        </div>
-                                                    </div>
-                                                        <!-- END -->
                                                 </div>
                                             </div>
-                                        <div class="col-sm-3 mb-4">
-                                            <div class="bg-white rounded-lg p-5 shadow">
-                                                <h2 class="h6 font-weight-bold text-center mb-4">Satisfaction</h2>
 
-                                                <!-- Progress bar 3 -->
-                                                <div class="progress-value rounded-circle d-flex align-items-center justify-content-center">
-                                                    <div class="h2 font-weight-bold">40<sup class="small">%</sup></div>
-                                                </div>
+                                            <div class="col-sm-3 mb-4">
+                                                <div class="bg-white rounded-lg p-5 shadow">
+                                                    <h2 class="h6 font-weight-bold text-center mb-4">Nombre de points</h2>
 
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <!-- END -->
-
-                                                <!-- Demo info -->
-                                                <div class="row text-center mt-4">
-                                                    <div class="col-6 border-right">
-                                                        <div class="h4 font-weight-bold mb-0">12%</div><span class="small text-gray">Semaine dernière</span>
+                                                    <!-- Progress bar 2 -->
+                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center pb-3">
+                                                        <div class="h3 font-weight-bold"><?php echo($resultMember[0]['points']);?></div>
                                                     </div>
-                                                    <div class="col-6">
-                                                        <div class="h4 font-weight-bold mb-0">24%</div><span class="small text-gray">Le mois dernier</span>
-                                                        </div>
+                                                    <!-- END -->
                                                     </div>
-                                                        <!-- END -->
-                                                </div>
-                                            </div>
-                                        <div class="col-sm-3 mb-4">
-                                            <div class="bg-white rounded-lg p-5 shadow">
-                                                <h2 class="h6 font-weight-bold text-center mb-4">Trajets non payés</h2>
-
-                                                <!-- Progress bar 4 -->
-                                                <div class="progress-value rounded-circle d-flex align-items-center justify-content-center">
-                                                    <div class="h2 font-weight-bold">15<sup class="small">%</sup></div>
                                                 </div>
 
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <!-- END -->
+                                            <div class="col-sm-3 mb-4">
+                                                <div class="bg-white rounded-lg p-5 shadow">
+                                                    <h2 class="h6 font-weight-bold text-center mb-4">Date d'inscription</h2>
 
-                                                <!-- Demo info -->
-                                                <div class="row text-center mt-4">
-                                                    <div class="col-6 border-right">
-                                                        <div class="h4 font-weight-bold mb-0">10%</div><span class="small text-gray">Semaine dernière</span>
+                                                    <!-- Progress bar 3 -->
+                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center pb-3">
+                                                        <div class="h3 font-weight-bold"><?php echo($resultMember[0]['registration_date']);?></div>
                                                     </div>
-                                                    <div class="col-6">
-                                                        <div class="h4 font-weight-bold mb-0">5%</div><span class="small text-gray">Le mois dernier</span>
-                                                        </div>
+                                                    <!-- END -->
+                                                    </div>
+                                                </div>
+
+                                            <div class="col-sm-3 mb-4">
+                                                <div class="bg-white rounded-lg p-5 shadow">
+                                                    <h2 class="h6 font-weight-bold text-center mb-4">Forfait actuel</h2>
+
+                                                    <!-- Progress bar 4 -->
+                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center pb-3">
+                                                        <div class="h3 font-weight-bold"><?php echo($resultPackage_per_users[0]['name']);?></div>
                                                     </div>
                                                     <!-- END -->
                                                     </div>

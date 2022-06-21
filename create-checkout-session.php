@@ -13,19 +13,19 @@ $items = strtolower($_GET['buy']);
 $selected_item = 0;
 
 switch(true) {
-  case stristr($items,'Forfait Journalier'): 
+  case stristr($items,'Journalier'): 
     $selected_item = $daily_forfait;
     break;
-    case stristr($items,'Forfait Mensuel 1'): 
+    case stristr($items,'Mensuel_1'): 
       $selected_item = $monthly_forfait1;
       break;
-    case stristr($items,'Forfait Mensuel 2'): 
+    case stristr($items,'Mensuel_2'): 
       $selected_item = $monthly_forfait2;
       break;
-    case stristr($items,'Forfait Mensuel 3'): 
+    case stristr($items,'Mensuel_3'): 
       $selected_item = $monthly_forfait3;
       break;
-  case stristr($items,'Sans forfait'): 
+  case stristr($items,'Aucun'): 
     $selected_item = $base_forfait;
     break;
   case stristr($items,'clignotant'): 
@@ -34,7 +34,7 @@ switch(true) {
   case stristr($items,'sac'): 
     $selected_item = $sac;
     break;
-  case stristr($items,'rétroviseur'): 
+  case stristr($items,'Retroviseur'): 
     $selected_item = $rétroviseur;
     break;
   case stristr($items,'casque'): 
@@ -55,7 +55,7 @@ require '../../../home/service/vendor/autoload.php';
 
 header('Content-Type: application/json');
 
-$YOUR_DOMAIN = 'http://electrot.site';
+$YOUR_DOMAIN = 'http://electrot.info';
 
 $checkout_session = \Stripe\Checkout\Session::create([
   'line_items' => [[
@@ -64,7 +64,7 @@ $checkout_session = \Stripe\Checkout\Session::create([
     'quantity' => 1,
   ]],
   'mode' => 'payment',
-  'success_url' => $YOUR_DOMAIN . '/success.php',
+  'success_url' => $YOUR_DOMAIN . '/success.php?selected_item=' . $items,
   'cancel_url' => $YOUR_DOMAIN . '/shopping_cart.php',
 ]);
 

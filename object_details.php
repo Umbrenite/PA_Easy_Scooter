@@ -1,5 +1,6 @@
 <?php 
 $pageTitle = "Détails d'un objet";
+session_start();
 require "struct/head.php";
 require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
