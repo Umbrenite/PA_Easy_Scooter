@@ -38,20 +38,23 @@ require "bdd-connexions.php";
                                 <th class="table_border table_font_1 textcolor center px-4 py-2">ID</th>
                                 <th class="table_border table_font_1 textcolor center px-4">ID user</th>
                                 <th class="table_border table_font_1 textcolor center px-4">Prix total (€)</th>
+                                <th class="table_border table_font_1 textcolor center px-4">Contenu</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Status</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Date de paiement</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Facture en PDF</th>
                             </tr>
 
-                            <?php for ($t = 0; $t < 1; $t++) { ?>
+                            <?php for ($t = 0; $t < $nbBills; $t++) { ?>
                                 <?php if($resultBills[$t] != null ){ ?>
+
                                 <tr>
                                     <td class="table_border table_font_2 center py-2 text-white"><?php echo ($resultBills[$t]['id']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['user_id']); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['price_total']); ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultProduct[$t]['price']); ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultProduct[$t]['name']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['status']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['date_created']); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><a href="/bill.php?id=<?php echo($_SESSION['id']) ?>"><button class="btn bgfontgreen px-3"><span class="text-white center"><i class="fa-solid fa-paperclip"></i></span></button></td>
+                                    <td class="table_border table_font_2 center text-white"><a href="/bill.php?id=<?php echo($_SESSION['id']) ?>&facture_id=<?php echo($resultBills[$t]['id']) ?>&order=<?php echo($resultProduct[$t]['name']) ?>"><button class="btn bgfontgreen px-3"><span class="text-white center"><i class="fa-solid fa-paperclip"></i></span></button></td>
 
                                 </tr>
                                 <?php } ?>
