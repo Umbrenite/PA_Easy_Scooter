@@ -24,6 +24,7 @@ include "admin_leftmenu.php";
     <div class="pl-5">
         <div class="pl-5">
             <div class="pl-5">
+                
                 <div class="row pt-3 pl-3">
                     <div class="col pl-5 pb-5 pt-3">
                         <span class="title pt-3 textcolor px-5">Liste des tickets</span>
@@ -78,6 +79,7 @@ include "admin_leftmenu.php";
                         </table>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

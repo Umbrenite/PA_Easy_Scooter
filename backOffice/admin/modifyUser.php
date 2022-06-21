@@ -144,11 +144,11 @@ include "admin_leftmenu.php";
                                     </table>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div id="subm" class="col-sm">
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
                                     <input type="submit" class="btn btn-success" name="formModifyC" value="Modifier">
                                 </div>
-                                <div id="annul" class="col-sm">
+                                <div class="col-md-auto">
                                     <a href="javascript:history.back()" class="btn btn-danger right">Annuler</a>
                                 </div>
                             </div>

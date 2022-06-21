@@ -2,6 +2,8 @@
 
 // Define name spaces
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail)
 {
@@ -17,7 +19,7 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail)
     $mail->isSMTP();
 
     // define smtp host
-    $mail->Host = "smtp.gmail.com";
+    $mail->Host = "smtp-mail.outlook.com";
 
     // enable smtp authentification
     $mail->SMTPAuth = "true";
@@ -29,7 +31,7 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail)
     $mail->Port = "587";
 
     // set gmail username
-    $mail->Username = "electrot.easyscooter@gmail.com";
+    $mail->Username = "Electrot-easyscooter@hotmail.com";
 
     // set gmail password
     $mail->Password = "Petitratio123+";
@@ -38,7 +40,7 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail)
     $mail->Subject = $titleOfMail;
 
     // Set sender email
-    $mail->setFrom("funpark91@gmail.com");
+    $mail->setFrom("Electrot-easyscooter@hotmail.com");
 
     // Email body
     $mail->Body = $corpsOfMail;
@@ -60,7 +62,6 @@ function printPkgName($packageID)
     $pkgName = $bdd->prepare("SELECT name FROM iw22_package WHERE id = ?");
     $pkgName->execute(array($packageID));
     $resultPkgName = $pkgName->fetch();
-
     return $resultPkgName["name"];
 }
 
@@ -91,5 +92,4 @@ function deleteT(int $idTrot, string $tableName, string $fileName)
     $delT = $bdd->prepare("DELETE FROM $tableName WHERE id = ?");
     $delT->execute(array($idTrot));
     header("Location: backOffice/admin/" . $fileName . ".php");
-    exit();
 }
