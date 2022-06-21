@@ -50,7 +50,7 @@ require "../../struct/head.php";
                                                     <h2 class="h6 font-weight-bold text-center mb-4">Trajets restants</h2>
 
                                                     <!-- Progress bar 1 -->
-                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center pb-3q">
+                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center pb-3">
                                                         <div class="h3 font-weight-bold"><?php echo($resultMember[0]['races']) ?></div>
                                                     </div>
                                                     <!-- END -->

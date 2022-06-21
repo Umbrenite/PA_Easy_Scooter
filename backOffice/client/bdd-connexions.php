@@ -14,12 +14,12 @@ $users->execute();
 $resultUsers = $users->fetchAll();
 $nbUsers = count($resultUsers);
 
-$member = $bdd->prepare("SELECT * FROM iw22_user where id = $_GET[id]");
+$member = $bdd->prepare("SELECT * FROM iw22_user where id = $_SESSION[id]");
 $member->execute();
 $resultMember = $member->fetchAll();
 $fg_pack_member = $resultMember[0]['fg_package'];
 
-$bills = $bdd->prepare("SELECT * FROM iw22_bill where user_id = $_GET[id]");
+$bills = $bdd->prepare("SELECT * FROM iw22_bill where user_id = $_SESSION[id]");
 $bills->execute();
 $resultBills = $bills->fetchAll();
 $nbBills = count($resultBills);
