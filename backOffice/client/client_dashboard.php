@@ -50,12 +50,8 @@ require "../../struct/head.php";
                                                     <h2 class="h6 font-weight-bold text-center mb-4">Trajets restants</h2>
 
                                                     <!-- Progress bar 1 -->
-                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center">
-                                                        <div class="h3 font-weight-bold"><?php echo(($resultMember[0]['races']/$resultMember[0]['races_max'])*100) ?><sup class="small">%</sup></div>
-                                                    </div>
-
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo(($resultMember[0]['races']/$resultMember[0]['races_max'])*100) ?>%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-value rounded-circle d-flex align-items-center justify-content-center pb-3q">
+                                                        <div class="h3 font-weight-bold"><?php echo($resultMember[0]['races']) ?></div>
                                                     </div>
                                                     <!-- END -->
                                                 </div>

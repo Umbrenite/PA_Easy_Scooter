@@ -44,6 +44,7 @@ require "bdd-connexions.php";
                             </tr>
 
                             <?php for ($t = 0; $t < 1; $t++) { ?>
+                                <?php if($resultBills[$t] != null ){ ?>
                                 <tr>
                                     <td class="table_border table_font_2 center py-2 text-white"><?php echo ($resultBills[$t]['id']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['user_id']); ?></td>
@@ -53,6 +54,7 @@ require "bdd-connexions.php";
                                     <td class="table_border table_font_2 center text-white"><a href="/bill.php?id=<?php echo($_SESSION['id']) ?>"><button class="btn bgfontgreen px-3"><span class="text-white center"><i class="fa-solid fa-paperclip"></i></span></button></td>
 
                                 </tr>
+                                <?php } ?>
                             <?php } ?>
 
                         </table>

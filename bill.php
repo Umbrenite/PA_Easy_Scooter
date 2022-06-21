@@ -1,10 +1,10 @@
 <?php
-require '../../../home/service/vendor/autoload.php';
+require '../../../home/pierre/vendor/autoload.php';
 ?>
 
 <?php
 $stylesheet = file_get_contents('css/style.css'); // external css
-$mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/tmp']);
+$mpdf = new \Mpdf\Mpdf(['tempDir' => '/tmp']);
 
 
 ob_start();
