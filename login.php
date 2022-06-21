@@ -1,10 +1,9 @@
 <?php
-session_start();
 $pageTitle = "Connexion";
 
 if (isset($_POST['formconnect'])) {
 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
 
     $mailconnect = htmlspecialchars($_POST['mailconnect']);
     $pwdconnect = $_POST['pwdconnect'];
@@ -30,6 +29,8 @@ if (isset($_POST['formconnect'])) {
     }
 
     if (empty($erreur)) {
+
+        session_start();
         $_SESSION['id'] = $resultMember['id'];
         $_SESSION['lastname'] = $resultMember['lastname'];
         $_SESSION['firstname'] = $resultMember['firstname'];
@@ -45,8 +46,8 @@ if (isset($_POST['formconnect'])) {
             "user_id" => $_SESSION["id"]
         ]);
 
-        if ($resultMember['role'] == "client") header("Location: backOffice/client/client_dashboard.php?id=" . $_SESSION['id']);
-        if ($resultMember['role'] == "admin") header("Location: backOffice/admin/admin_dashboard.php?id=" . $_SESSION['id']);
+        if ($resultMember['role'] == "client") header("Location: backOffice/client/client_dashboard.php");
+        if ($resultMember['role'] == "admin") header("Location: backOffice/admin/admin_dashboard.php");
     }
 }
 

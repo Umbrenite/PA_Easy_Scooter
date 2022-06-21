@@ -2,8 +2,11 @@
 
 // Define name spaces
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
+function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail)
+{
 
     require($_SERVER['DOCUMENT_ROOT'] . '/includes/PHPMailer.php');
     require($_SERVER['DOCUMENT_ROOT'] . '/includes/SMTP.php');
@@ -16,7 +19,7 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
     $mail->isSMTP();
 
     // define smtp host
-    $mail->Host = "smtp.gmail.com";
+    $mail->Host = "smtp-mail.outlook.com";
 
     // enable smtp authentification
     $mail->SMTPAuth = "true";
@@ -28,7 +31,7 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
     $mail->Port = "587";
 
     // set gmail username
-    $mail->Username = "electrot.easyscooter@gmail.com";
+    $mail->Username = "Electrot-easyscooter@hotmail.com";
 
     // set gmail password
     $mail->Password = "Petitratio123+";
@@ -37,7 +40,7 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
     $mail->Subject = $titleOfMail;
 
     // Set sender email
-    $mail->setFrom("funpark91@gmail.com");
+    $mail->setFrom("Electrot-easyscooter@hotmail.com");
 
     // Email body
     $mail->Body = $corpsOfMail;
@@ -50,4 +53,43 @@ function mailer($mailOfReceiver, $titleOfMail, $corpsOfMail) {
 
     // Closing smtp connection
     $mail->smtpClose();
+}
+
+function printPkgName($packageID)
+{
+    global $bdd;
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $pkgName = $bdd->prepare("SELECT name FROM iw22_package WHERE id = ?");
+    $pkgName->execute(array($packageID));
+    $resultPkgName = $pkgName->fetch();
+    return $resultPkgName["name"];
+}
+
+function modifUser($dataPost, int $idUser, string $tableName, $oldData)
+{
+    if ($dataPost != $oldData) {
+
+        if (is_numeric($dataPost) && $dataPost < 0 || $dataPost > pow(10, 12)) {
+            exit();
+        }
+
+        global $bdd;
+        $updtU = $bdd->prepare("UPDATE iw22_user SET $tableName = ? WHERE id = ?");
+        $updtU->execute(array($dataPost, $idUser));
+?>
+        <script>
+            var idu = <?php echo json_encode($idUser); ?>;
+            var create = alert("La modification de l'utilisateur a bien été prise en compte.");
+            document.location.href = "modifyUser.php?userm=" + idu;
+        </script>
+<?php
+    }
+}
+
+function deleteT(int $idTrot, string $tableName, string $fileName)
+{
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $delT = $bdd->prepare("DELETE FROM $tableName WHERE id = ?");
+    $delT->execute(array($idTrot));
+    header("Location: backOffice/admin/" . $fileName . ".php");
 }

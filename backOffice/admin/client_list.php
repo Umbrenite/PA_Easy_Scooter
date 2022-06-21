@@ -1,10 +1,7 @@
 <?php
-session_start();
 $pageTitle = "Liste clients";
-require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
-
-if (!empty($_GET['id'])) $getId = intval($_GET['id']);
-if ($getId != $_SESSION['id']) header("Location: ../../index.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/struct/functions.php');
 
 // PARTIE AFFICHAGE LISTE CLIENTS
 $users = $bdd->prepare("SELECT * FROM iw22_user WHERE role = 'client'");
@@ -44,14 +41,14 @@ include "admin_leftmenu.php";
                 </div>
                 <div class="pl-5">
                     <form action="" class="my-4">
-                        <div class="from-group row">
-                            <div class="col-sm-12 pr-4">
+                        <div class="row justify-content-end">
+                            <div class="col-md-auto">
                                 <a href="createClient.php" class="btn btn-success right">Ajouter un utilisateur</a>
                             </div>
                         </div>
                     </form>
                     <div class="col">
-                        <table>
+                        <table id="listc">
                             <tr>
                                 <th class="table_font_1 textcolor center px-2"></th>
                                 <th class="table_font_1 textcolor center px-2"></th>
@@ -61,28 +58,27 @@ include "admin_leftmenu.php";
                                 <th class="table_border table_font_1 textcolor center px-4">Prénom</th>
                                 <th class="table_border table_font_1 textcolor center px-4">Rôle</th>
                                 <th class="table_border table_font_1 textcolor center px-4">Forfait</th>
-                                <th class="table_border table_font_1 textcolor center px-4">Trajet</th>
-                                <th class="table_border table_font_1 textcolor center px-4">Point</th>
+                                <th class="table_border table_font_1 textcolor center px-4">Trajets</th>
+                                <th class="table_border table_font_1 textcolor center px-4">Points</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Confirmkey</th>
                                 <th class="table_border table_font_1 textcolor center px-4">Verif</th>
                                 <th class="table_border table_font_1 textcolor center px-4 py-2">Date d'inscription</th>
                             </tr>
                             <?php for ($t = 0; $t < $nbUsers; $t++) { ?>
                                 <tr>
-                                    <td id="pratio" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modify.php?id=<?php echo $idUser; ?>&attrac=<?php echo $resultUsers[$t]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
-                                    <td id="dratio" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idclient=<?php echo ($resultUsers[$t]['id']); ?>"><i class='bx bx-trash'></i></a></td>
-                                    <td class="table_border table_font_2 center py-2 text-white"><?php print_r($resultUsers[$t]["id"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["mail"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["lastname"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["firstname"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["role"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php echo (1); // print_r($resultUsers[$t]["for"]); 
-                                                                                            ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["races"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["points"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["confirm_key"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["account_confirm"]); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["registration_date"]); ?></td>
+                                    <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyUser.php?userm=<?php echo $resultUsers[$t]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
+                                    <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idclient=<?php echo ($resultUsers[$t]['id']); ?>"><i class='bx bx-trash'></i></a></td>
+                                    <td id="lgn" class="table_border table_font_2 center py-2 text-white"><?php print_r($resultUsers[$t]["id"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["mail"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["lastname"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["firstname"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["role"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r(printPkgName($resultUsers[$t]["fg_package"])); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["races"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["points"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["confirm_key"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["account_confirm"]); ?></td>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultUsers[$t]["registration_date"]); ?></td>
                                 </tr>
                             <?php } ?>
                         </table>
@@ -94,3 +90,5 @@ include "admin_leftmenu.php";
     </div>
 
 </body>
+
+</html>

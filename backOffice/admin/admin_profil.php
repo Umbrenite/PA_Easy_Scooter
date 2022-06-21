@@ -1,5 +1,4 @@
 <?php
-session_start();
 $pageTitle = "Mon profil";
 require "../../struct/head.php";
 

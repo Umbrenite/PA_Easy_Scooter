@@ -15,6 +15,7 @@ include "admin_leftmenu.php";
     <div class="pl-5">
         <div class="pl-5">
             <div class="pl-5">
+                
                 <div class="row pl-3">
                     <div class="col pl-5 pb-5 pt-4">
                         <span class="title pt-3 textcolor px-5"><?php echo $pageTitle ?></span>
@@ -29,9 +30,11 @@ include "admin_leftmenu.php";
                         </nav>
                     </div>
                 </div>
+
                 <div id="interfcreat" class="pl-5 rounded">
                     <div class="col bgfontblack py-5 px-5">
                         <form>
+
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="textcolor">Modèle</label>
@@ -96,10 +99,20 @@ include "admin_leftmenu.php";
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">Ajouter</button>
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                                <div class="col-md-auto">
+                                    <a href="javascript:history.back()" class="btn btn-danger right">Annuler</a>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

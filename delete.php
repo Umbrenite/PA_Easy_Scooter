@@ -1,22 +1,24 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['id'])) {
+    header("Location: ../../index.php");
+}
+
+if ($_SESSION['role'] != "admin") {
+    header("Location: ../../index.php");
+}
+
+require_once('struct/functions.php');
+
+if (!empty($_GET['idadmin'])) {
+    deleteT($_GET['idadmin'], "iw22_user", "admin_list");
+}
+
 if (!empty($_GET['idclient'])) {
-    require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
-    $delElement = $_GET['idclient'];
-    $delE = $bdd->prepare('DELETE FROM iw22_user WHERE id = ?');
-    $delE->execute([$delElement]);
-    header("Location: backOffice/admin/admin_users_client.php?id=" . $_SESSION['id']);
-    exit();
+    deleteT($_GET['idclient'], "iw22_user", "client_list");
 }
 
 if (!empty($_GET['idtrot'])) {
-    require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
-    $delElement = $_GET['idtrot'];
-    $delE = $bdd->prepare('DELETE FROM iw22_scooter WHERE id = ?');
-    $delE->execute([$delElement]);
-    header("Location: backOffice/admin/admin_list_scooter.php?id=" . $_SESSION['id']);
-    exit();
+    deleteT($_GET['idtrot'], "iw22_scooter", "admin_list_scooter");
 }
-
-?>

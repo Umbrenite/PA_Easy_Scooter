@@ -1,5 +1,4 @@
 <?php
-session_start();
 $pageTitle = "Ajout d'un utilisateur";
 require "../../struct/head.php";
 ?>
@@ -42,8 +41,8 @@ if (isset($_POST['formClient'])) {
         $points = $_POST['points'];
         $trajets = $_POST['trajets'];
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
-        $insertclient = $bdd->prepare("INSERT INTO iw22_user(mail, lastname, firstname, password, confirm_key, role, points, races, registration_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+        $insertclient = $bdd->prepare("INSERT INTO iw22_user(mail, lastname, firstname, password, confirm_key, role, points, races, registration_date, fg_package) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
         $insertclient->execute(array($mail, $nom, $prenom, $mdpf, $key, $role, $points, $trajets, $date_now->format("Y-m-d H:i:s")));
 
         require "../../struct/functions.php";
@@ -66,7 +65,14 @@ if (isset($_POST['formClient'])) {
 
         <script>
             var create = alert("Le nouvel utilisateur <?php echo ($mail) ?> a bien été créé.\nUn mail de confirmation lui a été envoyé !");
-            document.location.href = "createClient.php";
+
+            var roleu = <?php echo json_encode($role); ?>;
+            if (roleu == "admin") {
+                document.location.href = "admin_list.php";
+            }
+            if (roleu == "client") {
+                document.location.href = "client_list.php";
+            }
         </script>
 
 <?php
@@ -98,7 +104,6 @@ if (isset($_POST['formClient'])) {
                 <div id="interfcreat" class="pl-5 rounded">
                     <div class="col bgfontblack py-5 px-5">
                         <form method="post">
-
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="textcolor">Mail</label>
@@ -113,7 +118,6 @@ if (isset($_POST['formClient'])) {
                                     <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" required="required" autocomplete="on">
                                 </div>
                             </div>
-
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="textcolor">Mot de passe</label>
@@ -128,7 +132,6 @@ if (isset($_POST['formClient'])) {
                                     <input type="text" id="datecrea" name="datecrea" class="form-control" value="<?php echo ($date_now->format("Y-m-d H:i:s")); ?>" disabled>
                                 </div>
                             </div>
-
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="role" class="textcolor" required="required">Rôle</label>
@@ -147,15 +150,15 @@ if (isset($_POST['formClient'])) {
                                     <input type="number" min=0 id="trajets" name="trajets" class="form-control" value=0 required="required">
                                 </div>
                             </div>
-
-                            <div class="form-row justify-content-center">
-                                <div class="col-1">
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
                                     <input type="submit" class="btn btn-success" name="formClient" value="Ajouter">
                                 </div>
+                                <div class="col-md-auto">
+                                    <a href="javascript:history.back()" class="btn btn-danger right">Retour</a>
+                                </div>
                             </div>
-
                             <?php if (!empty($msgerror)) echo ($msgerror); ?>
-
                         </form>
                     </div>
                 </div>
@@ -165,3 +168,5 @@ if (isset($_POST['formClient'])) {
     </div>
 
 </body>
+
+</html>
