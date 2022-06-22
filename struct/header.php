@@ -18,7 +18,7 @@
                             Home
                         </a>
                         <a href="/index.php#offers">
-                            Nos Offres
+                            Forfaits
                         </a>
                         <a href="/index.php#accessories">
                             Accessoires

@@ -1,19 +1,19 @@
 <?php
 $pageTitle = "Confirmation";
-require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
 if (isset($_GET['mail'], $_GET['mail'])) {
 
     $getMail = htmlspecialchars(urldecode($_GET['mail']));
     $key = htmlspecialchars($_GET['key']);
 
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
     $reqConfirm = $bdd->prepare("SELECT * FROM iw22_user WHERE mail = ? AND confirm_key = ?");
     $reqConfirm->execute(array($getMail, $key));
     $userExist = $reqConfirm->rowCount();
     $user = $reqConfirm->fetch();
 
     if ($userExist < 1) $messageRe = "Compte inexistant";
-    if ($userExist > 1) $messageDM = "Erreur #DUPLIMAIL <br><br> Veuillez contacter electrot.easyscooter@gmail.com";
+    if ($userExist > 1) $messageDM = "Erreur #DUPLIMAIL <br><br> Veuillez contacter Electrot-easyscooter@hotmail.com";
     if ($user['account_confirm'] == 1) $messageCo = "Votre compte a déjà été confirmé !";
 
     if (empty($messageCo) && empty($messageRe) && empty($messageDM)) {
@@ -63,7 +63,7 @@ if (isset($_GET['mail'], $_GET['mail'])) {
         <div style="text-align:center; margin-top:5%;">
             <h2><?php echo $messageDM; ?></h2>
             <div>
-                <a style=margin-top:5% type="button" class="btn btn-success" href="mailto:electrot.easyscooter@gmail.com?subject=HTML link">Cliquez ici pour nous envoyer un e-mail !</a>
+                <a style=margin-top:5% type="button" class="btn btn-success" href="mailto:Electrot-easyscooter@hotmail.com?subject=HTML link">Cliquez ici pour nous envoyer un e-mail !</a>
             </div>
         </div>
     <?php } ?>
