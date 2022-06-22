@@ -13,11 +13,11 @@ $bills = $bdd->prepare("SELECT * FROM iw22_bill where user_id = $_GET[id]");
 $bills->execute();
 $resultBills = $bills->fetchAll();
 $product_order = $resultBills[0]['product'];
-$product_name = $resultProduct[0]['name'];
 
 $product = $bdd->prepare(' SELECT name,price FROM iw22_bill inner join iw22_accessory on iw22_bill.product = iw22_accessory.name  where product = "'.$_GET['order'].'" union all SELECT name,price FROM iw22_bill inner join iw22_package on iw22_bill.product = iw22_package.name  where product = "'.$_GET['order'].'"');
 $product->execute();
 $resultProduct = $product->fetchAll();
+$product_name = $resultProduct[0]['name'];
 
 
 $stylesheet = file_get_contents('css/style.css'); // external css

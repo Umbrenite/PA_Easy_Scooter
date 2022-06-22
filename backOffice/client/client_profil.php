@@ -139,7 +139,7 @@ require "client_leftmenu.php";
 
                                     <div class="form-group">
                                         <p class="info">Forfait actuel</p>
-                                        <input type="text" id="packageU" name="packageU" class="form-control" placeholder="<? echo($resultPackage_per_users[0]['name']);?>" disabled="disabled">
+                                        <input type="text" id="packageU" name="packageU" class="form-control" placeholder="<?php echo($resultPackage_per_users[0]['name']);?>" disabled="disabled">
                                     </div>
                                     <hr>
                                     <h5>Modifier le mot de passe</h5>
