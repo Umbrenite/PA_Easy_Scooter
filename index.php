@@ -42,7 +42,7 @@ require "struct/head.php";
       <div class="container">
         <img src="img/front_img.jpg" class="d-inline-block align-top align-section centered" alt="">
         <div class="title1 text-white front_title">
-          <strong>Bienvenue <br></strong>
+          <strong>Bienvenue</strong>
         </div>
         <div class="title2 text-white title">
           <strong>chez</strong>
@@ -64,15 +64,15 @@ require "struct/head.php";
 
           <div class="col pl-4 vertical_center">
 
-            <h2 class="textcolor pb-4 pl-2">Nos trajets</h2>
+            <h2 class="textcolor pb-4 pl-2">Nos forfaits</h2>
 
             <div class="col-8 textcolor front_subtitle">
-              Consultez notre catalogue de forfait afin de découvrir les différents moyen de se déplacer !
+              Consultez notre catalogue de forfaits afin de découvrir celui qui vous conviendra le mieux !
             </div>
 
             <?php if (!isset($_SESSION['id'])) { ?>
               <div class="col pt-4">
-                <p class="textcolor">Vous devez vous connecter pour pouvoir accéder au catalogue de forfait !</p>
+                <p class="textcolor">Vous devez être connecté afin d'accéder au catalogue des forfaits !</p>
               </div>
             <?php }
 
@@ -99,21 +99,21 @@ require "struct/head.php";
 
           <div class="col acc_img_resize">
             <a href="object_details.php">
-              <img class="card-img-top rounded" src="./img/accessory-catalog.jpeg">
+              <img class="card-img-top rounded" src="./img/accessoires.PNG">
             </a>
           </div>
 
           <div class="col pl-4 vertical_center">
 
-            <h2 class="textcolor pb-4 pl-2">Notre catalogue d'accessoires</h2>
+            <h2 class="textcolor pb-4 pl-2">Nos accessoires</h2>
 
             <div class="col-8 textcolor front_subtitle">
-              Consultez notre catalogue d'accessoire afin de vous permettre un trajet sécurisé !
+              Consultez notre catalogue d'accessoires pour voyager en toute sécurité !
             </div>
 
             <?php if (!isset($_SESSION['id'])) { ?>
               <div class="col pt-4">
-                <p class="textcolor">Vous devez vous connecter pour pouvoir accéder au catalogue !</p>
+                <p class="textcolor">Vous devez être connecté afin d'accéder au catalogue !</p>
               </div>
             <?php }
 
@@ -133,6 +133,8 @@ require "struct/head.php";
 
 
     <div id="about">
+      <br />
+      <br />
       <div class="row px-5 py-5 border_bottom">
 
         <div class="col border_col_left border_col_right">

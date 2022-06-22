@@ -52,7 +52,7 @@ if (isset($_POST['formClient'])) {
 
         un administrateur vient de vous créer un compte Electrot.
         Afin de finaliser l\'inscription, veuillez vérifier votre compte en cliquant sur ce lien : 
-        http://www.electrot.info/confirm.php?mail=' . urlencode($mail) . '&key=' . $key . '
+        http://www.electrot.site/confirm.php?mail=' . urlencode($mail) . '&key=' . $key . '
 
         Voici votre mot de passe temporaire qu\'il faudra modifier après votre première connexion : 
         '

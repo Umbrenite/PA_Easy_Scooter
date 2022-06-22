@@ -55,7 +55,7 @@ require '../../../home/service/vendor/autoload.php';
 
 header('Content-Type: application/json');
 
-$YOUR_DOMAIN = 'http://electrot.info';
+$YOUR_DOMAIN = 'http://electrot.site';
 
 $checkout_session = \Stripe\Checkout\Session::create([
   'line_items' => [[
