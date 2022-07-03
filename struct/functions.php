@@ -78,12 +78,31 @@ function modifUser($dataPost, int $idUser, string $tableName, $oldData)
         $updtU->execute(array($dataPost, $idUser));
 ?>
         <script>
-            var idu = <?php echo json_encode($idUser); ?>;
-            var create = alert("La modification de l'utilisateur a bien été prise en compte.");
+            const idu = <?php echo json_encode($idUser); ?>;
+            alert("La modification de l'utilisateur a bien été prise en compte.");
             document.location.href = "modifyUser.php?userm=" + idu;
         </script>
-<?php
+    <?php
     }
+}
+
+function modifTrot($newData, int $idTrot, string $tableName, $oldData)
+{
+    if ($newData == "none") {
+        $newData = null;
+    }
+
+    if ($newData != $oldData) {
+
+        global $bdd;
+        $updtU = $bdd->prepare("UPDATE iw22_scooter SET $tableName = ? WHERE id = ?");
+        $updtU->execute(array($newData, $idTrot));
+    ?>
+        <script>
+            alert("La modification de la trotinette a bien été prise en compte.");
+            document.location.href = "admin_list_scooter.php";
+        </script>
+<?php }
 }
 
 function deleteT(int $idTrot, string $tableName, string $fileName)
@@ -93,3 +112,21 @@ function deleteT(int $idTrot, string $tableName, string $fileName)
     $delT->execute(array($idTrot));
     header("Location: backOffice/admin/" . $fileName . ".php");
 }
+
+function printUserInfo($userID)
+{
+    global $bdd;
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $reqInfo = $bdd->prepare("SELECT firstname, lastname FROM iw22_user WHERE id = ?");
+    $reqInfo->execute(array($userID));
+    $userInfo = $reqInfo->fetch();
+    return $userInfo["firstname"] . " " . $userInfo["lastname"];
+}
+
+function textalert($text)
+{ ?>
+    <script>
+        const text = <?php echo json_encode($text); ?>;
+        alert(text);
+    </script>
+<?php }
