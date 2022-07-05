@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Modification";
+$pageTitle = "Modification Trotinette";
 require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/struct/functions.php');
 
@@ -39,7 +39,7 @@ require "../../struct/head.php"; ?>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<?php include "admin_leftmenu.php"; ?>
+<?php require "admin_leftmenu.php"; ?>
 
 <body class="bgfontdark">
 
@@ -55,7 +55,7 @@ require "../../struct/head.php"; ?>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent right">
                                 <li class="breadcrumb-item"><a href="admin_list.php">Liste admins</a></li>
-                                <li class="breadcrumb-item"><a href="client_list.php">Liste users</a></li>
+                                <li class="breadcrumb-item"><a href="admin_list_client.php">Liste users</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -103,7 +103,7 @@ require "../../struct/head.php"; ?>
 
                                     <tr>
                                         <th class="table_border table_font_1 textcolor center px-4" scope="row">Longitude :</th>
-                                        <td><input id="ctn" name="longT" type="number" step="0.01" class="form-control" value="<?php echo $infoTrot['longitude']; ?>"></td>
+                                        <td><input id="ctn" name="longT" type="number" step="0.0001" class="form-control" value="<?php echo $infoTrot['longitude']; ?>"></td>
                                     </tr>
 
                                     <tr>

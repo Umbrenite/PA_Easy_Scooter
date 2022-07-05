@@ -19,8 +19,8 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id']) || $_SESSION['role'] != "a
     </button>
     <div class="dropdown-container px-5">
         <ul>
-            <li><a href="admin_dashboard.php?id=<?php echo ($_SESSION['id']); ?>"><span class="subtitle">Dashboard</span></a>
-            <li><a href="admin_logs.php?id=<?php echo ($_SESSION['id']); ?>"><span class="subtitle">Logs</span></a>
+            <li><a href="admin_dashboard.php"><span class="subtitle">Dashboard</span></a>
+            <li><a href="admin_logs.php"><span class="subtitle">Logs</span></a>
         </ul>
     </div>
 
@@ -30,9 +30,10 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id']) || $_SESSION['role'] != "a
     <div class="dropdown-container px-5">
         <ul>
             <li><a href="admin_list.php"><span class="subtitle">Admins</span></a>
-            <li><a href="client_list.php"><span class="subtitle">Clients</span></a>
+            <li><a href="admin_list_client.php"><span class="subtitle">Clients</span></a>
             <li><a href="admin_list_scooter.php"><span class="subtitle">Trotinettes</span></a>
-            <li><a href="admin_list_tickets.php"><span class="subtitle">Tickets</span></a>
+            <li><a href="admin_list_ticket.php"><span class="subtitle">Tickets</span></a>
+            <li><a href="admin_list_options.php"><span class="subtitle">Options</span></a>
         </ul>
     </div>
 

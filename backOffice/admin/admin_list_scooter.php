@@ -56,48 +56,32 @@ require "../../struct/head.php";
                             <tr>
                                 <th class="table_font_1 textcolor center px-2"></th>
                                 <th class="table_font_1 textcolor center px-2"></th>
-                                <th class="table_border table_font_1 textcolor center px-5 py-2">ID</th>
-                                <th class="table_border table_font_1 textcolor center px-5 py-2">Utilisé par</th>
+                                <th class="table_border table_font_1 textcolor center px-5">ID</th>
+                                <th class="table_border table_font_1 textcolor center px-5">Utilisé par</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Latitude</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Longitude</th>
-                                <th class="table_border table_font_1 textcolor center px-5 py-2">Batterie</th>
+                                <th class="table_border table_font_1 textcolor center px-5">Batterie</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Statut</th>
-                                <th class="table_border table_font_1 textcolor center px-5 py-2">Mise en service</th>
+                                <th class="table_border table_font_1 textcolor center px-5">Mise en service</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Prochaine maintenance</th>
                                 <th class="table_border table_font_1 textcolor center px-5">QR Code</th>
                             </tr>
 
-                            <?php for ($n = 0; $n < $nbTrots; $n++) {
-                                if ($n % 2 == 0) { ?>
-                                    <tr>
-                                        <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTrot.php?idtrot=<?php echo $resultTrots[$n]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
-                                        <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idtrot=<?php echo ($resultTrots[$n]['id']); ?>"><i class='bx bx-trash'></i></a></td>
-                                        <th class="table_border table_font_2 center py-2 text-white"><?php print_r($resultTrots[$n]["id"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["id_user"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["latitude"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["longitude"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["battery"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["status"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["entry_date"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["next_service"]); ?></th>
-                                        <th class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$n]["auth_code"]); ?></th>
-                                    </tr>
-                                <?php } else { ?>
-                                    <tr>
-                                        <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTrot.php?idtrot=<?php echo $resultTrots[$n]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
-                                        <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idtrot=<?php echo ($resultTrots[$n]['id']); ?>"><i class='bx bx-trash'></i></a></td>
-                                        <th class="table_border table_font_1 center py-2 text-white"><?php print_r($resultTrots[$n]["id"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["id_user"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["latitude"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["longitude"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["battery"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["status"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["entry_date"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["next_service"]); ?></th>
-                                        <th class="table_border table_font_1 center text-white"><?php print_r($resultTrots[$n]["auth_code"]); ?></th>
-                                    </tr>
-                            <?php }
-                            } ?>
+                            <?php for ($t = 0; $t < $nbTrots; $t++) { ?>
+                                <tr>
+                                    <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTrot.php?idtrot=<?php echo $resultTrots[$t]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
+                                    <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idtrot=<?php echo ($resultTrots[$t]['id']); ?>"><i class='bx bx-trash'></i></a></td>
+                                    <td id="lgn" class="table_border table_font_2 center py-2 text-white"><?php print_r($resultTrots[$t]["id"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["id_user"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["latitude"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["longitude"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["battery"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["status"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["entry_date"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["next_service"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["auth_code"]); ?></th>
+                                </tr>
+                            <?php } ?>
 
                         </table>
                     </div>

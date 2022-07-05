@@ -71,7 +71,7 @@ if (isset($_POST['formClient'])) {
                 document.location.href = "admin_list.php";
             }
             if (roleu == "client") {
-                document.location.href = "client_list.php";
+                document.location.href = "admin_list_client.php";
             }
         </script>
 

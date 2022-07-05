@@ -24,7 +24,7 @@ include "admin_leftmenu.php";
     <div class="pl-5">
         <div class="pl-5">
             <div class="pl-5">
-                
+
                 <div class="row pt-3 pl-3">
                     <div class="col pl-5 pb-5 pt-3">
                         <span class="title pt-3 textcolor px-5">Liste des tickets</span>
@@ -61,9 +61,10 @@ include "admin_leftmenu.php";
                                 <th class="table_border table_font_1 textcolor center px-5">Date de création</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Date de modification</th>
                             </tr>
+
                             <?php for ($n = 0; $n < $nbTickets; $n++) { ?>
                                 <tr>
-                                    <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="editTickets.php?ticketid=<?php echo $resultTickets[$n]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
+                                    <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTicket.php?ticketid=<?php echo $resultTickets[$n]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
                                     <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idadmin=<?php echo ($resultTickets[$n]['id']); ?>"><i class='bx bx-trash'></i></a></td>
                                     <td class="table_border table_font_2 center py-2 text-white"><?php echo $resultTickets[$n]['id']; ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['id_user']; ?></td>
@@ -76,12 +77,15 @@ include "admin_leftmenu.php";
                                     <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['date_updated']; ?></td>
                                 </tr>
                             <?php } ?>
+
                         </table>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
 
 </body>
+
+</html>
