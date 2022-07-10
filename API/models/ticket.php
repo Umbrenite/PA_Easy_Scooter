@@ -20,15 +20,15 @@ class TicketModel
         $date_now = date('Y-m-d');
         if (preg_match('/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/', $date_now)) {
             if(strstr($json['request_type'], 'Bug') != null){
-            $query = $connection->prepare("INSERT INTO iw22_ticket(title, description, status, request_type, priority_level, date_created) VALUES(:title, :description, 'En cours', :request_type, 'Moyen', '".$date_now."');");
-            $query->execute($json);
+                $query = $connection->prepare("INSERT INTO iw22_ticket(id_user,title, description, status, request_type, priority_level, date_created) VALUES(:id,:title, :description, 'En cours', :request_type, 'Moyen', '".$date_now."');");
+                $query->execute($json);
             }
             if(strstr($json['request_type'], 'Panne') != null){
-                $query = $connection->prepare("INSERT INTO iw22_ticket(title, description, status, request_type, priority_level, date_created) VALUES(:title, :description, 'En cours', :request_type, 'Faible', '".$date_now."');");
+                $query = $connection->prepare("INSERT INTO iw22_ticket(id_user,title, description, status, request_type, priority_level, date_created) VALUES(:id,:title, :description, 'En cours', :request_type, 'Faible', '".$date_now."');");
                 $query->execute($json);
             }
             if(strstr($json['request_type'], 'Maintenance') != null){
-                $query = $connection->prepare("INSERT INTO iw22_ticket(title, description, status, request_type, priority_level, date_created) VALUES(:title, :description, 'En cours', :request_type, 'Forte', '".$date_now."');");
+                $query = $connection->prepare("INSERT INTO iw22_ticket(id_user,title, description, status, request_type, priority_level, date_created) VALUES(:id,:title, :description, 'En cours', :request_type, 'Forte', '".$date_now."');");
                 $query->execute($json);
             }
             if(strstr($json['request_type'], 'Bug') == null && strstr($json['request_type'], 'Panne') == null && strstr($json['request_type'], 'Maintenance') == null){
