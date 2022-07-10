@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Map de visualisation des troittinettes</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+	</head>
+	<body>
+
+		<!-- Import maps polyfill -->
+		<!-- Remove this when import maps will be widely supported -->
+		<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "../build/three.module.js"
+				}
+			}
+		</script>
+
+		<script type="module">
+
+			import * as THREE from 'three';
+            import { FBXLoader } from '/easyscoot/threejs/examples/jsm/loaders/FBXLoader.js';
+			import { OrbitControls } from '/easyscoot/threejs/examples/jsm/controls/OrbitControls.js';
+			let camera, scene, renderer;
+			let base_pos_z = -300, base_pos_x = -800, base_pos_y = -125;
+			let add_pos_z = 0, add_pos_y = -125, add_pos_x = 0;
+			let rotation_x = 0, rotation_y = 0, rotation_z = 0;
+			let i;
+			var ScootEntity;
+			let select_addition, select_position;
+			var textArray = [
+				'left',
+				'right',
+				'up',
+				'down',
+			];
+
+			let verifyArray = [
+				'empty',
+				'empty',
+				'empty',
+				'empty',
+			];
+
+			init();
+			animate();
+
+			function init() {
+
+            //CREATION CAMERA + SCENE
+			camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 7500 );
+			camera.position.z = -1200;
+			camera.position.x = -1200;
+			camera.position.y = 1200;
+			camera.rotation.x = -1;
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0x8FBCD4 );
+
+			//CREATION CAMERA + SCENE
+
+			var ambientLight = new THREE.AmbientLight( 0xcccccc, 1.5 );
+			scene.add( ambientLight );
+
+
+    //ITEMS
+            const loader = new FBXLoader();
+
+			loader.load( 'models/fbx/TJunction_fold/Tjunction.fbx', function ( object ) {
+
+			scene.add( object );
+			object.position.x = base_pos_x;
+			object.position.y = base_pos_y;
+			object.position.z = base_pos_z;
+			object.rotation.y = -180;
+
+			} );
+
+			loader.load( 'models/fbx/TJunction_fold/ElectricScooter.fbx', function ( object ) {
+
+				ScootEntity = object;
+
+				scene.add( object );
+				object.position.x = base_pos_x;
+				object.position.y = base_pos_y;
+				object.position.z = base_pos_z;
+				object.rotation.y = -180;
+
+			} );
+
+			for(i = 0; i < 4; i++) {
+				select_addition = THREE.MathUtils.randInt(1,3); //Selectionne une template parmi celles prédéfinies
+				select_position = Math.floor(Math.random()*textArray.length); //Selectionne sa position
+
+			// TEMPLATE N°1
+				if (select_addition == 1) {
+					switch(select_position) {
+						case 0:
+							if (verifyArray[0] == "empty") {
+								loader.load( 'models/fbx/TJunction_fold/TAddition1.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -1250;
+									object.position.z = -900;
+									object.position.y = add_pos_y;
+									object.rotation.y = -180;
+
+								} );
+								verifyArray[0] = "taken";
+							}
+
+							break;
+						case 1:							
+							if (verifyArray[1] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition1.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -180;
+									object.position.y = add_pos_y;
+									object.position.z = -770;
+									object.rotation.y = 101.19;
+								} );
+								verifyArray[1] = "taken";
+							}
+							break;
+						case 2:
+							if (verifyArray[2] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition1.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -1410;
+									object.position.y = add_pos_y;
+									object.position.z = 125;
+									object.rotation.y = 10.05;
+
+								} );
+								verifyArray[2] = "taken";
+							}
+							break;
+						case 3:
+							if (verifyArray[3] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition1.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -350;
+									object.position.y = add_pos_y;
+									object.position.z = 325;
+									object.rotation.y = -44.95;
+									
+								} );
+								verifyArray[3] = "taken";
+							}
+							break;
+						default:
+							console.log("Soucis dans l'implémentation des templates");
+					}
+				}
+			// TEMPLATE N°2
+				if (select_addition == 2) {
+					switch(select_position) {
+						case 0:
+						if (verifyArray[0] == "empty") {
+								loader.load( 'models/fbx/TJunction_fold/TAddition2.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -1250;
+									object.position.z = -900;
+									object.position.y = add_pos_y;
+									object.rotation.y = -180;
+
+								} );
+								verifyArray[0] = "taken";
+
+							}
+							break;
+						case 1:
+						if (verifyArray[1] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition2.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -180;
+									object.position.y = add_pos_y;
+									object.position.z = -770;
+									object.rotation.y = 101.19;
+								} );
+								verifyArray[1] = "taken";
+							}
+							break;
+						case 2:
+						if (verifyArray[2] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition2.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -1410;
+									object.position.y = add_pos_y;
+									object.position.z = 125;
+									object.rotation.y = 10.05;
+
+								} );
+								verifyArray[2] = "taken";
+							}
+							break;
+						case 3:
+							if (verifyArray[3] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition2.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -350;
+									object.position.y = add_pos_y;
+									object.position.z = 325;
+									object.rotation.y = -44.95;
+									
+								} );
+								verifyArray[3] = "taken";
+							}
+							break;
+						default:
+							console.log("Soucis dans l'implémentation des templates");
+					}
+				}
+			// TEMPLATE N°3
+				if (select_addition == 3) {
+				switch(select_position) {
+					case 0:
+							if (verifyArray[0] == "empty") {
+								loader.load( 'models/fbx/TJunction_fold/TAddition3.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -1250;
+									object.position.z = -900;
+									object.position.y = add_pos_y;
+									object.rotation.y = -180;
+
+								} );
+								verifyArray[0] = "taken";
+							}
+
+							break;
+						case 1:							
+							if (verifyArray[1] == "empty") {
+								loader.load( 'models/fbx/TJunction_fold/TAddition3.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -180;
+									object.position.y = add_pos_y;
+									object.position.z = -770;
+									object.rotation.y = 101.19;
+								} );
+								verifyArray[1] = "taken";
+							}
+							break;
+						case 2:
+							if (verifyArray[2] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition3.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -1410;
+									object.position.y = add_pos_y;
+									object.position.z = 125;
+									object.rotation.y = 10.05;
+
+								} );
+								verifyArray[2] = "taken";
+							}
+							break;
+						case 3:
+							if (verifyArray[3] == "empty") {
+									loader.load( 'models/fbx/TJunction_fold/TAddition3.fbx', function ( object ) {
+
+									scene.add( object );
+
+									object.position.x = -350;
+									object.position.y = add_pos_y;
+									object.position.z = 325;
+									object.rotation.y = -44.95;
+									
+								} );
+								verifyArray[3] = "taken";
+							}
+							break;
+						default:
+							console.log("Soucis dans l'implémentation des templates");
+					}
+				}
+				console.log(select_position);
+			}
+
+		// LOAD DES VIRAGES SI LES CÔTÉS ADJACENTS SONT ACTIFS
+			if(verifyArray[0] == "taken" && verifyArray[1] == "taken") {
+				loader.load( 'models/fbx/TJunction_fold/Troute.fbx', function ( object ) {
+
+					scene.add( object );
+
+					object.position.x = -630;
+					object.position.y = add_pos_y;
+					object.position.z = -1375;
+					object.rotation.y = -90.46;
+
+				} );
+			}
+
+			if(verifyArray[0] == "taken" && verifyArray[2] == "taken") {
+				loader.load( 'models/fbx/TJunction_fold/Troute.fbx', function ( object ) {
+
+					scene.add( object );
+
+					object.position.x = -1840;
+					object.position.y = add_pos_y;
+					object.position.z = -465;
+					object.rotation.y = -44.91;
+
+				} );
+			}
+
+			if(verifyArray[1] == "taken" && verifyArray[3] == "taken") {
+				loader.load( 'models/fbx/TJunction_fold/Troute.fbx', function ( object ) {
+
+					scene.add( object );
+
+					object.position.x = 307;
+					object.position.y = add_pos_y;
+					object.position.z = -143;
+					object.rotation.y = 90.2;
+
+				} );
+			}
+
+			if(verifyArray[2] == "taken" && verifyArray[3] == "taken") {
+				loader.load( 'models/fbx/TJunction_fold/Troute.fbx', function ( object ) {
+
+					scene.add( object );
+
+					object.position.x = -967;
+					object.position.y = add_pos_y;
+					object.position.z = 760;
+					object.rotation.y = 44.59;
+
+				} );
+			}
+
+		// MOUVEMENT DE LA TROTTINETTE
+
+    //ITEMS
+
+			//Importations nécessaires
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				window.addEventListener( 'resize', onWindowResize );
+            //Importations nécessaires
+
+
+			const controls =  new OrbitControls(camera, renderer.domElement);
+			controls.target.set( base_pos_x,base_pos_y,base_pos_z );
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				if(ScootEntity.position.x <= -750) {
+					ScootEntity.position.x += 0.3;
+					ScootEntity.position.z += 0.36;
+				}
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	</body>
+</html>
