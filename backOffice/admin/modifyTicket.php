@@ -6,6 +6,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/struct/functions.php');
 
 $date_update = new DateTime();
 $date_update->setTimezone(new DateTimeZone('Europe/Paris'));
+$dateu = $date_update->format("Y-m-d");
 
 // PARTIE RECUP INFO TICKET
 $ticketID = $_GET['ticketid'];
@@ -13,6 +14,7 @@ $reqti = $bdd->prepare('SELECT * FROM iw22_ticket WHERE id = :id');
 $reqti->bindValue('id', $ticketID, PDO::PARAM_INT); // Représente le type de données INTEGER SQL.
 $reqti->execute();
 $infoTicket = $reqti->fetch();
+$idt = $infoTicket['id'];
 
 // PARTIE RECUP INFO USERS
 $requsr = $bdd->prepare('SELECT id, firstname, lastname FROM iw22_user');
@@ -20,15 +22,28 @@ $requsr->execute();
 $infoUser = $requsr->fetchall();
 $nbUsers = count($infoUser);
 
-if (isset($_POST['formModifyT'])) {
-    // iduti int
-    // titleti varchar
-    // descti text
-    // statti varchar
-    // typereq varchar
-    // priolvl varchar
-    // datecrea date
-    // dateup date
+// PARTIE RECUP INFO STATUTS TROTINETTE
+$reqrti = $bdd->prepare('SELECT name FROM iw22_ticket_reqtype');
+$reqrti->execute();
+$typeTic = $reqrti->fetchall();
+$nbTypeTic = count($typeTic);
+
+// PARTIE RECUP INFO STATUTS TICKET
+$reqstic = $bdd->prepare('SELECT name FROM iw22_ticket_status');
+$reqstic->execute();
+$statusTic = $reqstic->fetchall();
+$nbStatusTic = count($statusTic);
+
+if (isset($_POST['formModifyTi'])) {
+
+    if (isset($_POST['iduti']) && !empty($_POST['iduti'])) modifTicket($_POST['iduti'], $idt, 'id_user', $infoTicket['id_user']);
+    if (isset($_POST['titleti']) && !empty($_POST['titleti'])) modifTicket($_POST['titleti'], $idt, 'title', $infoTicket['title']);
+    if (isset($_POST['descti']) && !empty($_POST['descti'])) modifTicket($_POST['descti'], $idt, 'description', $infoTicket['description']);
+    if (isset($_POST['statti']) && !empty($_POST['statti'])) modifTicket($_POST['statti'], $idt, 'status', $infoTicket['status']);
+    if (isset($_POST['typereq']) && !empty($_POST['typereq'])) modifTicket($_POST['typereq'], $idt, 'request_type', $infoTicket['request_type']);
+    if (isset($_POST['priolvl']) && !empty($_POST['priolvl'])) modifTicket($_POST['priolvl'], $idt, "priority_level", $infoTicket['priority_level']);
+    if (isset($dateu) && !empty($dateu)) modifTicket($dateu, $idt, "date_updated", $infoTicket['date_updated']);
+
 }
 
 require "../../struct/head.php"; ?>
@@ -105,9 +120,13 @@ require "../../struct/head.php"; ?>
                                         <td>
                                             <select class="form-control" name="statti" required>
                                                 <option selected><?php print_r($infoTicket['status']); ?></option>
-                                                <option>En cours</option>
-                                                <option>Résolu</option>
-                                                <option>Bloqué</option>
+                                                
+                                                <?php for ($s = 0; $s < $nbStatusTic; $s++) { ?>
+                                                    <option>
+                                                        <?php echo $statusTic[$s]["name"]; ?>
+                                                    </option>
+                                                <?php } ?>
+                                                
                                             </select>
                                         </td>
                                     </tr>
@@ -117,9 +136,13 @@ require "../../struct/head.php"; ?>
                                         <td>
                                             <select class="form-control" name="typereq" required>
                                                 <option selected><?php print_r($infoTicket['request_type']); ?></option>
-                                                <option>Ajout de fonctionnalité</option>
-                                                <option>Correction bug</option>
-                                                <option>Problème de trotinette</option>
+                                                
+                                                <?php for ($t = 0; $t < $nbTypeTic; $t++) { ?>
+                                                    <option>
+                                                        <?php echo $typeTic[$t]["name"]; ?>
+                                                    </option>
+                                                <?php } ?>
+
                                             </select>
                                         </td>
                                     </tr>
@@ -130,20 +153,20 @@ require "../../struct/head.php"; ?>
                                             <select class="form-control" name="priolvl" required>
                                                 <option selected><?php print_r($infoTicket['priority_level']); ?></option>
                                                 <option>Faible</option>
-                                                <option>Moyen</option>
-                                                <option>Élevé</option>
+                                                <option>Moyenne</option>
+                                                <option>Forte</option>
                                             </select>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <th class="table_border table_font_1 textcolor center px-4" scope="row">Date de création :</th>
-                                        <td><input id="ctn" name="datecrea" type="text" class="form-control" value="<?php echo $infoTicket['date_created']; ?>" disabled></td>
+                                        <td><input id="ctn" type="text" class="form-control" value="<?php echo $infoTicket['date_created']; ?>" disabled></td>
                                     </tr>
 
                                     <tr>
                                         <th class="table_border table_font_1 textcolor center px-4" scope="row">Date de mise à jour :</th>
-                                        <td><input id="ctn" name="dateup" type="text" class="form-control" value="<?php echo ($date_update->format("Y-m-d")); ?>" disabled></td>
+                                        <td><input id="ctn" type="text" class="form-control" value="<?php echo ($date_update->format("Y-m-d")); ?>" disabled></td>
                                     </tr>
 
                                 </table>

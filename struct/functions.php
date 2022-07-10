@@ -82,8 +82,7 @@ function modifUser($dataPost, int $idUser, string $tableName, $oldData)
             alert("La modification de l'utilisateur a bien été prise en compte.");
             document.location.href = "modifyUser.php?userm=" + idu;
         </script>
-    <?php
-    }
+    <?php }
 }
 
 function modifTrot($newData, int $idTrot, string $tableName, $oldData)
@@ -107,12 +106,7 @@ function modifTrot($newData, int $idTrot, string $tableName, $oldData)
 
 function modifTicket($newData, int $idTticket, string $tableName, $oldData)
 {
-    if ($newData == "none") {
-        $newData = null;
-    }
-
     if ($newData != $oldData) {
-
         global $bdd;
         $updtU = $bdd->prepare("UPDATE iw22_ticket SET $tableName = ? WHERE id = ?");
         $updtU->execute(array($newData, $idTticket));

@@ -34,7 +34,7 @@ require "../../struct/head.php";
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent right">
                                 <li class="breadcrumb-item">
-                                    <a href="admin_dashboard.php">Dashboard</a>
+                                    <a href="admin_map.php">Map</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">Scooters</li>
                             </ol>

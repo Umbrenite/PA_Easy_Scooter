@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Liste tickets";
 require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/struct/functions.php');
 
 // PARTIE AFFICHAGE LISTE TICKETS
 $tickets = $bdd->prepare("SELECT * FROM iw22_ticket");
@@ -39,20 +40,13 @@ include "admin_leftmenu.php";
                     </div>
                 </div>
                 <div class="pl-5">
-                    <form action="" class="my-4">
-                        <div class="row justify-content-end">
-                            <div class="col-md-auto">
-                                <a href="addTickets.php" class="btn btn-success right">Ajouter un ticket</a>
-                            </div>
-                        </div>
-                    </form>
                     <div class="col">
                         <table>
                             <tr>
                                 <th class="table_font_1 textcolor center px-2"></th>
                                 <th class="table_font_1 textcolor center px-2"></th>
                                 <th class="table_border table_font_1 textcolor center px-5 py-2">ID</th>
-                                <th class="table_border table_font_1 textcolor center px-5">Utilisateur</th>
+                                <th class="table_border table_font_1 textcolor center px-5">Auteur</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Titre</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Description</th>
                                 <th class="table_border table_font_1 textcolor center px-5 py-2">Statut</th>
@@ -67,7 +61,7 @@ include "admin_leftmenu.php";
                                     <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTicket.php?ticketid=<?php echo $resultTickets[$n]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
                                     <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idadmin=<?php echo ($resultTickets[$n]['id']); ?>"><i class='bx bx-trash'></i></a></td>
                                     <td class="table_border table_font_2 center py-2 text-white"><?php echo $resultTickets[$n]['id']; ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['id_user']; ?></td>
+                                    <td class="table_border table_font_2 center text-white"><?php echo printUserInfo($resultTickets[$n]['id_user']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['title']; ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['description']; ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['status']; ?></td>

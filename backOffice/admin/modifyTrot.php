@@ -17,6 +17,11 @@ $requsr->execute();
 $infoUser = $requsr->fetchall();
 $nbUsers = count($infoUser);
 
+// PARTIE RECUP INFO STATUTS TROTINETTE
+$reqsco = $bdd->prepare('SELECT name FROM iw22_scooter_status');
+$reqsco->execute();
+$statusSco = $reqsco->fetchall();
+$nbStatusSco = count($statusSco);
 
 if (isset($_POST['formModifyT'])) {
 
@@ -116,10 +121,13 @@ require "../../struct/head.php"; ?>
                                         <td>
                                             <select class="form-control" name="staT" required>
                                                 <option selected><?php print_r($infoTrot['status']); ?></option>
-                                                <option>Libre</option>
-                                                <option>Utilisée</option>
-                                                <option>Déchargée</option>
-                                                <option>Hors-service</option>
+
+                                                <?php for ($s = 0; $s < $nbStatusSco; $s++) { ?>
+                                                    <option>
+                                                        <?php echo $statusSco[$s]["name"]; ?>
+                                                    </option>
+                                                <?php } ?>
+                                                
                                             </select>
                                         </td>
                                     </tr>
