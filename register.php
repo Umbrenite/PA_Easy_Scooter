@@ -54,7 +54,7 @@ if (isset($_POST['formRegis'])) {
   if (empty($errorPre) && empty($errorNom) && empty($errorMail) && empty($errorPwd) && empty($errorCheck)) {
 
     $corpsMail = 'Veuillez confirmer votre compte Electrot pour finaliser l\'inscription en cliquant sur ce lien :
-    https://electrot.site/confirm.php?mail=' . urlencode($mail) . '&key=' . $key . '';
+    https://www.electrot.site/confirm.php?mail=' . urlencode($mail) . '&key=' . $key . '';
     $insertmbr = $bdd->prepare("INSERT INTO iw22_user(mail, firstname, lastname, password, confirm_key, role, points, races, registration_date, fg_package) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $insertmbr->execute(array($mail, $prenom, $nom, $pwdFinal, $key, $roleMember, $iniZero, $iniZero, $date_now->format("Y-m-d H:i:s"), 1));
     mailer($mail, "Confirmation de compte", $corpsMail);

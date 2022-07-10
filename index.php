@@ -5,6 +5,7 @@ require "struct/head.php";
 ?>
 
 <link rel="stylesheet" href="css/style.css">
+<?php include "3cx.php" ?>
 </head>
 
 <body class="bgfontblack resize">
@@ -25,15 +26,6 @@ require "struct/head.php";
   <?php include "struct/header.php" ?>
 
   <main>
-
-    <div id="language" class="dropdown language_pos">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="img/france-.png" width="20" height="20" class="d-inline-block align-top" alt="">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#"><img src="img/USA.png" width="20" height="20" alt=""> - Anglais</a>
-      </div>
-    </div>
 
     <section id="image" class="py-5 reveal">
 

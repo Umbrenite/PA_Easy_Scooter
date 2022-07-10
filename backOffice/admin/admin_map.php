@@ -24,7 +24,7 @@ require "../../struct/head.php";
                     <div class="col-5 pt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent right">
-                                <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="admin_list_scooter.php">Liste des trotinettes</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Map</li>
                             </ol>
                         </nav>

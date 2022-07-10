@@ -69,7 +69,7 @@ function modifUser($dataPost, int $idUser, string $tableName, $oldData)
 {
     if ($dataPost != $oldData) {
 
-        if (is_numeric($dataPost) && $dataPost < 0 || $dataPost > pow(10, 12)) {
+        if (is_numeric($dataPost) && $dataPost < 0 || $dataPost > pow(10, 16)) {
             exit();
         }
 
@@ -78,18 +78,101 @@ function modifUser($dataPost, int $idUser, string $tableName, $oldData)
         $updtU->execute(array($dataPost, $idUser));
 ?>
         <script>
-            var idu = <?php echo json_encode($idUser); ?>;
-            var create = alert("La modification de l'utilisateur a bien été prise en compte.");
+            const idu = <?php echo json_encode($idUser); ?>;
+            alert("La modification de l'utilisateur a bien été prise en compte.");
             document.location.href = "modifyUser.php?userm=" + idu;
         </script>
-<?php
-    }
+    <?php }
 }
 
-function deleteT(int $idTrot, string $tableName, string $fileName)
+function modifTrot($newData, int $idTrot, string $tableName, $oldData)
+{
+    if ($newData == "none") {
+        $newData = null;
+    }
+
+    if ($newData != $oldData) {
+
+        global $bdd;
+        $updtU = $bdd->prepare("UPDATE iw22_scooter SET $tableName = ? WHERE id = ?");
+        $updtU->execute(array($newData, $idTrot));
+    ?>
+        <script>
+            alert("La modification de la trotinette a bien été prise en compte.");
+            document.location.href = "admin_list_scooter.php";
+        </script>
+    <?php }
+}
+
+function modifTicket($newData, int $idTticket, string $tableName, $oldData)
+{
+    if ($newData != $oldData) {
+        global $bdd;
+        $updtU = $bdd->prepare("UPDATE iw22_ticket SET $tableName = ? WHERE id = ?");
+        $updtU->execute(array($newData, $idTticket));
+    ?>
+        <script>
+            alert("La modification du ticket a bien été prise en compte.");
+            document.location.href = "admin_list_ticket.php";
+        </script>
+    <?php }
+}
+
+function deleteT(int $id, string $tableName, string $fileName)
 {
     require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
     $delT = $bdd->prepare("DELETE FROM $tableName WHERE id = ?");
-    $delT->execute(array($idTrot));
+    $delT->execute(array($id));
     header("Location: backOffice/admin/" . $fileName . ".php");
+}
+
+function printUserInfo($userID)
+{
+    global $bdd;
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $reqInfo = $bdd->prepare("SELECT firstname, lastname FROM iw22_user WHERE id = ?");
+    $reqInfo->execute(array($userID));
+    $userInfo = $reqInfo->fetch();
+    return $userInfo["firstname"] . " " . $userInfo["lastname"];
+}
+
+function recupinfo($tableName)
+{
+    global $bdd;
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $req = $bdd->prepare("SELECT * FROM $tableName");
+    $req->execute();
+    $results = $req->fetchAll();
+    return $results;
+}
+
+function textalert($text)
+{ ?>
+    <script>
+        const text = <?php echo json_encode($text); ?>;
+        alert(text);
+    </script>
+<?php }
+
+function textalertwredirect($text, $redirect)
+{ ?>
+    <script>
+        alert(<?php echo json_encode($text); ?>);
+        document.location.href = <?php echo json_encode($redirect); ?>;
+    </script>
+<?php }
+
+function insertOptions(string $data, string $tableName, string $columnName, string $textAlert, string $pageName)
+{
+    global $bdd;
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $insAge = $bdd->prepare("INSERT INTO `$tableName` (`$columnName`) VALUES (?)");
+    $insAge->execute(array($data)); ?>
+
+    <script>
+        alert(<?php echo json_encode($textAlert); ?>);
+        document.location.href = <?php echo json_encode($pageName); ?>;
+    </script>
+
+<?php
 }

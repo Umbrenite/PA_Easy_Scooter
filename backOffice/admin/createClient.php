@@ -52,7 +52,7 @@ if (isset($_POST['formClient'])) {
 
         un administrateur vient de vous créer un compte Electrot.
         Afin de finaliser l\'inscription, veuillez vérifier votre compte en cliquant sur ce lien : 
-        https://electrot.site/confirm.php?mail=' . urlencode($mail) . '&key=' . $key . '
+        https://www.electrot.site/confirm.php?mail=' . urlencode($mail) . '&key=' . $key . '
 
         Voici votre mot de passe temporaire qu\'il faudra modifier après votre première connexion : 
         '
@@ -71,7 +71,7 @@ if (isset($_POST['formClient'])) {
                 document.location.href = "admin_list.php";
             }
             if (roleu == "client") {
-                document.location.href = "client_list.php";
+                document.location.href = "admin_list_client.php";
             }
         </script>
 
