@@ -52,7 +52,7 @@ require "bdd-connexions.php";
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['product']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['status']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['date_created']); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><a href="/bill.php?id=<?php echo($_SESSION['id']) ?>&facture_id=<?php echo($resultBills[$t]['id']) ?>&order=<?php echo($resultProduct[$t]['name']) ?>"><button class="btn bgfontgreen px-3"><span class="text-white center"><i class="fa-solid fa-paperclip"></i></span></button></td>
+                                    <td class="table_border table_font_2 center text-white"><a href="/bill.php?id=<?php echo($_SESSION['id']) ?>&facture_id=<?php echo($resultBills[$t]['id']) ?>&order=<?php echo($resultBills[$t]['product']) ?>"><button class="btn bgfontgreen px-3"><span class="text-white center"><i class="fa-solid fa-paperclip"></i></span></button></td>
 
                                 </tr>
                                 <?php } ?>
