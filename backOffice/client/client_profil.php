@@ -1,8 +1,17 @@
 <?php
 session_start();
 $pageTitle = "Mon profil";
-require "../../struct/head.php";
-require "bdd-connexions.php";
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+
+$member = $bdd->prepare("SELECT * FROM iw22_user where id = $_SESSION[id]");
+$member->execute();
+$resultMember = $member->fetch();
+$fg_pack_member = $resultMember['fg_package'];
+
+$package_per_users = $bdd->prepare('SELECT name,price FROM iw22_package left join iw22_user on iw22_package.id = iw22_user.fg_package where fg_package = "' . $fg_pack_member . '"');
+$package_per_users->execute();
+$resultPackage_per_users = $package_per_users->fetch();
 
 if (isset($_POST['formProfil'])) {
 
@@ -20,7 +29,7 @@ if (isset($_POST['formProfil'])) {
     if (!isset($errorNewPwd)) {
         $newPwd = $_POST['confirmNewPwd'];
 
-        require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
         $stmt = $bdd->prepare('SELECT * FROM iw22_user WHERE id = :id');
         $stmt->bindValue('id', $_SESSION['id'], PDO::PARAM_INT); // Représente le type de données INTEGER SQL.
         $result = $stmt->execute();
@@ -49,7 +58,7 @@ if (isset($_POST['formProfil'])) {
     // PARTIE MODIF PRENOM
     if (isset($_POST['newFirstName']) && !empty($_POST['newFirstName']) && !isset($erreurNewFirstName)) {
         $newFirstname = htmlspecialchars($_POST['newFirstName']);
-        require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
         $insertFirstName = $bdd->prepare('UPDATE iw22_user SET firstname = ? WHERE id = ?');
         $insertFirstName->execute(array($newFirstname, $_SESSION['id']));
         $_SESSION['firstname'] = $newFirstname;
@@ -66,7 +75,7 @@ if (isset($_POST['formProfil'])) {
     // PARTIE MODIF NOM
     if (isset($_POST['newName']) && !empty($_POST['newName']) && !isset($erreurNewName)) {
         $newName = htmlspecialchars($_POST['newName']);
-        require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
         $insertName = $bdd->prepare('UPDATE iw22_user SET lastname = ? WHERE id = ?');
         $insertName->execute(array($newName, $_SESSION['id']));
         $_SESSION['lastname'] = $newName;
@@ -79,8 +88,8 @@ if (isset($_POST['formProfil'])) {
 <?php
     }
 }
-?>
 
+require "../../struct/head.php"; ?>
 <link href="../../css/dashboard.css" rel="stylesheet" type="text/css">
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <link href="../../css/profil.css" rel="stylesheet" type="text/css">
@@ -95,6 +104,7 @@ require "client_leftmenu.php";
     <div class="pl-5">
         <div class="pl-5">
             <div class="pl-5">
+
                 <div class="row pt-3 pl-3">
                     <div class="col pl-5 pb-5 pt-3">
                         <span class="title pt-3 textcolor px-5"><?php echo $pageTitle; ?></span>
@@ -102,18 +112,21 @@ require "client_leftmenu.php";
                     <div class="col pt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent right">
-                                <li class="breadcrumb-item"><a href="client_dashboard.php?id=<?php echo ($_SESSION['id']); ?>">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="client_dashboard.php">Dashboard</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Profil</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
+
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="login-form">
                                 <form method="post">
+
                                     <h5>Modifier les informations personnelles</h5>
+
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col">
@@ -132,41 +145,52 @@ require "client_leftmenu.php";
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <p class="info">Mail</p>
-                                        <input type="mail" id="mailU" name="mailU" class="form-control" placeholder="<?php echo $_SESSION['mail']; ?>" disabled="disabled">
+                                        <input type="mail" class="form-control" placeholder="<?php echo $_SESSION['mail']; ?>" disabled="disabled">
                                     </div>
 
                                     <div class="form-group">
                                         <p class="info">Forfait actuel</p>
-                                        <input type="text" id="packageU" name="packageU" class="form-control" placeholder="<?php echo($resultPackage_per_users[0]['name']);?>" disabled="disabled">
+                                        <input type="text" class="form-control" placeholder="<?php echo $resultPackage_per_users['name']; ?>" disabled="disabled">
                                     </div>
+
                                     <hr>
+
                                     <h5>Modifier le mot de passe</h5>
+
                                     <div class="form-group">
-                                    <input type="password" id="oldPwd" name="oldPwd" class="form-control" placeholder="Mot de passe actuel">
+                                        <input type="password" id="oldPwd" name="oldPwd" class="form-control" placeholder="Mot de passe actuel">
                                         <p class="errorrr">
                                             <?php if (isset($errorOldPwd)) echo $errorOldPwd; ?>
                                         </p>
                                     </div>
+
                                     <div class="form-group">
                                         <input type="password" id="newPwd" name="newPwd" class="form-control" placeholder="Nouveau mot de passe">
                                     </div>
+
                                     <div class="form-group">
                                         <input type="password" id="confirmNewPwd" name="confirmNewPwd" class="form-control" placeholder="Confirmer le nouveau mot de passe">
                                     </div>
+
                                     <p class="errorrr">
                                         <?php if (isset($errorNewPwd)) echo $errorNewPwd; ?>
                                     </p>
+
                                     <hr>
+
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-success" name="formProfil" value="Sauvegarder">
                                     </div>
+
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
