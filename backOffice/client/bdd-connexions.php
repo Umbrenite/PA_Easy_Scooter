@@ -1,7 +1,4 @@
 <?php
-// if (!empty($_GET['id'])) $getId = intval($_GET['id']);
-// if ($getId != $_SESSION['id']) header("Location: ../../index.php");
-
 
 if (!isset($_SESSION['id'])) {
     header("Location: ../../index.php");

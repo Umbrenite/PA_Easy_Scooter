@@ -9,19 +9,20 @@
     <b><span class="pl-3"><?php echo ($_SESSION['firstname'] . " " . $_SESSION['lastname']); ?></span></b>
     <hr>
 
-    <a href="client_dashboard.php?id=<?php echo($_SESSION['id']);?>"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color ">Mon dashboard</span></button></a>
+    <a href="client_dashboard.php"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color ">Mon dashboard</span></button></a>
     <div class="col">
-    <a href="../../catalog.php?id=<?php echo($_SESSION['id']);?>"><button class="btn bgfontgreen btn-block px-3"><span class="text-white center">Commander</span></button></a>
+    <a href="../../catalog.php"><button class="btn bgfontgreen btn-block px-3"><span class="text-white center">Commander</span></button></a>
 
     </div>
 
 
     <div class="col pt-4"><span class="subtitle">Mes données</span></div>
 
-    <a href="client_paid.php?id=<?php echo($_SESSION['id']);?>"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Factures</span></button></a>
+    <a href="client_paid.php"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Factures</span></button></a>
 
-    <a href="client_profil.php?id=<?php echo($_SESSION['id']);?>"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Profil</span></button></a>
-    <a href="client_scooter_gestion.php?id=<?php echo($_SESSION['id']);?>"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Map</span></button></a>
+    <a href="client_scooter_gestion.php"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Map</span></button></a>
+
+    <a href="client_profil.php"><button class="btn btn-lg btn-block px-3"><span class="dashboard_text_color left">Profil</span></button></a>
 
     <hr>
 
