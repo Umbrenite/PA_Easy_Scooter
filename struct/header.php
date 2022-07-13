@@ -22,7 +22,7 @@
                             Accessoires
                         </a>
                         <a id="navbara" href="/index.php#about">
-                            Pourquoi Electrot ?
+                            Pourquoi Electrot
                         </a>
                     </div>
 

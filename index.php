@@ -51,7 +51,7 @@ require "struct/head.php";
       <div class="container-fluid pt-5">
         <div id="blockachat" class="row pt-5">
           <div class="col pl-4 vertical_center">
-            <h2 id="infoprod" class="textcolor pb-4 pl-2">Nos forfaits</h2>
+            <h2 id="infoprodt" class="textcolor pb-4 pl-2">Nos forfaits</h2>
             <div id="infoprod" class="col-8 textcolor front_subtitle">
               Consultez nos forfaits pour découvrir celui qui vous conviendra le mieux !
             </div>
@@ -88,7 +88,7 @@ require "struct/head.php";
             </a>
           </div>
           <div class="col pl-4 vertical_center">
-            <h2 id="infoprod" class="textcolor pb-4 pl-2">Nos accessoires</h2>
+            <h2 id="infoprodt" class="textcolor pb-4 pl-2">Nos accessoires</h2>
             <div id="infoprod" class="col-8 textcolor front_subtitle">
               Consultez notre catalogue d'accessoires pour voyager en toute sécurité !
             </div>

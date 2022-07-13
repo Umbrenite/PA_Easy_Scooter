@@ -177,14 +177,23 @@
         font-size: 125%;
     }
 
-    #infoprod {
+
+    #infoprodt {
         text-align: center;
         margin: auto;
         font-size: 12px;
+        margin-right: 6%;
+        font-weight: bold;
+    }
+
+    #infoprod {
+        text-align: center;
+        margin: auto;
+        font-size: 10px;
     }
 
     #btninfoprof {
-        font-size: 10px;
+        font-size: 7px;
         width: auto;
         margin: auto;
         margin-top: 2%;
@@ -309,11 +318,11 @@
     /*  -------------------- NAVBAR --------------------  */
 
     #navbaras {
-        margin-left: 5%;
+        margin-left: 3%;
     }
 
     #navbarbuttons {
-        margin-right: -15%;
+        margin-right: -8%;
     }
 
     .navbar {
@@ -348,7 +357,7 @@
     }
 
     #navbara {
-        font-size: 8px;
+        font-size: 9px;
     }
 
     .navbar {
@@ -549,7 +558,7 @@
 
     #imgaccess {
         margin-left: 15%;
-        margin-top: 45%;
+        margin-top: 25%;
     }
 
     #blockachat {
@@ -561,7 +570,7 @@
     }
 
     #imgforf {
-        margin-top: 45%;
+        margin-top: 25%;
     }
 
     /* -------------------- INDEX --------------------  */
@@ -750,11 +759,11 @@
     #infoprod {
         text-align: center;
         margin: auto;
-        font-size: 8px;
+        font-size: 13px;
     }
 
     #btninfoprof {
-        font-size: 7px;
+        font-size: 10px;
         width: auto;
         margin: auto;
         margin-top: 2%;
@@ -770,7 +779,7 @@
 
     #needco {
         text-align: center;
-        font-size: 7px;
+        font-size: 11px;
     }
 
     /*  -------------------- TEXTS --------------------  */
@@ -828,16 +837,15 @@
     /*  -------------------- FOOTER --------------------  */
 
     #footerinfoleft {
-        margin-left: 20%;
+        margin-left: 10%;
     }
 
     #footerul {
-        font-size: 7px;
+        font-size: 10px;
         display: contents;
     }
 
     footer h4 {
-        margin-left: 9%;
         margin-bottom: 5%;
     }
 
@@ -854,7 +862,7 @@
     }
 
     #footerlogo {
-        width: 100%;
+        width: 80%;
     }
 
     #divfooter {
@@ -863,8 +871,8 @@
 
     #tfooter {
         margin-top: 15%;
-        font-size: 9px;
-        margin-bottom: 9px;
+        font-size: 12px;
+        margin-bottom: 10%;
     }
 
     .col-5 {
@@ -878,11 +886,11 @@
     /*  -------------------- NAVBAR --------------------  */
 
     #navbaras {
-        margin-left: 3%;
+        margin-left: 12%;
     }
 
     #navbarbuttons {
-        margin-right: -27%;
+        margin-right: -20%;
     }
 
     .navbar {
@@ -905,7 +913,7 @@
     }
 
     #navbutton {
-        font-size: 6px;
+        font-size: 10px;
     }
 
     body {
@@ -917,7 +925,7 @@
     }
 
     #navbara {
-        font-size: 7px;
+        font-size: 10px;
     }
 
     .navbar {
@@ -1077,7 +1085,7 @@
     /* -------------------- INDEX --------------------  */
 
     #titlecard {
-        font-size: 6px;
+        font-size: 12px;
     }
 
     .card-body {
@@ -1086,7 +1094,7 @@
     }
 
     #textcard {
-        font-size: 5px;
+        font-size: 9px;
     }
 
     #title1 {
@@ -1111,7 +1119,7 @@
     }
 
     #firstcardabout {
-        margin-left: 7%;
+        margin-left: 5%;
         max-width: 25%;
         margin-bottom: 35%;
     }
@@ -1121,12 +1129,22 @@
         margin-top: 15%;
     }
 
+    #imgforf {
+        margin-top: 10%;
+    }
+
     #blockachat {
-        margin-top: 30%;
+        margin-top: 25%;
     }
 
     #navbarpanel {
-        font-size: 6px;
+        font-size: 10px;
+    }
+
+    #infoprodt {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
     }
 
     /* -------------------- INDEX --------------------  */
@@ -1322,7 +1340,7 @@
         font-size: 20px;
         width: auto;
         margin: auto;
-        margin-top: 2%;
+        margin-top: 6%;
         display: flex;
     }
 
@@ -1444,7 +1462,7 @@
 
     #navbaras {
         margin-left: -20%;
-        margin-right: 10%;
+        margin-right: 5%;
     }
 
     #navbarbuttons {
@@ -1472,6 +1490,7 @@
 
     #navbutton {
         font-size: 20px;
+        margin-right: 10%;
     }
 
     body {
@@ -1484,6 +1503,7 @@
 
     #navbara {
         font-size: 16px;
+        font-weight: bold;
     }
 
     .navbar {
@@ -1536,10 +1556,6 @@
 
     .col-sm-3 a {
         color: #249340;
-    }
-
-    .col-sm-3 .btn-outline-success {
-        margin-right: 2%;
     }
 
     .col-sm-3 .navbar-brand {
@@ -1685,6 +1701,11 @@
 
     #imgaccess {
         margin-left: 15%;
+        margin-top: 10%;
+    }
+
+    #imgforf {
+        margin-top: 5%;
     }
 
     #blockachat {
@@ -1693,6 +1714,12 @@
 
     #navbarpanel {
         font-size: 15px;
+    }
+
+    #infoprodt {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
     }
 
     /* -------------------- INDEX --------------------  */
@@ -2166,6 +2193,11 @@
 
     #imgforf {
         margin-left: -10%;
+    }
+
+    #infoprodt {
+        text-align: center;
+        font-weight: bold;
     }
 
     /*  -------------------- INDEX --------------------  */
