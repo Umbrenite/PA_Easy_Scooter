@@ -1,0 +1,7 @@
+{
+    "name": "vpcuser/vpcuser",
+    "require": {
+        "mpdf/mpdf": "^8.1",
+        "stripe/stripe-php": "^8.10"
+    }
+}

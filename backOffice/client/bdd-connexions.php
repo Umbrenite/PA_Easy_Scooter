@@ -22,10 +22,6 @@ $resultBills = $bills->fetchAll();
 $nbBills = count($resultBills);
 $product_order = $resultBills[0]['product'];
 
-$product = $bdd->prepare('SELECT name,price FROM iw22_bill left join iw22_package on iw22_bill.product = iw22_package.name where name != "" union all SELECT name,price from iw22_bill right join iw22_accessory on iw22_bill.product = iw22_accessory.name where iw22_bill.product = iw22_accessory.name');
-$product->execute();
-$resultProduct = $product->fetchAll();
-
 $package_per_users = $bdd->prepare('SELECT name,price FROM iw22_package left join iw22_user on iw22_package.id = iw22_user.fg_package where fg_package = "'.$fg_pack_member.'"');
 $package_per_users->execute();
 $resultPackage_per_users = $package_per_users->fetchAll();

@@ -1,6 +1,6 @@
 <?php
 
-require '../../../home/service/vendor/autoload.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/database/database.php');
 
