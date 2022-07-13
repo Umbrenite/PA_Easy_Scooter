@@ -65,7 +65,7 @@ require "struct/head.php"; ?>
                         <div class="row">
                             <div class="col-sm-3">
                                 <a href="index.php">
-                                    <img src="img/logo/electrotst.png" class="logo-regis" alt="logo Electrot">
+                                    <img id="logoelectrot" src="img/logo/electrotst.png" class="logo-regis" alt="logo Electrot">
                                 </a>
                             </div>
                             <div class="col-sm-9">

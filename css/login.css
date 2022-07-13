@@ -1,7 +1,16 @@
 @media(min-width: 1px) and (max-width: 425px) {
+
+    a {
+        color: green;
+    }
+
+    #logoelectrot {
+        width: 0;
+    }
+
     body {
         width: 100%;
-        background: url(../picture/connexion.jpg) no-repeat center fixed;
+        background: url(../img/login.png) no-repeat center fixed;
         background-size: cover;
     }
 
@@ -33,18 +42,18 @@
     .login-form h1 {
         text-align: center;
         font-family: fantasy;
-        color: #17A2B8;
+        color: green;
         margin-bottom: 13%;
     }
 
     .login-form h4 {
         text-align: center;
-        color: #17A2B8;
+        color: green;
     }
 
     .pasdecompte {
         font-size: 90%;
-        color: #777C82;
+        color: green;
         text-align: center;
         margin-bottom: 10%;
     }
@@ -72,9 +81,10 @@
 }
 
 @media(min-width: 426px) and (max-width: 767px) {
+
     body {
         width: 100%;
-        background: url(../picture/connexion.jpg) no-repeat center fixed;
+        background: url(../img/login.png) no-repeat center fixed;
         background-size: cover;
     }
 
@@ -145,9 +155,14 @@
 }
 
 @media(min-width: 768px) and (max-width: 1388px) {
+
+    #logoelectrot {
+        width: 50%;
+    }
+
     body {
         width: 100%;
-        background: url(../picture/connexion.jpg) no-repeat center fixed;
+        background: url(../img/login.png) no-repeat center fixed;
         background-size: cover;
     }
 
@@ -301,6 +316,7 @@
         text-decoration: none;
         color: #249340;
     }
+
     .login-form a:hover {
         color: #249340;
     }
