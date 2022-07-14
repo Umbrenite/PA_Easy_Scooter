@@ -75,9 +75,7 @@ require "struct/head.php";
           </div>
 
           <div class="col acc_img_resize">
-            <a href="object_details.php">
               <img class="card-img-top rounded" src="./img/accessory-catalog.jpeg">
-            </a>
           </div>
 
         </div>
@@ -90,9 +88,7 @@ require "struct/head.php";
         <div class="row px-5 pt-5">
 
           <div class="col acc_img_resize">
-            <a href="object_details.php">
               <img class="card-img-top rounded" src="./img/accessoires.PNG">
-            </a>
           </div>
 
           <div class="col pl-4 vertical_center">

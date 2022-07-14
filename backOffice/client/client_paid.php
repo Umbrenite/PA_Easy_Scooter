@@ -35,8 +35,6 @@ require "bdd-connexions.php";
                         <table>
 
                             <tr>
-                                <th class="table_border table_font_1 textcolor center px-4 py-2">ID</th>
-                                <th class="table_border table_font_1 textcolor center px-4">ID user</th>
                                 <th class="table_border table_font_1 textcolor center px-4">Contenu</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Status</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Date de paiement</th>
@@ -47,8 +45,6 @@ require "bdd-connexions.php";
                                 <?php if($resultBills[$t] != null ){ ?>
 
                                 <tr>
-                                    <td class="table_border table_font_2 center py-2 text-white"><?php echo ($resultBills[$t]['id']); ?></td>
-                                    <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['user_id']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['product']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['status']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo ($resultBills[$t]['date_created']); ?></td>
