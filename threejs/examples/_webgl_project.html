@@ -23,15 +23,16 @@
 		<script type="module">
 
 			import * as THREE from 'three';
-            import { FBXLoader } from '/threejs/examples/jsm/loaders/FBXLoader.js';
-			import { OrbitControls } from '/threejs/examples/jsm/controls/OrbitControls.js';
+            import { FBXLoader } from '/threejs/examples/jsm/loaders/FBXLoader.js'; //Loader FBX
+			import { OrbitControls } from '/threejs/examples/jsm/controls/OrbitControls.js'; //Loader OBJ
 			let camera, scene, renderer;
-			let base_pos_z = -300, base_pos_x = -800, base_pos_y = -125;
-			let add_pos_z = 0, add_pos_y = -125, add_pos_x = 0;
-			let rotation_x = 0, rotation_y = 0, rotation_z = 0;
+			let base_pos_z = -300, base_pos_x = -800, base_pos_y = -125; //Position du  carré au centre
+			let add_pos_y = -125 //Position à rajouter aux templates selectionnées 
+			let rotation_x = 0, rotation_y = 0, rotation_z = 0; //Rotation du centre
 			let i;
-			var ScootEntity;
-			let select_addition, select_position;
+			var ScootEntity; //Scooter
+			let select_addition, select_position; //Variables d'ajout et de selection de position
+			//Array de selection aléatoire pour chaque template
 			var textArray = [
 				'left',
 				'right',
@@ -39,6 +40,7 @@
 				'down',
 			];
 
+			//Array de vérification lorsqu'un emplacement est pris
 			let verifyArray = [
 				'empty',
 				'empty',
@@ -69,17 +71,18 @@
 
     //ITEMS
             const loader = new FBXLoader();
-
+			//Objet au centre
 			loader.load( 'models/fbx/TJunction_fold/Tjunction.fbx', function ( object ) {
-
-			scene.add( object );
-			object.position.x = base_pos_x;
-			object.position.y = base_pos_y;
-			object.position.z = base_pos_z;
-			object.rotation.y = -180;
+			
+				scene.add( object );
+				object.position.x = base_pos_x;
+				object.position.y = base_pos_y;
+				object.position.z = base_pos_z;
+				object.rotation.y = -180;
 
 			} );
 
+			//Trottinette au centre
 			loader.load( 'models/fbx/TJunction_fold/ElectricScooter.fbx', function ( object ) {
 
 				ScootEntity = object;
@@ -94,24 +97,24 @@
 
 			for(i = 0; i < 4; i++) {
 				select_addition = THREE.MathUtils.randInt(1,3); //Selectionne une template parmi celles prédéfinies
-				select_position = Math.floor(Math.random()*textArray.length); //Selectionne sa position
+				select_position = Math.floor(Math.random()*textArray.length); //Selectionne sa position (0/1/2/3), et place la template selon le nombre choisi
 
 			// TEMPLATE N°1
 				if (select_addition == 1) {
 					switch(select_position) {
-						case 0:
-							if (verifyArray[0] == "empty") {
+						case 0: //Cas où select_position = 0
+							if (verifyArray[0] == "empty") { //Si il n'y a aucune template sur cet emplacement, alors on génère la template
 								loader.load( 'models/fbx/TJunction_fold/TAddition1.fbx', function ( object ) {
 
 									scene.add( object );
-
+									//Application des coordonnées
 									object.position.x = -1250;
 									object.position.z = -900;
 									object.position.y = add_pos_y;
 									object.rotation.y = -180;
 
 								} );
-								verifyArray[0] = "taken";
+								verifyArray[0] = "taken"; //On indique qu'une template est placée ici
 							}
 
 							break;
@@ -353,7 +356,6 @@
 				} );
 			}
 
-		// MOUVEMENT DE LA TROTTINETTE
 
     //ITEMS
 
@@ -366,6 +368,7 @@
             //Importations nécessaires
 
 
+			//OrbitControl
 			const controls =  new OrbitControls(camera, renderer.domElement);
 			controls.target.set( base_pos_x,base_pos_y,base_pos_z );
 			}
@@ -379,14 +382,10 @@
 
 			}
 
+			//Fonction d'animation
 			function animate() {
 
 				requestAnimationFrame( animate );
-
-				if(ScootEntity.position.x <= -750) {
-					ScootEntity.position.x += 0.3;
-					ScootEntity.position.z += 0.36;
-				}
 
 				renderer.render( scene, camera );
 
