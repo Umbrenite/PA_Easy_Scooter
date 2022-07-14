@@ -2,5 +2,4 @@
 Projet Annuel de :
 
  - EVRARD Pierre
- - RONCIN Axel
  - BLANDIN Arthur
