@@ -65,6 +65,18 @@ function printPkgName($packageID)
     return $resultPkgName["name"];
 }
 
+function printUserTrotName($userID)
+{
+    if(isset($userID)){
+    global $bdd;
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+    $userName = $bdd->prepare("SELECT * FROM iw22_user WHERE id = ?");
+    $userName->execute(array($userID));
+    $resultUserName = $userName->fetch();
+    return "(".$userID.") ".$resultUserName["firstname"]." ".$resultUserName["lastname"];
+    }
+}
+
 function modifUser($dataPost, int $idUser, string $tableName, $oldData)
 {
     if ($dataPost != $oldData) {

@@ -2,6 +2,7 @@
 $pageTitle = "Liste des trotinettes";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/database/database.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/struct/functions.php');
 
 // PARTIE AFFICHAGE LISTE CLIENTS
 $trots = $bdd->prepare("SELECT * FROM iw22_scooter");
@@ -72,7 +73,7 @@ require "../../struct/head.php";
                                     <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTrot.php?idtrot=<?php echo $resultTrots[$t]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
                                     <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idtrot=<?php echo ($resultTrots[$t]['id']); ?>"><i class='bx bx-trash'></i></a></td>
                                     <td id="lgn" class="table_border table_font_2 center py-2 text-white"><?php print_r($resultTrots[$t]["id"]); ?></th>
-                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["id_user"]); ?></th>
+                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r(printUserTrotName($resultTrots[$t]["id_user"])); ?></th>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["latitude"]); ?></th>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["longitude"]); ?></th>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultTrots[$t]["battery"]); ?></th>

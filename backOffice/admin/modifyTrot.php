@@ -36,7 +36,7 @@ if (isset($_POST['formModifyT'])) {
     if (isset($_POST['longT']) && !empty($_POST['longT'])) modifTrot(floatval($_POST['longT']), $idT, "longitude", $infoTrot['longitude']);
     if (isset($_POST['batT']) && !empty($_POST['batT'])) modifTrot(intval($_POST['batT']), $idT, "battery", $infoTrot['battery']);
     if (isset($_POST['staT']) && !empty($_POST['staT'])) modifTrot($_POST['staT'], $idT, "status", $infoTrot['status']);
-    if (isset($_POST['codeT']) && !empty($_POST['codeT'])) modifTrot(intval($_POST['codeT']), $idT, "auth_code", $infoTrot['auth_code']);
+    if (isset($_POST['codeT']) && !empty($_POST['codeT'])) modifTrot($_POST['codeT'], $idT, "auth_code", $infoTrot['auth_code']);
 }
 
 require "../../struct/head.php"; ?>

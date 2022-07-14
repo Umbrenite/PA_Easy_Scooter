@@ -45,7 +45,7 @@ require "../../struct/head.php";
                     <form action="" class="my-4">
                         <div class="row justify-content-end">
                             <div class="col-md-auto">
-                                <a href="createScooter.php" class="btn btn-success right">Créer forfait</a>
+                                <a href="createPackage.php" class="btn btn-success right">Créer forfait</a>
                             </div>
                         </div>
                     </form>
@@ -64,12 +64,11 @@ require "../../struct/head.php";
                                 <th class="table_border table_font_1 textcolor center px-5">Limite d'utilisation par jour</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Durée limite d'un trajet</th>
                                 <th class="table_border table_font_1 textcolor center px-5">Trajet ajouté</th>
-                                <th class="table_border table_font_1 textcolor center px-5">Nom de la photo</th>
                             </tr>
 
                             <?php for ($p = 0; $p < $nbPkgs; $p++) { ?>
                                 <tr>
-                                    <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTrot.php?idpkg=<?php echo $resultPkgs[$p]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
+                                    <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning"><i class='bx bx-wrench'></i></a></td>
                                     <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idpkg=<?php echo ($resultPkgs[$p]['id']); ?>"><i class='bx bx-trash'></i></a></td>
                                     <td id="lgn" class="table_border table_font_2 center py-2 text-white"><?php print_r($resultPkgs[$p]["id"]); ?></th>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultPkgs[$p]["name"]); ?></th>
@@ -80,7 +79,6 @@ require "../../struct/head.php";
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php if ($resultPkgs[$p]["day_utilisation_limit"] != null) print_r($resultPkgs[$p]["day_utilisation_limit"] . " min"); ?></th>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php if ($resultPkgs[$p]["race_time_limit"] != null) print_r($resultPkgs[$p]["race_time_limit"] . " min"); ?></th>
                                     <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultPkgs[$p]["race_add"]); ?></th>
-                                    <td id="lgn" class="table_border table_font_2 center text-white"><?php print_r($resultPkgs[$p]["pic"]); ?></th>
                                 </tr>
                             <?php } ?>
 

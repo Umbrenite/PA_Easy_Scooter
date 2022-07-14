@@ -23,7 +23,7 @@ $infoUser = $requsr->fetchall();
 $nbUsers = count($infoUser);
 
 // PARTIE RECUP INFO STATUT TROT
-$reqstat = $bdd->prepare('SELECT id, status_name FROM iw22_scooter_status');
+$reqstat = $bdd->prepare('SELECT id, name FROM iw22_scooter_status');
 $reqstat->execute();
 $statTrot = $reqstat->fetchall();
 $nbStatTrot = count($statTrot);
@@ -146,8 +146,8 @@ include "admin_leftmenu.php";
                                         <option value="" selected>Sélectionner un statut...</option>
 
                                         <?php for ($s = 0; $s < $nbStatTrot; $s++) { ?>
-                                            <option value="<?php echo $statTrot[$s]["status_name"]; ?>">
-                                                <?php echo $statTrot[$s]["status_name"]; ?>
+                                            <option value="<?php echo $statTrot[$s]["name"]; ?>">
+                                                <?php echo $statTrot[$s]["name"]; ?>
                                             </option>
                                         <?php } ?>
 
