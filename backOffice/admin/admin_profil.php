@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "Mon profil";
-require "../../struct/head.php";
 
 if (isset($_POST['formProfil'])) {
 
@@ -77,8 +76,8 @@ if (isset($_POST['formProfil'])) {
 <?php
     }
 }
-?>
 
+require "../../struct/head.php"; ?>
 <link href="../../css/dashboard.css" rel="stylesheet" type="text/css">
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <link href="../../css/profil.css" rel="stylesheet" type="text/css">

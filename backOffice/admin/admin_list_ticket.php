@@ -59,7 +59,7 @@ include "admin_leftmenu.php";
                             <?php for ($n = 0; $n < $nbTickets; $n++) { ?>
                                 <tr>
                                     <td id="mod" class="table_border_bottom table_font_2 center text-white"><a class="btn btn-warning" href="modifyTicket.php?ticketid=<?php echo $resultTickets[$n]['id']; ?>"><i class='bx bx-wrench'></i></a></td>
-                                    <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idadmin=<?php echo ($resultTickets[$n]['id']); ?>"><i class='bx bx-trash'></i></a></td>
+                                    <td id="del" class="table_font_2 center text-white"><a class="btn btn-danger" href="../../delete.php?idticket=<?php echo ($resultTickets[$n]['id']); ?>"><i class='bx bx-trash'></i></a></td>
                                     <td class="table_border table_font_2 center py-2 text-white"><?php echo $resultTickets[$n]['id']; ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo printUserInfo($resultTickets[$n]['id_user']); ?></td>
                                     <td class="table_border table_font_2 center text-white"><?php echo $resultTickets[$n]['title']; ?></td>

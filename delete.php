@@ -16,11 +16,19 @@ if (!empty($_GET['idadmin'])) {
 }
 
 if (!empty($_GET['idclient'])) {
-    deleteT($_GET['idclient'], "iw22_user", "client_list");
+    deleteT($_GET['idclient'], "iw22_user", "admin_list_client");
 }
 
 if (!empty($_GET['idtrot'])) {
     deleteT($_GET['idtrot'], "iw22_scooter", "admin_list_scooter");
+}
+
+if (!empty($_GET['idticket'])) {
+    deleteT($_GET['idticket'], "iw22_ticket", "admin_list_ticket");
+}
+
+if (!empty($_GET['idpkg'])) {
+    deleteT($_GET['idpkg'], "iw22_package", "admin_list_package");
 }
 
 if (!empty($_GET['statusti'])) {
