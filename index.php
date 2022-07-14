@@ -62,7 +62,7 @@ require "struct/head.php";
             <?php }
             if (isset($_SESSION['id'])) { ?>
               <div class="col pt-4">
-                <a href="catalog.php">
+                <a href="offers.php">
                   <button id="btninfoprof" class="btn btn-success textdark front_subtitle rounded">
                     Consulter le catalogue
                   </button></a>
